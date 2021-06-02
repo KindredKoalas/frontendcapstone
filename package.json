@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/KindredKoalas/frontendcapstone/issues"
   },
-  "homepage": "https://github.com/KindredKoalas/frontendcapstone#readme"
+  "homepage": "https://github.com/KindredKoalas/frontendcapstone#readme",
+  "dependencies": {
+    "react": "^17.0.2"
+  }
 }
