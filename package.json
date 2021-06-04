@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "nodemon server/index.js",
-    "react-dev": "webpack -w"
+    "react-dev": "webpack -d eval-source-map -w"
   },
   "repository": {
     "type": "git",
@@ -22,14 +22,25 @@
   "dependencies": {
     "axios": "^0.21.1",
     "express": "^4.17.1",
-    "mysql": "^2.18.1",
-    "nodemon": "^2.0.7",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "webpack": "^5.38.1"
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "styled-components": "^5.3.0"
   },
   "devDependencies": {
-    "babel-watch": "^7.4.1",
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "eslint": "^7.27.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "nodemon": "^2.0.7",
+    "webpack": "^5.38.1",
     "webpack-cli": "^4.7.0"
   }
 }
