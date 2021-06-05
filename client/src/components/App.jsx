@@ -2,6 +2,7 @@ import React from 'react';
 import ReviewsAndRatings from './ReviewsAndRatings/ReviewsAndRatings.jsx';
 
 import styled from 'styled-components';
+import QA from './QuestionsAnswers/QA.jsx';
 const Button = styled.div`
   color: red;
   display: flex;
@@ -13,7 +14,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-    }
+    };
   }
 
   render() {
@@ -21,6 +22,7 @@ class App extends React.Component {
       <>
       <Button>React is running!</Button>
       <ProductOverview />
+      <QA />
       <ReviewsAndRatings/>
       </>
     );
