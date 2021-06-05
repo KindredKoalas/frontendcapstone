@@ -1,4 +1,6 @@
 import React from 'react';
+import ReviewsAndRatings from './ReviewsAndRatings/ReviewsAndRatings.jsx';
+
 import styled from 'styled-components';
 import QA from './QuestionsAnswers/QA.jsx';
 const Button = styled.div`
@@ -6,6 +8,7 @@ const Button = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
+import ProductOverview from './ProductDetails/ProductOverview.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,10 +19,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <Button>React is running!</Button>
-        <QA />
-      </div>
+      <>
+      <Button>React is running!</Button>
+      <ProductOverview />
+      <QA />
+      <ReviewsAndRatings/>
+      </>
     );
   }
 }
