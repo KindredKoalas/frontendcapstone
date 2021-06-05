@@ -1,8 +1,6 @@
 const axios = require('axios');
 const config = require('../../config.js');
 
-console.log('config.token', config.TOKEN)
-
 let getAllProducts = (callback) => {
 
   let options = {
