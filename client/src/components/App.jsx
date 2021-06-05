@@ -1,4 +1,6 @@
 import React from 'react';
+import ReviewsAndRatings from './ReviewsAndRatings/ReviewsAndRatings.jsx';
+
 import styled from 'styled-components';
 const Button = styled.div`
   color: red;
@@ -16,11 +18,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <Button>React is running!</Button>
-        <ProductOverview />
-      </div>
-    )
+      <>
+      <Button>React is running!</Button>
+      <ProductOverview />
+      <ReviewsAndRatings/>
+      </>
+    );
   }
 }
 
