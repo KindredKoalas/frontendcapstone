@@ -7,6 +7,7 @@ const Button = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
+import ProductOverview from './ProductDetails/ProductOverview.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class App extends React.Component {
     return (
       <>
       <Button>React is running!</Button>
+      <ProductOverview />
       <ReviewsAndRatings/>
       </>
     );
