@@ -1,4 +1,10 @@
 import React from 'react';
+import styled from 'styled-components';
+const Button = styled.div`
+  color: red;
+  display: flex;
+  justify-content: flex-end;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -9,7 +15,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>React is running!</div>
+      <Button>React is running!</Button>
     )
   }
 }
