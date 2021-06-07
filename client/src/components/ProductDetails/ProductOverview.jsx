@@ -1,12 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import ImageSlider from './ImageSlider.jsx'
 
-// const Container = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   flex-flow: row wrap;
-// `;
+const Container = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+`;
 
 const ImageGallery = styled.div`
   grid-column: 1/2;
@@ -41,20 +42,19 @@ class ProductOverview extends React.Component {
     };
   }
 
-
-
   render() {
     return (
-      <div className="container">
-        <div className="imageGallery">
-          <ImageGallery>Image Gallery</ImageGallery>
-        </div>
-        <div className="productInfo">
-          <ProductInformation>Product Information</ProductInformation>
-        </div>
-        <div className="additionalProductInfo">
+      <div>
+        <Container>
+          <ImageGallery>
+            Image Gallery
+            <ImageSlider />
+          </ImageGallery>
+          <ProductInformation>Product Information
+            <h3>Expanded Product Name</h3>
+          </ProductInformation>
+        </Container>
           <AdditionalProductDetails>Additional Product Details</AdditionalProductDetails>
-        </div>
       </div>
     );
   }

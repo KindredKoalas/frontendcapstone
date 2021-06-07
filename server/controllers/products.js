@@ -11,5 +11,9 @@ module.exports = {
         }
       }
     );
+  },
+
+  getAllStyles: function (req, res) {
+
   }
 }
