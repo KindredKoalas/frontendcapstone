@@ -1,4 +1,5 @@
-import React from 'react';
+//import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import Rating from './Rating.js';
@@ -34,32 +35,25 @@ display: flex;
 flex-flow: row wrap;
 `;
 
+function ReviewsAndRatings() {
+  const [ratings, setRatings] = useState({});
+  const [totalRecommendedReviews, setTotalRecommendedReviews] = useState(0);
+  const [totalNumReviews, setTotalNumReviews] = useState(0);
+  const [averageRating, setAverageRating] = useState(0);
+  const [characteristics, setCharacteristics] = useState({
+    Size: {value: -1},
+    Width: {value: -1},
+    Comfort: {value: -1},
+    Quality: {value: -1},
+    Length: {value: -1},
+    Fit: {value: -1}
+  });
 
-class ReviewsAndRatings extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      ratings: {},
-      totalRecommendedReviews: 0,
-      totalNumReviews: 0,
-      averageRating: 0,
-      characteristics: {
-        Size: {value: -1},
-        Width: {value: -1},
-        Comfort: {value: -1},
-        Quality: {value: -1},
-        Length: {value: -1},
-        Fit: {value: -1}
-      }
-    }
-
-  }
-
-  componentDidMount() {
-    fetch('/reviews/25190')
-    .then(response => response.json())
-    .then(data => console.log(data));
+  //retrive meta data
+  useEffect(() => {
+    // fetch('/reviews/25190')
+    // .then(response => response.json())
+    // .then(data => console.log(data));
 
     fetch('/reviews/meta/25190')
     .then(response => response.json())
@@ -74,24 +68,23 @@ class ReviewsAndRatings extends React.Component {
         totalNumReviews = totalNumReviews + Number(value);
       }
 
-      this.setState({
-        ratings: data.ratings,
-        totalNumReviews: String(totalNumReviews),
-        totalRecommendedReviews: Number(data.recommended.true),
-        averageRating: (Math.round((totalRatingValues/Number(totalNumReviews))*4)/4),
-        characteristics: data.characteristics
-      });
-    });
-  }
+      setRatings(data.ratings);
+      setTotalNumReviews(String(totalNumReviews));
+      setTotalRecommendedReviews(Number(data.recommended.true))
+      setAverageRating((Math.round((totalRatingValues/Number(totalNumReviews))*4)/4));
+      setCharacteristics(data.characteristics);
 
-  render() {
+    });
+  }, [ratings['1'], totalRecommendedReviews, totalNumReviews, averageRating, characteristics.Size]);
+
     return (
       <Component>
         <h5>RATINGS AND REVIEWS</h5>
         <GridLayout>
           <Ratings>
-            <Rating totalNumReviews={this.state.totalNumReviews} recommended={this.state.totalRecommendedReviews} ratings={this.state.ratings} averageRating={this.state.averageRating}/>
-            <Characteristics characteristics={this.state.characteristics}/>
+            <Rating totalNumReviews={totalNumReviews} recommended={totalRecommendedReviews} ratings={ratings} averageRating={averageRating}/>
+            <br></br>
+            <Characteristics characteristics={characteristics}/>
           </Ratings>
           <Reviews>
             <div>Review title with word-breakdown</div>
@@ -102,8 +95,82 @@ class ReviewsAndRatings extends React.Component {
           </Reviews>
         </GridLayout>
       </Component>
-    )
-  }
+    );
 }
 
 export default ReviewsAndRatings;
+
+// class ReviewsAndRatings extends React.Component {
+//   constructor(props) {
+//     super(props)
+
+//     this.state = {
+//       ratings: {},
+//       totalRecommendedReviews: 0,
+//       totalNumReviews: 0,
+//       averageRating: 0,
+//       characteristics: {
+//         Size: {value: -1},
+//         Width: {value: -1},
+//         Comfort: {value: -1},
+//         Quality: {value: -1},
+//         Length: {value: -1},
+//         Fit: {value: -1}
+//       }
+//     }
+
+//   }
+
+//   componentDidMount() {
+//     fetch('/reviews/25190')
+//     .then(response => response.json())
+//     .then(data => console.log(data));
+
+//     fetch('/reviews/meta/25190')
+//     .then(response => response.json())
+//     .then(data => {
+//       console.log(data)
+
+//       let totalNumReviews = 0;
+//       let totalRatingValues = 0;
+
+//       for (const [key, value] of Object.entries(data.ratings)) {
+//         totalRatingValues = totalRatingValues +key*value;
+//         totalNumReviews = totalNumReviews + Number(value);
+//       }
+
+//       this.setState({
+//         ratings: data.ratings,
+//         totalNumReviews: String(totalNumReviews),
+//         totalRecommendedReviews: Number(data.recommended.true),
+//         averageRating: (Math.round((totalRatingValues/Number(totalNumReviews))*4)/4),
+//         characteristics: data.characteristics
+//       });
+//     });
+//   }
+
+//   render() {
+//     return (
+//       <Component>
+//         <h5>RATINGS AND REVIEWS</h5>
+//         <GridLayout>
+//           <Ratings>
+//             <Rating totalNumReviews={this.state.totalNumReviews} recommended={this.state.totalRecommendedReviews} ratings={this.state.ratings} averageRating={this.state.averageRating}/>
+//             <Characteristics characteristics={this.state.characteristics}/>
+//           </Ratings>
+//           <Reviews>
+//             <div>Review title with word-breakdown</div>
+//             <Buttons>
+//             <button>More Reviews</button>
+//             <button>Add A Review</button>
+//             </Buttons>
+//           </Reviews>
+//         </GridLayout>
+//       </Component>
+//     )
+//   }
+// }
+
+// export default ReviewsAndRatings;
+
+

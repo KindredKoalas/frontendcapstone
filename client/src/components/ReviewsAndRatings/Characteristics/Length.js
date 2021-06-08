@@ -11,13 +11,12 @@ class Length extends React.Component {
     if(this.props.characteristics.Length !== undefined) {
       return (
         <div>
-          <br></br>
           <this.props.styles.title>Length</this.props.styles.title>
             <this.props.styles.slider type="range" min="1" max="5" value={this.props.characteristics.Length.value} readonly="readonly"></this.props.styles.slider>
             <this.props.styles.text>
-              <label>Runs short</label>
-              <label>Perfect</label>
-              <label>Runs long</label>
+              <this.props.styles.labels>Runs short</this.props.styles.labels>
+              <this.props.styles.labels>Perfect</this.props.styles.labels>
+              <this.props.styles.labels>Runs long</this.props.styles.labels>
             </this.props.styles.text>
         </div>
       );

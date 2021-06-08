@@ -13,25 +13,48 @@ flex-direction: row;
 `;
 
 const AverageRating = styled.span`
-font-size: 45px;
+font-size: 5vw;
 font-weight: bold;
 `;
 
-const RecommendedReviews = styled.span`
-font-size: 13px;
+const TextStyle = styled.span`
+font-size: 1.75vw;
+display: flex;
+flex-direction: row;
+`;
+
+const TextStyle2 = styled.span`
+font-size: 1.75vw;
 `;
 
 const StarRating = styled.span`
-font-size: 13px;
+margin: 0.75vw 0 0.75vw 0;
 `;
 
 const StarRow = styled.span`
 display: flex;
 flex-direction: row;
 text-decoration: underline;
+line-height: 1.6;
 &:hover {
   color: green;
 }
+`;
+
+const Progress = styled.progress`
+-webkit-appearance: none;
+width: 26.5vw;
+height: 1vw;
+margin: 1vw 0 0 0.5vw;
+&::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0) inset;
+}
+`;
+
+const LineSpace = styled.p`
+line-height: 1.6;
 `;
 
 class Rating extends React.Component {
@@ -48,30 +71,30 @@ class Rating extends React.Component {
             <AverageRating>{this.props.averageRating}</AverageRating>
             <StarRatings
                 rating={this.props.averageRating}
-                starDimension="15px"
+                starDimension="1.5vw"
                 starSpacing="0px"
                 starRatedColor="black"
                 numberOfStars={5}
                 name='rating'
               />
           </Row>
-          <RecommendedReviews>
-            {Math.round((this.props.recommended/this.props.totalNumReviews)*100)}% of reviews recommend this product</RecommendedReviews>
-          <StarRating className="StarRatings">
+          <TextStyle2>
+            {Math.round((this.props.recommended/this.props.totalNumReviews)*100)}% of reviews recommend this product</TextStyle2>
+          <StarRating>
             <StarRow>
-              <span>5 stars <progress value ={this.props.ratings['5'] || '0'} max = {this.props.totalNumReviews || '0'}/></span>
+              <TextStyle>5&#160;‏‏‎stars<Progress value ={this.props.ratings['5'] || '0'} max = {this.props.totalNumReviews || '0'}/></TextStyle>
             </StarRow>
             <StarRow>
-              <span>4 stars <progress value ={this.props.ratings['4'] || '0'} max = {this.props.totalNumReviews}/></span>
+              <TextStyle>4&#160;stars <Progress value ={this.props.ratings['4'] || '0'} max = {this.props.totalNumReviews}/></TextStyle>
             </StarRow>
             <StarRow>
-              <span>3 stars <progress value ={this.props.ratings['3'] || '0'} max = {this.props.totalNumReviews}/></span>
+              <TextStyle>3&#160;stars <Progress value ={this.props.ratings['3'] || '0'} max = {this.props.totalNumReviews}/></TextStyle>
             </StarRow>
             <StarRow>
-              <span>2 stars <progress value ={this.props.ratings['2'] || '0'} max = {this.props.totalNumReviews}/></span>
+              <TextStyle>2&#160;stars <Progress value ={this.props.ratings['2'] || '0'} max = {this.props.totalNumReviews}/></TextStyle>
             </StarRow>
             <StarRow>
-              <span>1 stars <progress value ={this.props.ratings['1'] || '0'} max = {this.props.totalNumReviews}/></span>
+              <TextStyle>1&#160;stars <Progress value ={this.props.ratings['1'] || '0'} max = {this.props.totalNumReviews}/></TextStyle>
             </StarRow>
           </StarRating>
         </Reviews>
