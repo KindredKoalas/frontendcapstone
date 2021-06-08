@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import { dummyPhotos } from './dummySamples.js';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
@@ -23,13 +22,11 @@ const ImageSliderLeft = styled.div`
   cursor: pointer;
 `;
 
-// const ArrowRight = styled.div`
-//   width: 0;
-//   height: 0;
-//   border-top: 10px solid transparent;
-//   border-bottom: 10px solid transparent;
-//   border-left: 10px solid grey;
-// `;
+const ImageGalleryGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 5%;
+`;
 
 const ImageSliderCenter = styled.div`
   flex: 80%;
@@ -47,12 +44,12 @@ const ImageSliderRight = styled.div`
 `;
 
 function ImageSlider(props) {
-
+  const imagesPerStyle = props.images;
   const [currentImage, setCurrentImage] = useState(0);
+  const [currentThumbnail, setCurrentThumbnail] = useState(0);
 
-  console.log('dummyPhotos', dummyPhotos);
   return (
-    <ImageSliderInner style={{backgroundImage: `url(${dummyPhotos[currentImage].url})`}}>
+    <ImageSliderInner style={{backgroundImage: `url(${props.images[currentImage].photos.url})`}}>
       <ImageSliderLeft onClick={() => {
         currentImage > 0 && setCurrentImage(currentImage - 1);
         }}
@@ -61,7 +58,7 @@ function ImageSlider(props) {
       </ImageSliderLeft>
       <ImageSliderCenter />
       <ImageSliderRight onClick={() => {
-        currentImage < dummyPhotos.length - 1 && setCurrentImage(currentImage + 1);
+        currentImage < props.images.length - 1 && setCurrentImage(currentImage + 1);
         }}>
         <ArrowForwardIosIcon />
       </ImageSliderRight>

@@ -57,7 +57,9 @@ class ProductOverview extends React.Component {
           thumbnail_url: "https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
           url: "https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
         }
-      }]
+      }],
+      skus: [],
+      selectedStyleId: 0
     };
     this.getAllProducts = this.getAllProducts.bind(this);
     this.getAllStyles = this.getAllStyles.bind(this);
@@ -69,7 +71,6 @@ class ProductOverview extends React.Component {
 
   getAllProducts() {
     // this function sets the first product ID of the product array as state
-    console.log('getAllProducts is firing')
     const self = this;
     axios.get('/api/products')
       .then(function (response) {
@@ -89,7 +90,6 @@ class ProductOverview extends React.Component {
   }
 
   getAllStyles() {
-    console.log('getAllStyles is running!')
     const self = this;
     const productId = self.state.product.toString();
     axios.get(`/api/products/${productId}/styles`)
@@ -98,7 +98,6 @@ class ProductOverview extends React.Component {
         const results = response.data.results;
         const originalPrice = results[0].original_price;
         const salePrice = results[0].sale_price;
-        console.log('response.data.results', results)
         const styleImages = [];
         for (var i = 0; i < results.length; i++) {
           const currentStyleInfo = {};
@@ -107,12 +106,12 @@ class ProductOverview extends React.Component {
           currentStyleInfo.photos = currentStyle.photos[0];
           styleImages.push(currentStyleInfo);
         }
-        console.log('styleImages', styleImages);
         self.setState({
           styles: response.data,
           images: styleImages,
           originalPrice: originalPrice,
-          salePrice: salePrice
+          salePrice: salePrice,
+          skus: results.skus
         })
       })
       .catch(function (error) {
@@ -122,12 +121,13 @@ class ProductOverview extends React.Component {
   }
 
   render() {
-    console.log('this.state.images', this.state.images)
     return (
       <div>
         <Container>
           <ImageGallery>
-            <ImageSlider />
+            <ImageSlider
+              images={this.state.images}
+            />
           </ImageGallery>
           <ProductInformation>
             <ProductCategory
@@ -137,6 +137,7 @@ class ProductOverview extends React.Component {
               originalPrice={this.state.originalPrice}
               salePrice={this.state.salePrice}
             />
+            <div>STYLE > SELECTED STYLE</div>
             <StyleSelectorGrid>
               <Styles
                 images={this.state.images}

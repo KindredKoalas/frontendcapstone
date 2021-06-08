@@ -12,10 +12,16 @@ const StyleCircle = styled.div`
   border-radius: 50px;
 `;
 
+const StyleThumbnailCheckmark = styled.div`
+`;
+
 function Styles(props) {
-  console.log('Styles.jsx is running');
+  function handleClick(e) {
+    e.preventDefault();
+    console.log('Styles thumbnail is clicked!');
+  }
   const thumbnails = props.images.map((style) =>
-    <StyleCircle src={style.photos.thumbnail_url}/>
+    <StyleCircle src={style.photos.thumbnail_url} onClick={handleClick}/>
   );
   return (
     <>
