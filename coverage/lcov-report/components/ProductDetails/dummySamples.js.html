@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/QuestionsAnswers/QA.jsx</title>
+    <title>Code coverage report for components/ProductDetails/dummySamples.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/QuestionsAnswers</a> QA.jsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/ProductDetails</a> dummySamples.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>34/34</span>
+                <span class='fraction'>32/32</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>34/34</span>
+                <span class='fraction'>32/32</span>
             </div>
         
             
@@ -88,10 +88,7 @@
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -122,44 +119,38 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from 'react';
-import styled from 'styled-components';
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">const dummyPhotos = [
+  {
+    "style_id": 142835,
+    "thumbnail_url": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=300&amp;q=80",
+    "url": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=668&amp;q=80"
+  },
+  {
+    "style_id": 142835,
+    "thumbnail_url": "https://images.unsplash.com/photo-1492447105260-2e947425b5cc?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=300&amp;q=80",
+    "url": "https://images.unsplash.com/photo-1492447105260-2e947425b5cc?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80"
+  }
+];
 &nbsp;
-const Container = styled.div`
-border: solid teal 2px;
-`;
-const Search = styled.form`
-border: solid red 2px;
-`;
+// const getImagesPerStyle = (samplesData, styleId) =&gt; {
+//   const imagesPerStyle = [];
+//   const results = dummySamples.results;
+//   // console.log('results', results);
+//   for (var i = 0; i &lt; results.length; i++) {
+//     const infoPerStyle = results[i];
+//     //console.log('infoPerStyle', infoPerStyle);
+//     if (styleId === infoPerStyle.style_id) {
+//       console.log('if block is firing!');
+//       imagesPerStyle = infoPerStyle.photos;
+//       console.log('imagesPerStyle', imagesPerStyle)
+//     }
+//   }
+//   return imagesPerStyle;
+// }
 &nbsp;
-const Button = styled.button`
-border: solid orange 2px;
-display: flex;
-align-self: center;
-`;
+// getImagesPerStyle(dummySamples, 142835);
 &nbsp;
-const QA = () =&gt; {
-&nbsp;
-    return (
-      &lt;Container&gt;
-        &lt;h3&gt;Questions and Answers&lt;/h3&gt;
-        &lt;Search&gt;
-          &lt;input /&gt;
-        &lt;/Search&gt;
-        &lt;ul&gt;
-          &lt;li&gt;Q: What kind of material is it?&lt;/li&gt;
-          &lt;li&gt;A: 100% Cotton&lt;/li&gt;
-        &lt;/ul&gt;
-        &lt;Button type="button"&gt;Add Question&lt;/Button&gt;
-      &lt;/Container&gt;
-  );
-};
-&nbsp;
-export default QA;
-&nbsp;</pre></td></tr></table></pre>
+export default dummyPhotos;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
