@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import Rating from './Rating.js';
+import Characteristics from './Characteristics.js';
 
 const Component = styled.div`
 border: solid blue 1px;
@@ -18,6 +19,7 @@ const GridLayout = styled.div`
 
 const Ratings = styled.div`
 display: flex;
+flex-direction: column;
 border: solid red 1px;
 `;
 
@@ -38,11 +40,18 @@ class ReviewsAndRatings extends React.Component {
     super(props)
 
     this.state = {
+      ratings: {},
       totalRecommendedReviews: 0,
       totalNumReviews: 0,
       averageRating: 0,
-      ratings: {},
-      reviews: []
+      characteristics: {
+        Size: {value: -1},
+        Width: {value: -1},
+        Comfort: {value: -1},
+        Quality: {value: -1},
+        Length: {value: -1},
+        Fit: {value: -1}
+      }
     }
 
   }
@@ -69,15 +78,10 @@ class ReviewsAndRatings extends React.Component {
         ratings: data.ratings,
         totalNumReviews: String(totalNumReviews),
         totalRecommendedReviews: Number(data.recommended.true),
-        averageRating: (Math.round((totalRatingValues/Number(totalNumReviews))*4)/4)
+        averageRating: (Math.round((totalRatingValues/Number(totalNumReviews))*4)/4),
+        characteristics: data.characteristics
       });
-
-      console.log(this.state.averageRating)
-
-      // console.log((Math.round((this.state.totalRatingValues/Number(this.state.totalNumReviews))*4)/4));
     });
-
-
   }
 
   render() {
@@ -87,6 +91,7 @@ class ReviewsAndRatings extends React.Component {
         <GridLayout>
           <Ratings>
             <Rating totalNumReviews={this.state.totalNumReviews} recommended={this.state.totalRecommendedReviews} ratings={this.state.ratings} averageRating={this.state.averageRating}/>
+            <Characteristics characteristics={this.state.characteristics}/>
           </Ratings>
           <Reviews>
             <div>Review title with word-breakdown</div>
