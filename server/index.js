@@ -11,12 +11,12 @@ const questionsAndAnswers = require('./controllers/questionsandanswers.js');
 const reviews = require('./controllers/reviews.js');
 
 app.get('/api/products', products.get);
+app.get('/qa/questions', questionsAndAnswers.get);
 app.get('/api/products/:product_id/styles', products.getStyles);
 app.get('/qa/questions/:product_id', questionsAndAnswers.get);
 //Reviews
 app.get('/reviews/meta/:product_id', reviews.getMeta);
 app.get('/reviews/:product_id/:count/:sort', reviews.get);
-
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 })
