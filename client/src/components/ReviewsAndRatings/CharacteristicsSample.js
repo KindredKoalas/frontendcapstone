@@ -39,7 +39,9 @@
 //         <div>
 //           <br></br>
 //           <Title>Size</Title>
-//             <Slider type="range" min="1" max="5" value={this.props.characteristics.Size.value} readonly="readonly"></Slider>
+//             <Slider type="range" min="1" max="5"
+//                  value={this.props.characteristics.Size.value}
+//                  readonly="readonly"></Slider>
 //             <Text>
 //               <label value="0">Too small</label>
 //               <label value="2.5">Perfect</label>
@@ -53,7 +55,9 @@
 //         <div>
 //           <br></br>
 //           <Title>Width</Title>
-//             <Slider type="range" min="1" max="5" value={this.props.characteristics.Width.value} readonly="readonly"></Slider>
+//             <Slider type="range" min="1" max="5"
+//               value={this.props.characteristics.Width.value}
+//                readonly="readonly"></Slider>
 //             <Text>
 //               <label value="0">Too narrow</label>
 //               <label value="2.5">Perfect</label>
@@ -67,7 +71,8 @@
 //         <div>
 //           <br></br>
 //           <Title>Comfort</Title>
-//             <Slider type="range" min="1" max="5" value={this.props.characteristics.Comfort.value} readonly="readonly"></Slider>
+//             <Slider type="range" min="1" max="5"
+//                 value={this.props.characteristics.Comfort.value   readonly="readonly"></Slider>
 //             <Text>
 //               <label value="0">Poor</label>
 //               <label value="5">Perfect</label>
@@ -80,7 +85,9 @@
 //         <div>
 //           <br></br>
 //           <Title>Quality</Title>
-//             <Slider type="range" min="1" max="5" value={this.props.characteristics.Quality.value} readonly="readonly"></Slider>
+//             <Slider type="range" min="1" max="5"
+//                 value={this.props.characteristics.Quality.value}
+//                 readonly="readonly"></Slider>
 //             <Text>
 //               <label value="0">Poor</label>
 //               <label value="5">Perfect</label>
@@ -93,7 +100,9 @@
 //         <div>
 //           <br></br>
 //           <Title>Length</Title>
-//             <Slider type="range" min="1" max="5" value={this.props.characteristics.Length.value} readonly="readonly"></Slider>
+//             <Slider type="range" min="1" max="5"
+//                 value={this.props.characteristics.Length.value}
+//                 readonly="readonly"></Slider>
 //             <Text>
 //               <label value="0">Runs short</label>
 //               <label value="2.5">Perfect</label>
@@ -107,7 +116,9 @@
 //         <div>
 //           <br></br>
 //           <Title>Fit</Title>
-//             <Slider type="range" min="1" max="5" value={this.props.characteristics.Fit.value} readonly="readonly"></Slider>
+//             <Slider type="range" min="1" max="5"
+//                 value={this.props.characteristics.Fit.value}
+//                 readonly="readonly"></Slider>
 //             <Text>
 //               <label value="0">Runs tight</label>
 //               <label value="2.5">Perfect</label>

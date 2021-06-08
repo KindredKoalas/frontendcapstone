@@ -51,8 +51,8 @@ const styles = {
   title: Title,
   text: Text,
   slider: Slider,
-  labels: Labels
-}
+  labels: Labels,
+};
 
 class Characteristics extends React.Component {
   constructor(props) {
@@ -61,16 +61,16 @@ class Characteristics extends React.Component {
   }
 
   render() {
-      return (
-        <>
-        <Size characteristics={this.props.characteristics} styles={styles}/>
-        <Width characteristics={this.props.characteristics} styles={styles}/>
-        <Comfort characteristics={this.props.characteristics} styles={styles}/>
-        <Quality characteristics={this.props.characteristics} styles={styles}/>
-        <Length characteristics={this.props.characteristics} styles={styles}/>
-        <Fit characteristics={this.props.characteristics} styles={styles}/>
-        </>
-      );
+    return (
+      <>
+      <Size characteristics={this.props.characteristics} styles={styles}/>
+      <Width characteristics={this.props.characteristics} styles={styles}/>
+      <Comfort characteristics={this.props.characteristics} styles={styles}/>
+      <Quality characteristics={this.props.characteristics} styles={styles}/>
+      <Length characteristics={this.props.characteristics} styles={styles}/>
+      <Fit characteristics={this.props.characteristics} styles={styles}/>
+      </>
+    );
   }
 };
 

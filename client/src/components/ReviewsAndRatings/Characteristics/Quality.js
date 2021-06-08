@@ -12,7 +12,7 @@ class Quality extends React.Component {
       return (
         <div>
           <this.props.styles.title>Quality</this.props.styles.title>
-            <this.props.styles.slider type="range" min="1" max="5" value={this.props.characteristics.Quality.value} readonly="readonly"></this.props.styles.slider>
+            <this.props.styles.slider type="range" min="1" max="5" value={this.props.characteristics.Quality.value} readonly="readonly" step="0.01"></this.props.styles.slider>
             <this.props.styles.text>
               <this.props.styles.labels>Poor</this.props.styles.labels>
               <this.props.styles.labels>Perfect</this.props.styles.labels>

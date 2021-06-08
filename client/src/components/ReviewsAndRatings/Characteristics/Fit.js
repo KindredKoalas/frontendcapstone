@@ -12,7 +12,7 @@ class Fit extends React.Component {
       return (
         <div>
           <this.props.styles.title>Fit</this.props.styles.title>
-            <this.props.styles.slider type="range" min="1" max="5" value={this.props.characteristics.Fit.value} readonly="readonly"></this.props.styles.slider>
+            <this.props.styles.slider type="range" min="1" max="5" value={this.props.characteristics.Fit.value} readonly="readonly" step="0.01"></this.props.styles.slider>
             <this.props.styles.text>
               <this.props.styles.labels>Runs tight</this.props.styles.labels>
               <this.props.styles.labels>Perfect</this.props.styles.labels>

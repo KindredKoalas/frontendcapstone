@@ -3,8 +3,11 @@ const config = require('../../config.js');
 
 let getAllReviews = (callback, productId) => {
   const id = productId.product_id;
+  const count = productId.count;
+  const sort = productId.sort;
+
   let options = {
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews?product_id=${id}`,
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews?product_id=${id}&count=${count}&sort=${sort}`,
     headers: {
       'User-Agent': 'request',
       'Authorization': config.TOKEN

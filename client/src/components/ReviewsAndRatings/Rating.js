@@ -53,10 +53,6 @@ margin: 1vw 0 0 0.5vw;
 }
 `;
 
-const LineSpace = styled.p`
-line-height: 1.6;
-`;
-
 class Rating extends React.Component {
   constructor(props) {
     super(props)

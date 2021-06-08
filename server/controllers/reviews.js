@@ -2,7 +2,7 @@ const models = require('../models/reviews.js');
 
 module.exports = {
   get: function (req, res) {
-    console.log('req.params', req.params);
+    console.log('req.params', req);
     models.getAllReviews(
       (err, data) => {
         if (err) {
@@ -15,7 +15,7 @@ module.exports = {
   },
 
   getMeta: function (req, res) {
-    console.log('req.params', req.params);
+    //console.log('req.params', req.params);
     models.getReviewMetadata(
       (err, data) => {
         if (err) {
