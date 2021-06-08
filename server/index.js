@@ -11,7 +11,7 @@ const questionsAndAnswers = require('./controllers/questionsandanswers.js');
 const reviews = require('./controllers/reviews.js');
 
 app.get('/api/products', products.get);
-app.get('/qa/questions/:product_id', questionsAndAnswers.get);
+app.get('/qa/questions', questionsAndAnswers.get);
 app.get('/reviews/:product_id', reviews.get);
 
 app.listen(PORT, () => {
