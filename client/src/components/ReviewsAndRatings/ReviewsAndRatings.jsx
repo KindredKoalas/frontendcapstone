@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Rating from './Rating.jsx';
 import Characteristics from './Characteristics.jsx';
 import SortReviews from './SortReviews.jsx';
+import ReviewList from './ReviewList.jsx';
 
 const Component = styled.div`
 border: solid blue 1px;
@@ -54,7 +55,7 @@ function ReviewsAndRatings() {
 
   //Get all meta data
   useEffect(() => {
-    axios.get('/reviews/meta/25183')
+    axios.get('/reviews/meta/25168')
       .then((response) => {
         let data = response.data;
         let totalNumberReviews = 0;
@@ -75,7 +76,7 @@ function ReviewsAndRatings() {
 
   //Get all reviews
   useEffect(() => {
-    axios.get(`/reviews/25183/${totalNumReviews}/${sort}`)
+    axios.get(`/reviews/25168/${totalNumReviews}/${sort}`)
       .then((response) => {
         //console.log(response.data.results);
         setTotalReviews(response.data.results);
@@ -98,7 +99,7 @@ function ReviewsAndRatings() {
         </Ratings>
         <Reviews>
           <SortReviews totalNumReviews={totalNumReviews} sort={setSort} />
-          <div>Review title with word-breakdown</div>
+          <ReviewList reviewList={totalReviews} />
           <Buttons>
             <button>More Reviews</button>
             <button>Add A Review</button>

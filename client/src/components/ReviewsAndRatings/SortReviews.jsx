@@ -3,20 +3,21 @@ import styled from 'styled-components';
 
 const Text = styled.div`
 display: flex;
-font-size: 2.75vw;
+font-size: 2vw;
 font-weight: bold;
+padding-bottom: 2vw;
 `;
 
 const Dropdown = styled.select`
 background: transparent;
 line-height: 1;
-font-size: 2.75vw;
+font-size: 2vw;
 font-weight: bold;
 font-family: "Times New Roman", Times, serif;
 border: 0;
 padding: 0;
 border-radius: 0;
-width: 30%;
+width: 20%;
 position: relative;
 `;
 
