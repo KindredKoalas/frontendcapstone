@@ -2,7 +2,6 @@ const models = require('../models/reviews.js');
 
 module.exports = {
   get: function (req, res) {
-    console.log('req.params', req);
     models.getAllReviews(
       (err, data) => {
         if (err) {
