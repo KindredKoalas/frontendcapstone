@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import Rating from './Rating.js';
-import Characteristics from './Characteristics.js';
-import SortReviews from './SortReviews.js';
+import Rating from './Rating.jsx';
+import Characteristics from './Characteristics.jsx';
+import SortReviews from './SortReviews.jsx';
 
 const Component = styled.div`
 border: solid blue 1px;
@@ -60,10 +60,10 @@ function ReviewsAndRatings() {
         let totalNumberReviews = 0;
         let totalRatingValues = 0;
 
-      for (const [key, value] of Object.entries(data.ratings)) {
-        totalRatingValues = totalRatingValues +key*value;
-        totalNumberReviews = totalNumberReviews + Number(value);
-      }
+        for (const [key, value] of Object.entries(data.ratings)) {
+          totalRatingValues = totalRatingValues +key*value;
+          totalNumberReviews = totalNumberReviews + Number(value);
+        }
 
         setRatings(data.ratings);
         setTotalNumReviews(String(totalNumberReviews));
@@ -77,7 +77,7 @@ function ReviewsAndRatings() {
   useEffect(() => {
     axios.get(`/reviews/25183/${totalNumReviews}/${sort}`)
       .then((response) => {
-        console.log(response.data.results);
+        //console.log(response.data.results);
         setTotalReviews(response.data.results);
       });
   }, [totalReviews.length, averageRating, sort]);
