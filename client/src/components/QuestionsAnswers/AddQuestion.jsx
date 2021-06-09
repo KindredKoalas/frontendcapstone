@@ -17,7 +17,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-margin-top: 10%;
+margin-top: 15%;
 `;
 
 const FormDiv = styled.form`
@@ -25,12 +25,24 @@ font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans',
 display: flex;
 flex-direction: column;
 align-items: center;
-justify-content: flex-start;
+justify-content: center;
 `;
 
-const AddQuestion = () => {
+const StyledDiv = styled.div`
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
+`;
+
+const StyledInput = styled.input`
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
+width: 800px;
+height: 40px;
+`;
+
+const AddQuestion = (props) => {
   const [questionIsOpen, setQuestionIsOpen] = useState(false);
   const [question, addQuestion] = useState('');
+  const [name, addName] = useState('');
+  const [email, addEmail] = useState('');
 
     return (
       <div>
@@ -42,23 +54,53 @@ const AddQuestion = () => {
                onRequestClose={() => setQuestionIsOpen(false)}
         >
           <StyledH2>Ask your Question about [Product Name Here]</StyledH2>
-          <FormDiv>
-            <label>
-              Your Question:
-              <input type="text" placeholder="Why did you like the product or not?" value={question} onChange={(event) => {
-                console.log(event.target.value)
-                addQuestion(event.target.value)}}/>
-            </label>
+          <FormDiv
+            type="submit"
+            value="Submit"
+            onSubmit={(event) => {
+              event.preventDefault();
+              event.target.reset();
+              const newQuestion = {
+                question_body: question,
+                asker_name: name,
+                asker_email: email,
+                question_date: Date.now(),
+                reported: false,
+                answers: {},
+              };
 
+              props.addQuestion(newQuestion);
+              addQuestion('');
+              addName('');
+              addEmail('');
+              setQuestionIsOpen(false);
+            }}
+          >
             <label>
-              What is your nickname?:
-              <input type="text" placeholder="John Smith" />
+              <StyledDiv>Your Question:</StyledDiv>
+              <StyledInput type="text" placeholder="Why did you like the product or not?" value={question} onChange={(event) => {
+                addQuestion(event.target.value)}}
+                required
+              />
             </label>
-
+            <p> </p>
             <label>
-              Your Email:
-              <input type="text" placeholder="Example: john123@gmail.com?" />
+            <StyledDiv>What is your nickname?:</StyledDiv>
+              <StyledInput type="text" placeholder="John Smith" value={name} onChange={(event) => {
+                addName(event.target.value)}}
+                required
+              />
             </label>
+            <p> </p>
+            <label>
+            <StyledDiv>Your Email:</StyledDiv>
+              <StyledInput type="text" placeholder="Example: john123@gmail.com?" value={email} onChange={(event) => {
+                addEmail(event.target.value)}}
+                required
+              />
+            </label>
+            <p> </p>
+            <StyledButton type="submit">SUBMIT</StyledButton>
           </FormDiv>
         </Modal>
       </div>

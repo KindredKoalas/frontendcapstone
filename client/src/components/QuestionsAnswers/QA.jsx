@@ -4,6 +4,7 @@ import axios from 'axios';
 import QuestionList from './QuestionList.jsx';
 import Search from './Search.jsx';
 import AddQuestion from './AddQuestion.jsx';
+import MoreAqs from './MoreAqs.jsx';
 
 const Container = styled.div`
 border: solid black 1px;
@@ -21,6 +22,14 @@ width: 100%;
 height: 50px
 `;
 
+const LowerButtons = styled.div`
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
+font-weight: 100;
+font-size: 10px;
+display: flex;
+align-content: space-between;
+`;
+
 class QA extends React.Component {
   constructor() {
     super();
@@ -33,6 +42,8 @@ class QA extends React.Component {
     this.generateQuestions = this.generateQuestions.bind(this);
     this.searchQuestions = this.searchQuestions.bind(this);
     this.home = this.home.bind(this);
+    this.addQuestion = this.addQuestion.bind(this);
+    this.moreAqs = this.moreAqs.bind(this);
   }
 
   componentDidMount() {
@@ -61,8 +72,10 @@ class QA extends React.Component {
   }
 
   generateQuestions(data) {
+    var defaultList = data.slice(0, 3);
+    var fullList = data;
     this.setState({
-      questions: data,
+      questions: defaultList,
       questionsCopy: data,
     });
   }
@@ -72,6 +85,23 @@ class QA extends React.Component {
     this.setState({
       questions: questions,
     });
+  }
+
+  addQuestion(question) {
+    var questions = this.state.questions.slice();
+    questions.push(question);
+    this.setState({
+      questions: questions,
+    })
+  }
+
+  moreAqs(str) {
+    var defaultList = this.state.questions.slice();
+    var fullList = this.state.questionsCopy;
+    this.setState({
+      questions: fullList
+    })
+
   }
 
   render() {
@@ -94,7 +124,11 @@ class QA extends React.Component {
         <p>
 
         </p>
-        <AddQuestion />
+        <LowerButtons>
+          <MoreAqs moreAqs={this.moreAqs} />
+          <AddQuestion addQuestion={this.addQuestion}/>
+        </LowerButtons>
+
       </Container>
 
     );
