@@ -6,6 +6,7 @@ import ProductCategory from './ProductCategory.jsx';
 import Styles from './Styles.jsx';
 import Size from './Size.jsx';
 import Price from './Price.jsx';
+const helpers = require('./Helpers.js');
 
 const Container = styled.div`
   display: flex;
@@ -58,11 +59,16 @@ class ProductOverview extends React.Component {
           url: "https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
         }
       }],
-      skus: [],
-      selectedStyleId: 0
+      skus: [{
+        quantity: 8,
+        size: "XS"
+      }],
+      selectedStyleId: 0,
+      selectedStyleName: ''
     };
     this.getAllProducts = this.getAllProducts.bind(this);
     this.getAllStyles = this.getAllStyles.bind(this);
+    this.handleStylesSelectorClick = this.handleStylesSelectorClick.bind(this);
   }
 
   componentDidMount() {
@@ -96,8 +102,10 @@ class ProductOverview extends React.Component {
       .then(function (response) {
         // handle success
         const results = response.data.results;
+        console.log('response.data.results', results)
         const originalPrice = results[0].original_price;
         const salePrice = results[0].sale_price;
+        const skus = results[0].skus;
         const styleImages = [];
         for (var i = 0; i < results.length; i++) {
           const currentStyleInfo = {};
@@ -106,12 +114,15 @@ class ProductOverview extends React.Component {
           currentStyleInfo.photos = currentStyle.photos[0];
           styleImages.push(currentStyleInfo);
         }
+        const skusForAllStyles = helpers.getAllSkusForAllStyles(results);
+        console.log('skusForAllStyles', skusForAllStyles)
+
         self.setState({
           styles: response.data,
           images: styleImages,
           originalPrice: originalPrice,
           salePrice: salePrice,
-          skus: results.skus
+          skus: skus
         })
       })
       .catch(function (error) {
@@ -120,7 +131,15 @@ class ProductOverview extends React.Component {
       });
   }
 
+  handleStylesSelectorClick(styleId) {
+    this.setState({
+      selectedStyleId: styleId
+    })
+    console.log('Styles thumbnail event!,', styleId);
+  }
+
   render() {
+    console.log('skus', this.state.skus)
     return (
       <div>
         <Container>
@@ -141,9 +160,12 @@ class ProductOverview extends React.Component {
             <StyleSelectorGrid>
               <Styles
                 images={this.state.images}
+                handleStylesSelectorClick={this.handleStylesSelectorClick}
               />
             </StyleSelectorGrid>
-            <Size />
+            <Size
+              styleSkus={this.state.skus}
+            />
           </ProductInformation>
         </Container>
           <AdditionalProductDetails>
