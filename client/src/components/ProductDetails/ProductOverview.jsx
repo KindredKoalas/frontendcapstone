@@ -102,7 +102,6 @@ class ProductOverview extends React.Component {
       .then(function (response) {
         // handle success
         const results = response.data.results;
-        console.log('response.data.results', results)
         const originalPrice = results[0].original_price;
         const salePrice = results[0].sale_price;
         const skus = results[0].skus;
@@ -115,7 +114,6 @@ class ProductOverview extends React.Component {
           styleImages.push(currentStyleInfo);
         }
         const skusForAllStyles = helpers.getAllSkusForAllStyles(results);
-        console.log('skusForAllStyles', skusForAllStyles)
 
         self.setState({
           styles: response.data,
