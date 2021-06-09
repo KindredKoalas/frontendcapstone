@@ -2,7 +2,7 @@ const models = require('../models/questionsandanswers.js');
 
 module.exports = {
   get: function (req, res) {
-    console.log('req.params', req.params);
+    //console.log('req.params', req.params);
     // console.log('req.body', req.body);
     models.getAllQuestionsAnswers(
       (err, data) => {
