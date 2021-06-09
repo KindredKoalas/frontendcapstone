@@ -5,7 +5,7 @@ class Size extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      sizeSelected: "XS"
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -21,6 +21,9 @@ class Size extends React.Component {
   }
 
   render() {
+    // render sizes dynamically
+    // const sizes = this.props.styleSkus.map((sku) => <option>{sku.size}</option>);
+    // render quantities dynamically
     return (
       <form onSubmit={this.handleSubmit}>
           <select placeholder="SELECT SIZE" onChange={this.handleChange}>
@@ -31,10 +34,10 @@ class Size extends React.Component {
           </select>
         <label>
           <select onChange={this.handleChange}>
+            <option>-</option>
             <option>1</option>
             <option>2</option>
             <option>3</option>
-            <option>4</option>
           </select>
         </label>
         <input type="submit" value="ADD TO BAG" />
