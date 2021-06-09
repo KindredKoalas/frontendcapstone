@@ -139,7 +139,6 @@ class ProductOverview extends React.Component {
   }
 
   render() {
-    console.log('skus', this.state.skus)
     return (
       <div>
         <Container>
@@ -161,6 +160,7 @@ class ProductOverview extends React.Component {
               <Styles
                 images={this.state.images}
                 handleStylesSelectorClick={this.handleStylesSelectorClick}
+                selectedStyleId={this.state.selectedStyleId}
               />
             </StyleSelectorGrid>
             <Size
