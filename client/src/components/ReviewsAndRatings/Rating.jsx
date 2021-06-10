@@ -53,14 +53,14 @@ margin: 1vw 0 0 0.5vw;
 }
 `;
 
-function Rating(props) {
+function Rating( {totalNumReviews, recommended, ratings,averageRating} ) {
   return (
     <>
       <Reviews>
         <Row>
-          <AverageRating>{props.averageRating}</AverageRating>
+          <AverageRating>{averageRating}</AverageRating>
           <StarRatings
-            rating={props.averageRating}
+            rating={averageRating}
             starDimension="1.5vw"
             starSpacing="0px"
             starRatedColor="black"
@@ -69,7 +69,7 @@ function Rating(props) {
           />
         </Row>
         <TextStyle2>
-          {Math.round((props.recommended / props.totalNumReviews) * 100)}
+          {Math.round((recommended / totalNumReviews) * 100)}
           % of reviews recommend this product
         </TextStyle2>
         <StarRating>
@@ -77,8 +77,8 @@ function Rating(props) {
             <TextStyle>
               5&#160;‏‏‎stars
               <Progress
-                value={props.ratings['5'] || '0'}
-                max={props.totalNumReviews || '0'}
+                value={ratings['5'] || '0'}
+                max={totalNumReviews || '0'}
               />
             </TextStyle>
           </StarRow>
@@ -86,8 +86,8 @@ function Rating(props) {
             <TextStyle>
               4&#160;stars
               <Progress
-                value={props.ratings['4'] || '0'}
-                max={props.totalNumReviews}
+                value={ratings['4'] || '0'}
+                max={totalNumReviews}
               />
             </TextStyle>
           </StarRow>
@@ -95,8 +95,8 @@ function Rating(props) {
             <TextStyle>
               3&#160;stars
               <Progress
-                value={props.ratings['3'] || '0'}
-                max={props.totalNumReviews}
+                value={ratings['3'] || '0'}
+                max={totalNumReviews}
               />
             </TextStyle>
           </StarRow>
@@ -104,8 +104,8 @@ function Rating(props) {
             <TextStyle>
               2&#160;stars
               <Progress
-                value={props.ratings['2'] || '0'}
-                max={props.totalNumReviews}
+                value={ratings['2'] || '0'}
+                max={totalNumReviews}
               />
             </TextStyle>
           </StarRow>
@@ -113,8 +113,8 @@ function Rating(props) {
             <TextStyle>
               1&#160;stars
               <Progress
-                value={props.ratings['1'] || '0'}
-                max={props.totalNumReviews}
+                value={ratings['1'] || '0'}
+                max={totalNumReviews}
               />
             </TextStyle>
           </StarRow>

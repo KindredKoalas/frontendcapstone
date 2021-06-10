@@ -1,14 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import StarRatings from 'react-star-ratings';
+import PictureList from './PictureList.jsx';
 
 const Reviews = styled.div`
 display: flex;
 flex-direction: column;
-line-height: 1.5;
+font-size: 1.75vw;
+line-height: 2;
 `;
 
-const Row = styled.span`
+const RowDisplay = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
@@ -24,7 +26,9 @@ font-weight: bold;
 
 const Body = styled.div`
 display: flex;
-font-size: 1.75vw
+flex-direction: column;
+font-size: 1.75vw;
+line-height: 2;
 `;
 
 const Response = styled.div`
@@ -37,53 +41,63 @@ background: #E8E8E8;
 const BoldText = styled.div`
 display: flex;
 font-weight: bold;
-line-height: 3vw;
+line-height: 3.5vw;
 margin-inline: 1vw;
 `;
 
 const Text = styled.div`
 display: flex;
 margin-inline: 1vw;
-line-height: 3vw;
+line-height: 3.5vw;
 `;
 
-function Review(props) {
-  const date = new Date(props.reviewObject.date);
+function Review({ reviewObject }) {
+  const date = new Date(reviewObject.date);
   const month = date.toLocaleString('default', { month: 'long' });
 
   return (
     <Reviews>
-      <Row>
+      <RowDisplay>
         <StarRatings
-          rating={(Math.round((props.reviewObject.rating)) * 4) / 4}
+          rating={(Math.round((reviewObject.rating)) * 4) / 4}
           starDimension="1.5vw"
           starSpacing="0px"
           starRatedColor="black"
           numberOfStars={5}
           name="rating"
         />
-        {props.reviewObject.reviewer_name}
+        {reviewObject.reviewer_name}
         ,&nbsp;{month}
         {date.toString().slice(7, 15)}
-      </Row>
+      </RowDisplay>
       <Summary>
-        {props.reviewObject.summary}
+        {reviewObject.summary}
       </Summary>
       <Body>
-        {props.reviewObject.recommend === true ? '✓ I recommend this product' : null}
+        {reviewObject.body.length < 250 ? reviewObject.body : null}
+      </Body>
+      <PictureList pictureList={reviewObject.photos} />
+      <Body>
+        {reviewObject.recommend === true ? '✓ I recommend this product' : null}
       </Body>
       <Response>
         <BoldText>
-          {(props.reviewObject.response.length !== 0
-            && props.reviewObject.response !== null)
+          {(reviewObject.response !== ''
+            && reviewObject.response !== null)
             ? "Response:" : null}
         </BoldText>
         <Text>
-          {(props.reviewObject.response.length !== 0
-          && props.reviewObject.response !== null)
-            ? props.reviewObject.response : null}
+          {(reviewObject.response !== ''
+          && reviewObject.response !== null)
+            ? reviewObject.response : null}
         </Text>
       </Response>
+      <RowDisplay>
+        Helpful? Yes
+        (
+        {reviewObject.helpfulness}
+        ) | No (0)
+      </RowDisplay>
       <hr size="1" width="100%" color="#DCDCDC" />
     </Reviews>
   );

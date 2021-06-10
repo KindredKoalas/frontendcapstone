@@ -78,7 +78,7 @@ function ReviewsAndRatings() {
   useEffect(() => {
     axios.get(`/reviews/25168/${totalNumReviews}/${sort}`)
       .then((response) => {
-        //console.log(response.data.results);
+        console.log(response.data.results);
         setTotalReviews(response.data.results);
       });
   }, [totalReviews.length, averageRating, sort]);
