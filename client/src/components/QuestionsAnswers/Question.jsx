@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Helpful from './Helpful.jsx';
 
 const Q = styled.div`
 font-weight: bold;
@@ -11,6 +12,8 @@ const Question = (props) => (
       Q:&nbsp;
       {props.item.question_body}
     </Q>
+    &nbsp;
+    <Helpful />
     <p>
 
     </p>

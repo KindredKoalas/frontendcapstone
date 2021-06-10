@@ -72,7 +72,7 @@ class QA extends React.Component {
   }
 
   generateQuestions(data) {
-    var defaultList = data.slice(0, 3);
+    var defaultList = data.slice(0, 2);
     var fullList = data;
     this.setState({
       questions: defaultList,
@@ -95,9 +95,9 @@ class QA extends React.Component {
     })
   }
 
-  moreAqs(str) {
-    var defaultList = this.state.questions.slice();
-    var fullList = this.state.questionsCopy;
+  moreAqs(count) {
+    console.log(count);
+    var fullList = this.state.questionsCopy.slice(0, count);
     this.setState({
       questions: fullList
     })

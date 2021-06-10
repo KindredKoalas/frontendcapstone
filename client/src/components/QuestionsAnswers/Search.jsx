@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const StyledInput = styled.input`
 font-family: Helvetica;
 font-weight: bold;
-width: 700px;
+width: 90%;
 height: 50px;
 padding-left: 10px;
 `;

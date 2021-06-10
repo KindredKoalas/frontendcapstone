@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const StyledButton = styled.button`
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 font-weight: bold;
-width: 200px;
+width: 275px;
 height: 50px;
 background-color: white;
 border-width: thin;
@@ -13,14 +13,17 @@ margin-right: 10px;
 
 const MoreAqs = (props) => {
   const [moreAqsIsOpen, setMoreAqsIsOpenOpen] = useState(false);
+  const [count, incrementCount] = useState(2);
   return (
     <div>
       <StyledButton onClick={() => {
         setMoreAqsIsOpenOpen(!moreAqsIsOpen)
-        if(!moreAqsIsOpen) {
-          props.moreAqs();
+        if (!moreAqsIsOpen) {
+          incrementCount(count + 2);
+          props.moreAqs(count + 2);
         } else {
-          props.moreAqs();
+          incrementCount(count - 2);
+          props.moreAqs(count - 2);
         }
       }}>
         {!moreAqsIsOpen ? <span>MORE ANSWERED QUESTIONS</span> : <span>COLLAPSE</span>}
