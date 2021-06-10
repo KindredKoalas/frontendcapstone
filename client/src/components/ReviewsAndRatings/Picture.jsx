@@ -18,7 +18,3 @@ function Picture({ pictureObject }) {
 }
 
 export default Picture;
-
-{/* <a target="_blank" href={pictureObject.url}>
-        <Image src={pictureObject.url} />
-      </a> */}

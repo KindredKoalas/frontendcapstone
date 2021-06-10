@@ -19,16 +19,16 @@ const Slider = styled.input`
   transition: opacity .2s;
 
   &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 0;
-	  height: 0;
-	  border-left: 1vw solid transparent;
-	  border-right: 1vw solid transparent;
-	  border-top: 1.5vw solid black;
-    background: none;
-    cursor: pointer;
-  }
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0;
+  height: 0;
+  border-left: 1vw solid transparent;
+  border-right: 1vw solid transparent;
+  border-top: 1.5vw solid black;
+  background: none;
+  cursor: pointer;
+}
 `;
 
 const Title = styled.div`
@@ -54,15 +54,15 @@ const styles = {
   labels: Labels,
 };
 
-function Characteristics(props) {
+function Characteristics( {characteristics} ) {
   return (
     <>
-      <Size characteristics={props.characteristics} styles={styles} />
-      <Width characteristics={props.characteristics} styles={styles} />
-      <Comfort characteristics={props.characteristics} styles={styles} />
-      <Quality characteristics={props.characteristics} styles={styles} />
-      <Length characteristics={props.characteristics} styles={styles} />
-      <Fit characteristics={props.characteristics} styles={styles} />
+      <Size characteristics={characteristics} styles={styles} />
+      <Width characteristics={characteristics} styles={styles} />
+      <Comfort characteristics={characteristics} styles={styles} />
+      <Quality characteristics={characteristics} styles={styles} />
+      <Length characteristics={characteristics} styles={styles} />
+      <Fit characteristics={characteristics} styles={styles} />
     </>
   );
 }

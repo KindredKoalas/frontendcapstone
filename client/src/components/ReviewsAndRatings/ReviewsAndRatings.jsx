@@ -6,6 +6,7 @@ import Rating from './Rating.jsx';
 import Characteristics from './Characteristics.jsx';
 import SortReviews from './SortReviews.jsx';
 import ReviewList from './ReviewList.jsx';
+import MoreReviews from './MoreReviews.jsx';
 
 const Component = styled.div`
 border: solid blue 1px;
@@ -52,6 +53,7 @@ function ReviewsAndRatings() {
   });
   const [sort, setSort] = useState('relevant');
   const [totalReviews, setTotalReviews] = useState([]);
+  const [slicedReviews, setSlicedReviews] = useState([]);
 
   //Get all meta data
   useEffect(() => {
@@ -78,10 +80,14 @@ function ReviewsAndRatings() {
   useEffect(() => {
     axios.get(`/reviews/25168/${totalNumReviews}/${sort}`)
       .then((response) => {
-        console.log(response.data.results);
+        //console.log(response.data.results);
         setTotalReviews(response.data.results);
+        if (slicedReviews.length === 0) {
+          const slicedarray = response.data.results.slice(0, 2);
+          setSlicedReviews(slicedarray);
+        }
       });
-  }, [totalReviews.length, averageRating, sort]);
+  }, [totalReviews.length, averageRating, sort, slicedReviews.length]);
 
   return (
     <Component>
@@ -99,9 +105,13 @@ function ReviewsAndRatings() {
         </Ratings>
         <Reviews>
           <SortReviews totalNumReviews={totalNumReviews} sort={setSort} />
-          <ReviewList reviewList={totalReviews} />
+          <ReviewList reviewList={slicedReviews} />
           <Buttons>
-            <button>More Reviews</button>
+            <MoreReviews
+              reviewList={totalReviews}
+              slicedReviewsFunction={setSlicedReviews}
+              slicedReviews={slicedReviews}
+            />
             <button>Add A Review</button>
           </Buttons>
         </Reviews>
