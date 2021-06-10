@@ -7,14 +7,18 @@ height: 8vw;
 padding: 0 1vw 0 0;
 `;
 
-function Picture(props) {
+function Picture({ pictureObject }) {
   return (
     <>
-      <a target="_blank" href={props.pictureObject.url}>
-        <Image src={props.pictureObject.url} />
+      <a href={pictureObject.url}>
+        <Image src={pictureObject.url} />
       </a>
     </>
   );
 }
 
 export default Picture;
+
+{/* <a target="_blank" href={pictureObject.url}>
+        <Image src={pictureObject.url} />
+      </a> */}

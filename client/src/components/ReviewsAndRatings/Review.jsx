@@ -51,50 +51,51 @@ margin-inline: 1vw;
 line-height: 3.5vw;
 `;
 
-function Review(props) {
-  const date = new Date(props.reviewObject.date);
+function Review({ reviewObject }) {
+  const date = new Date(reviewObject.date);
   const month = date.toLocaleString('default', { month: 'long' });
 
   return (
     <Reviews>
       <RowDisplay>
         <StarRatings
-          rating={(Math.round((props.reviewObject.rating)) * 4) / 4}
+          rating={(Math.round((reviewObject.rating)) * 4) / 4}
           starDimension="1.5vw"
           starSpacing="0px"
           starRatedColor="black"
           numberOfStars={5}
           name="rating"
         />
-        {props.reviewObject.reviewer_name}
+        {reviewObject.reviewer_name}
         ,&nbsp;{month}
         {date.toString().slice(7, 15)}
       </RowDisplay>
       <Summary>
-        {props.reviewObject.summary}
+        {reviewObject.summary}
       </Summary>
       <Body>
-        {props.reviewObject.body.length < 250 ? props.reviewObject.body : null}
+        {reviewObject.body.length < 250 ? reviewObject.body : null}
       </Body>
-      <PictureList pictureList={props.reviewObject.photos} />
+      <PictureList pictureList={reviewObject.photos} />
       <Body>
-        {props.reviewObject.recommend === true ? '✓ I recommend this product' : null}
+        {reviewObject.recommend === true ? '✓ I recommend this product' : null}
       </Body>
       <Response>
         <BoldText>
-          {(props.reviewObject.response.length !== 0
-            && props.reviewObject.response !== null)
+          {(reviewObject.response.length !== 0
+            && reviewObject.response !== null)
             ? "Response:" : null}
         </BoldText>
         <Text>
-          {(props.reviewObject.response.length !== 0
-          && props.reviewObject.response !== null)
-            ? props.reviewObject.response : null}
+          {(reviewObject.response.length !== 0
+          && reviewObject.response !== null)
+            ? reviewObject.response : null}
         </Text>
       </Response>
       <RowDisplay>
         Helpful? Yes
-        ({props.reviewObject.helpfulness}
+        (
+        {reviewObject.helpfulness}
         ) | No (0)
       </RowDisplay>
       <hr size="1" width="100%" color="#DCDCDC" />
