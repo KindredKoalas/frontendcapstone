@@ -24,20 +24,15 @@ class Size extends React.Component {
     // render sizes dynamically
     // const sizes = this.props.styleSkus.map((sku) => <option>{sku.size}</option>);
     // render quantities dynamically
+    const skus = this.props.skusPerStyle;
     return (
       <form onSubmit={this.handleSubmit}>
           <select placeholder="SELECT SIZE" onChange={this.handleChange}>
-            <option value="XS">Extra Small</option>
-            <option value="S">Small</option>
-            <option value="M">Medium</option>
-            <option value="L">Large</option>
+            <option value="noSizeSelected">-</option>
           </select>
         <label>
           <select onChange={this.handleChange}>
-            <option>-</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
+            <option value="none">-</option>
           </select>
         </label>
         <input type="submit" value="ADD TO BAG" />

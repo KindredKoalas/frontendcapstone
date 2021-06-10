@@ -10,20 +10,21 @@ const helpers = require('./Helpers.js');
 
 const Container = styled.div`
   display: flex;
+  border: solid black 1px;
+  font-family: Helvetica;
+  font-weight: light;
   justify-content: flex-start;
   flex-flow: row wrap;
 `;
 
 const ImageGallery = styled.div`
-  border: solid;
-  border-radius: 5px;
+  border-radius: 0px;
   width: 50%;
   padding: 2%;
 `;
 
 const ProductInformation = styled.div`
-  border: solid;
-  border-radius: 5px;
+  border-radius: 0px;
   width: 40%;
   padding: 2%;
   background: none;
@@ -36,8 +37,10 @@ const StyleSelectorGrid = styled.div`
 `;
 
 const AdditionalProductDetails = styled.div`
-  border: solid;
-  border-radius: 5px;
+  border: solid black 1px;
+  font-family: Helvetica;
+  font-weight: light;
+  border-radius: 0px;
   background: none;
 `;
 
@@ -72,9 +75,7 @@ class ProductOverview extends React.Component {
         {
           thumbnail_url: "https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
           url: "https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80"
-
-        }
-      ]
+        }]
     };
     this.getAllProducts = this.getAllProducts.bind(this);
     this.getAllStyles = this.getAllStyles.bind(this);
@@ -115,7 +116,6 @@ class ProductOverview extends React.Component {
         console.log('response.data.results', results)
         const originalPrice = results[0].original_price;
         const salePrice = results[0].sale_price;
-        const skus = results[0].skus;
         const style_id = results[0].style_id;
         const styleImages = [];
         for (var i = 0; i < results.length; i++) {
@@ -125,15 +125,13 @@ class ProductOverview extends React.Component {
           currentStyleInfo.photos = currentStyle.photos[0];
           styleImages.push(currentStyleInfo);
         }
-        const skusForAllStyles = helpers.getAllSkusForAllStyles(results);
 
         self.setState({
           styles: response.data,
           images: styleImages,
           originalPrice: originalPrice,
           salePrice: salePrice,
-          selectedStyleId: style_id,
-          skus: skus
+          selectedStyleId: style_id
         })
       })
       .catch(function (error) {
@@ -145,10 +143,14 @@ class ProductOverview extends React.Component {
   handleStylesSelectorClick(styleId) {
     console.log('Styles thumbnail event!', this.state.selectedStyleId);
     const imagesAllStyles = helpers.getAllImagesForAllStyles(styleId, this.state.styles.results);
-    console.log('should give me the images for a style id', imagesAllStyles);
+
+    const skusPerStyle = helpers.getAllSkusPerStyle(styleId, this.state.styles.results);
+    console.log('skusPerStyle', skusPerStyle)
+
     this.setState({
       selectedStyleId: styleId,
-      selectedImages: imagesAllStyles
+      selectedImages: imagesAllStyles,
+      skus: skusPerStyle
     })
   }
 
@@ -179,7 +181,7 @@ class ProductOverview extends React.Component {
               />
             </StyleSelectorGrid>
             <Size
-              styleSkus={this.state.skus}
+              skusPerStyle={this.state.skus}
             />
           </ProductInformation>
         </Container>

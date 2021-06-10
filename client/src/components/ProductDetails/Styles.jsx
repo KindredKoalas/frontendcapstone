@@ -6,6 +6,8 @@ const StyleCircle = styled.div`
   background-image: ${({ src }) => `url(${src})`};
   background-size: cover;
   background-position: center;
+  padding: 5%;
+  margin: 10%;
   width: 50px;
   height: 50px;
   border: 1px;
