@@ -82,12 +82,12 @@ function Review({ reviewObject }) {
       </Body>
       <Response>
         <BoldText>
-          {(reviewObject.response.length !== 0
+          {(reviewObject.response !== ''
             && reviewObject.response !== null)
             ? "Response:" : null}
         </BoldText>
         <Text>
-          {(reviewObject.response.length !== 0
+          {(reviewObject.response !== ''
           && reviewObject.response !== null)
             ? reviewObject.response : null}
         </Text>
