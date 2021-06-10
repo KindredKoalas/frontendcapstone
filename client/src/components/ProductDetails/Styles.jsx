@@ -26,6 +26,7 @@ const CheckmarkCircle = styled.div`
 
 function Styles(props) {
   let [currentThumbnail, setCurrentThumbnail] = useState(0);
+
   function getIndex(styleId) {
     // purpose: this function iterates through the array and finds the index of the selected style id
     let imagesArray = props.images;
@@ -42,9 +43,10 @@ function Styles(props) {
 
   function handleClick(e) {
     e.persist();
-    props.handleStylesSelectorClick(e.target.attributes.value.value);
+    props.handleStylesSelectorClick(Number(e.target.attributes.value.value));
     const clickedStyleId = Number(e.target.attributes.value.value);
-    console.log(getIndex(clickedStyleId), 'getIndex');
+    const newIndex = getIndex(clickedStyleId);
+    setCurrentThumbnail(newIndex);
   }
 
   const imagesForAllStyles = props.images;

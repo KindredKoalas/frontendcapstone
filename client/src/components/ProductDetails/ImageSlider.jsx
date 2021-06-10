@@ -44,12 +44,12 @@ const ImageSliderRight = styled.div`
 `;
 
 function ImageSlider(props) {
-  const imagesPerStyle = props.images;
-  const [currentImage, setCurrentImage] = useState(0);
-  const [currentThumbnail, setCurrentThumbnail] = useState(0);
+  let imagesPerStyle = props.selectedImages;
+  let [currentImage, setCurrentImage] = useState(0);
+  let [currentThumbnail, setCurrentThumbnail] = useState(0);
 
   return (
-    <ImageSliderInner style={{backgroundImage: `url(${props.images[currentImage].photos.url})`}}>
+    <ImageSliderInner style={{backgroundImage: `url(${imagesPerStyle[currentImage].url})`}}>
       <ImageSliderLeft onClick={() => {
         currentImage > 0 && setCurrentImage(currentImage - 1);
         }}
@@ -58,7 +58,7 @@ function ImageSlider(props) {
       </ImageSliderLeft>
       <ImageSliderCenter />
       <ImageSliderRight onClick={() => {
-        currentImage < props.images.length - 1 && setCurrentImage(currentImage + 1);
+        currentImage < imagesPerStyle.length - 1 && setCurrentImage(currentImage + 1);
         }}>
         <ArrowForwardIosIcon />
       </ImageSliderRight>
