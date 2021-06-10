@@ -82,7 +82,7 @@ function ReviewsAndRatings() {
       .then((response) => {
         //console.log(response.data.results);
         setTotalReviews(response.data.results);
-        if (slicedReviews.length === 0) {
+        if (slicedReviews.length === 0 || slicedReviews.length <= 2) {
           const slicedarray = response.data.results.slice(0, 2);
           setSlicedReviews(slicedarray);
         }
