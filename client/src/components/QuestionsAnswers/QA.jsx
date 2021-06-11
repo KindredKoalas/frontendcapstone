@@ -96,7 +96,6 @@ class QA extends React.Component {
   }
 
   moreAqs(count) {
-    console.log(count);
     var fullList = this.state.questionsCopy.slice(0, count);
     this.setState({
       questions: fullList

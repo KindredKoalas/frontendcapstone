@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 
+
+
 const StyledButton = styled.button`
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 font-weight: bold;
@@ -39,47 +41,34 @@ width: 800px;
 height: 40px;
 `;
 
-const AddQuestion = (props) => {
-  const [questionIsOpen, setQuestionIsOpen] = useState(false);
-  const [question, addQuestion] = useState('');
+const AddAnswer = (props) => {
+  const [answerIsOpen, setAnswerIsOpen] = useState(false);
+  const [answer, addAnAnswer] = useState('');
   const [name, addName] = useState('');
   const [email, addEmail] = useState('');
 
     return (
       <div>
-        <StyledButton type="submit" onClick={() => setQuestionIsOpen(true)}>
-          ADD QUESTION +
-        </StyledButton>
-        <Modal isOpen={questionIsOpen}
+        <button type="submit" onClick={() => setAnswerIsOpen(true)}>
+          Add an answer
+        </button>
+        <Modal isOpen={answerIsOpen}
                ariaHideApp={false}
-               onRequestClose={() => setQuestionIsOpen(false)}
+               onRequestClose={() => setAnswerIsOpen(false)}
         >
-          <StyledH2>Ask your Question about [Product Name Here]</StyledH2>
+          <StyledH2>Ask your Answer about [Product Name Here]</StyledH2>
           <FormDiv
             type="submit"
             value="Submit"
             onSubmit={(event) => {
               event.preventDefault();
-              const newQuestion = {
-                question_body: question,
-                asker_name: name,
-                asker_email: email,
-                question_date: Date.now(),
-                reported: false,
-                answers: {},
-              };
 
-              props.addQuestion(newQuestion);
-              addQuestion('');
-              addName('');
-              addEmail('');
-              setQuestionIsOpen(false);
             }}
           >
             <label>
-              <StyledDiv>Your Question:</StyledDiv>
-              <StyledInput type="text" placeholder="Why did you like the product or not?" value={question} onChange={(event) => {
-                addQuestion(event.target.value)}}
+              <StyledDiv>Your Answer:</StyledDiv>
+              <StyledInput type="text" placeholder="Why did you like the product or not?" value={answer} onChange={(event) => {
+                addAnAnswer(event.target.value)}}
                 required
               />
             </label>
@@ -107,4 +96,4 @@ const AddQuestion = (props) => {
     )
 }
 
-export default AddQuestion;
+export default AddAnswer;
