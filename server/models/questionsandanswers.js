@@ -4,7 +4,7 @@ const config = require('../../config.js');
 let getAllQuestionsAnswers = (callback, productId) => {
   const id = productId.product_id;
   let options = {
-    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions?product_id=25167',
+    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions?product_id=25168',
     headers: {
       'User-Agent': 'request',
       'Authorization': config.TOKEN

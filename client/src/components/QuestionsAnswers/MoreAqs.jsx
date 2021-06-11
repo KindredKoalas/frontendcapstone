@@ -9,6 +9,7 @@ height: 50px;
 background-color: white;
 border-width: thin;
 margin-right: 10px;
+cursor: pointer;
 `;
 
 const MoreAqs = (props) => {
