@@ -21,15 +21,17 @@ width: 20%;
 position: relative;
 `;
 
-function SortReviews(props) {
+function SortReviews({totalNumReviews, sort, sortStateChanged, resetCount}) {
   function getSelectValue() {
     let selectedValue = document.getElementById('list').value;
-    props.sort(selectedValue);
+    sort(selectedValue);
+    sortStateChanged(true);
+    resetCount(true);
   }
 
   return (
     <Text>
-      {props.totalNumReviews}
+      {totalNumReviews}
       &nbsp;reviews, sorted by&nbsp;
       <Dropdown id='list' onChange={getSelectValue}>
         <option value="relevant">relevance</option>

@@ -20,6 +20,7 @@ function Size(props) {
         </props.styles.text>
       </div>
     );
+    // eslint-disable-next-line no-else-return
   } else {
     return null;
   }

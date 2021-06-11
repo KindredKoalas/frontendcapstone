@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 import React from 'react';
 
 function Fit(props) {
@@ -20,6 +21,7 @@ function Fit(props) {
         </props.styles.text>
       </div>
     );
+    // eslint-disable-next-line no-else-return
   } else {
     return null;
   }

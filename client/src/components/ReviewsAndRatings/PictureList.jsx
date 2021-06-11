@@ -15,6 +15,7 @@ function PictureList(props) {
         {picturesList}
       </div>
     );
+    // eslint-disable-next-line no-else-return
   } else {
     return null;
   }

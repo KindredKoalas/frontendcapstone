@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 import React from 'react';
 
 function Comfort(props) {
