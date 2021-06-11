@@ -59,9 +59,10 @@ function ReviewsAndRatings() {
 
   //Get all meta data
   useEffect(() => {
-    axios.get('/reviews/meta/25168')
+    axios.get('/reviews/meta/25268')
       .then((response) => {
         let data = response.data;
+        //console.log(data);
         let totalNumberReviews = 0;
         let totalRatingValues = 0;
 
@@ -80,7 +81,7 @@ function ReviewsAndRatings() {
 
   //Get all reviews
   useEffect(() => {
-    axios.get(`/reviews/25168/${totalNumReviews}/${sort}`)
+    axios.get(`/reviews/25268/${totalNumReviews}/${sort}`)
       .then((response) => {
         //console.log(response.data.results);
         setTotalReviews(response.data.results);

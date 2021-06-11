@@ -10,7 +10,7 @@ padding: 0 1vw 0 0;
 function Picture({ pictureObject }) {
   return (
     <>
-      <a href={pictureObject.url}>
+      <a target="_blank" href={pictureObject.url}>
         <Image src={pictureObject.url} />
       </a>
     </>
