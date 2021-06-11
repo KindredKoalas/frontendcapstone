@@ -57,9 +57,9 @@ const ImageSliderRight = styled.div`
 
 function ImageSlider(props) {
   let imagesPerStyle = props.selectedImages;
-  let thumbnails = imagesPerStyle.map((image) => {
-    <ThumbnailSquare src={image.thumbnail_url} />;
-  });
+  let thumbnails = imagesPerStyle.map((image) =>
+    <ThumbnailSquare src={image.thumbnail_url} />
+  );
   console.log('thumbnails', thumbnails);
   let [currentImage, setCurrentImage] = useState(0);
   let [currentThumbnail, setCurrentThumbnail] = useState(0);
@@ -73,7 +73,7 @@ function ImageSlider(props) {
         <ArrowBackIosIcon />
       </ImageSliderLeft>
       <ImageGalleryGrid>
-        {<ThumbnailSquare src={imagesPerStyle[currentImage].url}/>}
+        {thumbnails}
       </ImageGalleryGrid>
       <ImageSliderCenter />
       <ImageSliderRight onClick={() => {

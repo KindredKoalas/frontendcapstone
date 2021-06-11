@@ -1,7 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledDropdown = styled.div`
+const StyledSelect = styled.select`
+  font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
+  font-weight: bold;
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  border-width: thin;
+  margin-right: 5%;
+  padding: 3%;
+`;
+
+const StyledButton = styled.input`
   font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
   font-weight: bold;
   width: 200px;
@@ -80,14 +91,14 @@ class Size extends React.Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-          <select onChange={this.handleSizeChange}>
+          <StyledSelect onChange={this.handleSizeChange}>
             <option value="" disabled selected>SELECT SIZE</option>
             {allSizes}
-          </select>
-          <select onChange={this.handleQuantityChange}>
+          </StyledSelect>
+          <StyledSelect onChange={this.handleQuantityChange}>
             {quantity}
-          </select>
-          <input type="submit" value="ADD TO BAG" />
+          </StyledSelect>
+          <p><StyledButton type="submit" value="ADD TO BAG           +"></StyledButton></p>
       </form>
     );
   }
