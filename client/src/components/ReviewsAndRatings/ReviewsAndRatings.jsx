@@ -54,6 +54,8 @@ function ReviewsAndRatings() {
   const [sort, setSort] = useState('relevant');
   const [totalReviews, setTotalReviews] = useState([]);
   const [slicedReviews, setSlicedReviews] = useState([]);
+  const [sortvaluestate, setSortValueState] = useState(false);
+  const [resetcount, setResetCount] = useState(false);
 
   //Get all meta data
   useEffect(() => {
@@ -82,9 +84,10 @@ function ReviewsAndRatings() {
       .then((response) => {
         //console.log(response.data.results);
         setTotalReviews(response.data.results);
-        if (slicedReviews.length === 0 || slicedReviews.length <= 2) {
+        if (slicedReviews.length === 0 || slicedReviews.length <= 2 || sortvaluestate === true) {
           const slicedarray = response.data.results.slice(0, 2);
           setSlicedReviews(slicedarray);
+          setSortValueState(false);
         }
       });
   }, [totalReviews.length, averageRating, sort, slicedReviews.length]);
@@ -104,13 +107,20 @@ function ReviewsAndRatings() {
           <Characteristics characteristics={characteristics} />
         </Ratings>
         <Reviews>
-          <SortReviews totalNumReviews={totalNumReviews} sort={setSort} />
+          <SortReviews
+            totalNumReviews={totalNumReviews}
+            sort={setSort}
+            sortValueState={setSortValueState}
+            resetCount={setResetCount}
+          />
           <ReviewList reviewList={slicedReviews} />
           <Buttons>
             <MoreReviews
               reviewList={totalReviews}
               slicedReviewsFunction={setSlicedReviews}
               slicedReviews={slicedReviews}
+              resetCountState={resetcount}
+              resetCount={setResetCount}
             />
             <button>Add A Review</button>
           </Buttons>

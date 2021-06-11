@@ -3,21 +3,29 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Button = styled.button`
+font-size: 1.5vw;
 font-weight: bold;
-width: 3025;
+width: 25%;
 height: 6vw;
 background-color: white;
 border-width: thin;
 margin-right: 5vw;
 `;
 
-function MoreReviews({ reviewList, slicedReviewsFunction, slicedReviews }) {
+function MoreReviews({
+  reviewList, slicedReviewsFunction, slicedReviews, resetCountState, resetCount,
+}) {
   const [count, setCount] = useState(4);
 
   function showMoreReviews() {
-    setCount(count + 2);
-    const slicedarray = reviewList.slice(0, count);
-    slicedReviewsFunction(slicedarray);
+    if (resetCountState === true) {
+      setCount(4);
+      resetCount(false);
+    } else {
+      setCount(count + 2);
+      const slicedarray = reviewList.slice(0, count);
+      slicedReviewsFunction(slicedarray);
+    }
   }
   if (reviewList.length !== slicedReviews.length) {
     return (
