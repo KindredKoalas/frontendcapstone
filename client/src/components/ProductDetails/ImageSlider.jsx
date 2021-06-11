@@ -26,6 +26,18 @@ const ImageGalleryGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   padding: 5%;
+  border: thin;
+`;
+
+const ThumbnailSquare = styled.div`
+  background-image: ${({ src }) => `url(${src})`};
+  background-size: cover;
+  background-position: center;
+  padding: 5%;
+  margin: 10%;
+  width: 50px;
+  height: 50px;
+  position: relative;
 `;
 
 const ImageSliderCenter = styled.div`
@@ -45,6 +57,10 @@ const ImageSliderRight = styled.div`
 
 function ImageSlider(props) {
   let imagesPerStyle = props.selectedImages;
+  let thumbnails = imagesPerStyle.map((image) => {
+    <ThumbnailSquare src={image.thumbnail_url} />;
+  });
+  console.log('thumbnails', thumbnails);
   let [currentImage, setCurrentImage] = useState(0);
   let [currentThumbnail, setCurrentThumbnail] = useState(0);
 
@@ -56,6 +72,9 @@ function ImageSlider(props) {
       >
         <ArrowBackIosIcon />
       </ImageSliderLeft>
+      <ImageGalleryGrid>
+        {<ThumbnailSquare src={imagesPerStyle[currentImage].url}/>}
+      </ImageGalleryGrid>
       <ImageSliderCenter />
       <ImageSliderRight onClick={() => {
         currentImage < imagesPerStyle.length - 1 && setCurrentImage(currentImage + 1);
