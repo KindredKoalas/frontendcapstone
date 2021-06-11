@@ -54,7 +54,7 @@ function ReviewsAndRatings() {
   const [sort, setSort] = useState('relevant');
   const [totalReviews, setTotalReviews] = useState([]);
   const [slicedReviews, setSlicedReviews] = useState([]);
-  const [sortvaluestate, setSortValueState] = useState(false);
+  const [sortstatechanged, setSortStateChanged] = useState(false);
   const [resetcount, setResetCount] = useState(false);
 
   //Get all meta data
@@ -84,10 +84,10 @@ function ReviewsAndRatings() {
       .then((response) => {
         //console.log(response.data.results);
         setTotalReviews(response.data.results);
-        if (slicedReviews.length === 0 || slicedReviews.length <= 2 || sortvaluestate === true) {
+        if (slicedReviews.length === 0 || sortstatechanged === true) {
           const slicedarray = response.data.results.slice(0, 2);
           setSlicedReviews(slicedarray);
-          setSortValueState(false);
+          setSortStateChanged(false);
         }
       });
   }, [totalReviews.length, averageRating, sort, slicedReviews.length]);
@@ -110,7 +110,7 @@ function ReviewsAndRatings() {
           <SortReviews
             totalNumReviews={totalNumReviews}
             sort={setSort}
-            sortValueState={setSortValueState}
+            sortStateChanged={setSortStateChanged}
             resetCount={setResetCount}
           />
           <ReviewList reviewList={slicedReviews} />

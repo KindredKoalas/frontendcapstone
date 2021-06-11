@@ -21,11 +21,11 @@ width: 20%;
 position: relative;
 `;
 
-function SortReviews({totalNumReviews, sort, sortValueState, resetCount}) {
+function SortReviews({totalNumReviews, sort, sortStateChanged, resetCount}) {
   function getSelectValue() {
     let selectedValue = document.getElementById('list').value;
     sort(selectedValue);
-    sortValueState(true);
+    sortStateChanged(true);
     resetCount(true);
   }
 
