@@ -13,17 +13,20 @@ flex-direction: row;
 `;
 
 const AverageRating = styled.span`
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 font-size: 5vw;
 font-weight: bold;
 `;
 
 const TextStyle = styled.span`
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 font-size: 1.75vw;
 display: flex;
 flex-direction: row;
 `;
 
 const TextStyle2 = styled.span`
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 font-size: 1.75vw;
 `;
 

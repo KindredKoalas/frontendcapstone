@@ -3,7 +3,7 @@ import Review from './Review.jsx';
 import styled from 'styled-components';
 
 const ScrollabeList = styled.div`
-max-height:100vw;
+max-height:75vw;
 overflow-x:hidden;
 overflow-y:scroll;
 `;

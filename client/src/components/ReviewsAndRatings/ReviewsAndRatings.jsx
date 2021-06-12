@@ -7,6 +7,7 @@ import Characteristics from './Characteristics.jsx';
 import SortReviews from './SortReviews.jsx';
 import ReviewList from './ReviewList.jsx';
 import MoreReviews from './MoreReviews.jsx';
+import AddReview from './AddReview.jsx'
 
 const Component = styled.div`
 border: solid blue 1px;
@@ -59,10 +60,10 @@ function ReviewsAndRatings() {
 
   //Get all meta data
   useEffect(() => {
-    axios.get('/reviews/meta/25268')
+    axios.get('/reviews/meta/25269')
       .then((response) => {
         let data = response.data;
-        //console.log(data);
+        console.log(data);
         let totalNumberReviews = 0;
         let totalRatingValues = 0;
 
@@ -81,9 +82,10 @@ function ReviewsAndRatings() {
 
   //Get all reviews
   useEffect(() => {
-    axios.get(`/reviews/25268/${totalNumReviews}/${sort}`)
+    axios.get(`/reviews/25269/${totalNumReviews}/${sort}`)
       .then((response) => {
-        //console.log(response.data.results);
+        console.log(response.data);
+        console.log(response.data.results);
         setTotalReviews(response.data.results);
         if (slicedReviews.length === 0 || sortstatechanged === true) {
           const slicedarray = response.data.results.slice(0, 2);
@@ -123,7 +125,7 @@ function ReviewsAndRatings() {
               resetCountState={resetcount}
               resetCount={setResetCount}
             />
-            <button>Add A Review</button>
+            <AddReview characteristics={characteristics} />
           </Buttons>
         </Reviews>
       </GridLayout>

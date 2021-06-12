@@ -6,6 +6,7 @@ import PictureList from './PictureList.jsx';
 const Reviews = styled.div`
 display: flex;
 flex-direction: column;
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 font-size: 1.75vw;
 line-height: 2;
 `;
@@ -14,12 +15,14 @@ const RowDisplay = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
-font-size: 1.5vw;
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
+font-size: 1.25vw;
 font-weight: lighter;
 `;
 
 const Summary = styled.div`
 display: flex;
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 font-size: 2vw;
 font-weight: bold;
 `;
@@ -27,6 +30,7 @@ font-weight: bold;
 const Body = styled.div`
 display: flex;
 flex-direction: column;
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 font-size: 1.75vw;
 line-height: 2;
 `;
@@ -34,6 +38,7 @@ line-height: 2;
 const Response = styled.div`
 display: flex;
 flex-direction: column;
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 font-size: 1.75vw;
 background: #E8E8E8;
 `;
