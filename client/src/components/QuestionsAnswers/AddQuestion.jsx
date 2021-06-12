@@ -6,10 +6,16 @@ const StyledButton = styled.button`
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 font-weight: bold;
 width: 200px;
-height: 50px;
+height: 55px;
 background-color: white;
 border-width: thin;
 cursor: pointer;
+transition: 0.3s;
+&:hover ${StyledButton} {
+  background: #C50000;
+  color: white;
+  border: none;
+}
 `;
 
 const StyledH2 = styled.h2`
@@ -39,7 +45,7 @@ width: 800px;
 height: 40px;
 `;
 
-const AddQuestion = (props) => {
+const AddQuestion = ({ addQuestionToList }) => {
   const [questionIsOpen, setQuestionIsOpen] = useState(false);
   const [question, addQuestion] = useState('');
   const [name, addName] = useState('');
@@ -69,7 +75,7 @@ const AddQuestion = (props) => {
                 answers: {},
               };
 
-              props.addQuestion(newQuestion);
+              addQuestionToList(newQuestion);
               addQuestion('');
               addName('');
               addEmail('');

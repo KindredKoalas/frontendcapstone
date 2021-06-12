@@ -5,11 +5,17 @@ const StyledButton = styled.button`
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 font-weight: bold;
 width: 275px;
-height: 50px;
+height: 55px;
 background-color: white;
 border-width: thin;
 margin-right: 10px;
 cursor: pointer;
+transition: 0.3s;
+&:hover ${StyledButton} {
+  background: #C50000;
+  color: white;
+  border: none;
+}
 `;
 
 const MoreAqs = (props) => {
