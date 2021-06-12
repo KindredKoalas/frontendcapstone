@@ -1,10 +1,10 @@
 import React from 'react';
 import Question from './Question.jsx';
 
-const QuestionList = (props) => (
+const QuestionList = ({ list, addAnswerToList, answer }) => (
   <div>
-    {props.list.map((item, index) =>
-      <Question item={item} key={index} />)}
+    {list.map((item, index) =>
+      <Question item={item} key={index} help={item.question_helpfulness} addAnswerToList={addAnswerToList} answer={answer} />)}
   </div>
 );
 

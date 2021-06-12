@@ -19,36 +19,41 @@ display: flex;
 
 const Q = styled.div`
 font-weight: bold;
+font-size: 18px;
 `;
 
-const Question = ({ item }) => {
+const Question = ({ item, help, addAnswerToList, answer }) => {
   const answers = item.answers;
   let answerList = [];
+
   for (var key in answers) {
     answerList.push(answers[key]);
   }
+  // answerList = answerList.slice(0, 2);
+  // console.log('LIST ',answerList)
+  // console.log('ANSWER ',answer)
 
   const [allAnswers, setAnswerList] = useState(answerList);
 
   return (
     <div>
       <QuestionContainer>
-      <Q>
-        Q:&nbsp;
-        {item.question_body}
-      </Q>
-      &nbsp;
+        <Q>
+          Q:&nbsp;
+          {item.question_body}
+        </Q>
+        &nbsp;
         <ButtonStyle>
-          <Helpful />
-          <AddAnswer />
+          <Helpful help={help} />
+          <AddAnswer addAnswerToList={addAnswerToList} />
         </ButtonStyle>
 
       </QuestionContainer>
       <p>
 
       </p>
-      {allAnswers.map((answer, index) =>
-        <Answer answer={answer} key={index} />
+      {allAnswers.concat(answer).map((answer, index) =>
+        <Answer answer={answer} key={index}  />
       )}
       <p>
 

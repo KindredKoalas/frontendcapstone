@@ -19,19 +19,19 @@ font-size: 11px;
 font-weight: 100;
 `;
 
-const Helpful = ({ help }) => {
-  const [count, setCount] = useState(help);
+const HelpfulAnswer = ({ help }) => {
+  const [answerCount, setAnswerCount] = useState(help);
   return (
     <div>
       <HelpfulStyle>
         Helpful?
         &nbsp;
 
-      <StyledSpan type="button" onClick={() => setCount(count + 1)}>Yes</StyledSpan>
+      <StyledSpan type="button" onClick={() => setAnswerCount(answerCount + 1)}>Yes</StyledSpan>
       &nbsp;
       <span>
         (
-          <span>{count}</span>
+          <span>{answerCount}</span>
         )
       </span>
       </HelpfulStyle>
@@ -40,4 +40,4 @@ const Helpful = ({ help }) => {
   )
 }
 
-export default Helpful;
+export default HelpfulAnswer;

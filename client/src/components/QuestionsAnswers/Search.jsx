@@ -4,9 +4,25 @@ import styled from 'styled-components';
 const StyledInput = styled.input`
 font-family: Helvetica;
 font-weight: bold;
-width: 90%;
-height: 50px;
+width: 80%;
+height: 52px;
 padding-left: 10px;
+`;
+
+const StyledButton = styled.button`
+font-family: Helvetica;
+font-weight: bold;
+margin-left: -51px;
+height: 50px;
+width: 50px;
+border: none;
+background-color: white;
+cursor: pointer;
+transition: 0.3s;
+&:hover ${StyledButton} {
+  color: #C50000;
+  border: none;
+}
 `;
 
 class Search extends React.Component {
@@ -39,6 +55,7 @@ class Search extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
         <StyledInput type="text" name="name" value={this.state.value} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." onChange={this.handleChange} />
+        <StyledButton type="submit">Go</StyledButton>
         </form>
       </div>
 

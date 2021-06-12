@@ -19,7 +19,9 @@ const StyledSearch = styled.form`
 font-family: Helvetica;
 font-weight: light;
 width: 100%;
-height: 50px
+height: 50px;
+margin-bottom: 25px;
+margin-top: 15px;
 `;
 
 const LowerButtons = styled.div`
@@ -30,6 +32,12 @@ display: flex;
 align-content: space-between;
 `;
 
+const StyledSpan = styled.span`
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
+font-weight: bold;
+font-size: 25px;
+`;
+
 class QA extends React.Component {
   constructor() {
     super();
@@ -37,6 +45,7 @@ class QA extends React.Component {
     this.state = {
       questions: [],
       questionsCopy: [],
+      answer: []
     };
 
     this.generateQuestions = this.generateQuestions.bind(this);
@@ -44,6 +53,7 @@ class QA extends React.Component {
     this.home = this.home.bind(this);
     this.addQuestion = this.addQuestion.bind(this);
     this.moreAqs = this.moreAqs.bind(this);
+    this.addAnswerToList = this.addAnswerToList.bind(this);
   }
 
   componentDidMount() {
@@ -54,19 +64,24 @@ class QA extends React.Component {
   }
 
   searchQuestions(searchTerm) {
-    var questions = this.state.questions.slice();
-    var matches = [{question_body: 'No Matches Found'}];
-    for (let question of questions) {
-      if (question.question_body.toLowerCase() === searchTerm.toLowerCase()) {
-        matches.shift();
-        matches.push(question);
-        this.setState({
-          questions: matches,
-        });
-      } else {
-        this.setState({
-          questions: matches,
-        })
+    var questionList = this.state.questions.slice();
+    var noMatches = null;
+    var matches = [];
+    // console.log(searchTerm);
+
+    if (searchTerm.length >= 3) {
+      for (let question of questionList) {
+        if (question.question_body.toLowerCase().includes(searchTerm.toLowerCase())) {
+          matches.push(question);
+          this.setState({
+            questions: matches,
+          });
+        } else {
+          this.setState({
+            searchTerm: searchTerm,
+            questions: noMatches,
+          })
+        }
       }
     }
   }
@@ -81,9 +96,10 @@ class QA extends React.Component {
   }
 
   home() {
-    var questions = this.state.questionsCopy.slice();
+    var questions = this.state.questionsCopy.slice(0, 2);
     this.setState({
       questions: questions,
+
     });
   }
 
@@ -100,7 +116,12 @@ class QA extends React.Component {
     this.setState({
       questions: fullList
     })
+  }
 
+  addAnswerToList(answer) {
+    this.setState({
+      answer: answer
+    })
   }
 
   render() {
@@ -119,13 +140,14 @@ class QA extends React.Component {
         <p>
 
         </p>
-        <QuestionList list={this.state.questions} />
+        {this.state.questions === null ? <StyledSpan onClick={this.home}>NO RESULTS FOR "{this.state.searchTerm.toUpperCase()}"</StyledSpan> : <QuestionList onClick={this.home} list={this.state.questions} addAnswerToList={this.addAnswerToList} answer={this.state.answer} /> }
+
         <p>
 
         </p>
         <LowerButtons>
           <MoreAqs moreAqs={this.moreAqs} />
-          <AddQuestion addQuestion={this.addQuestion}/>
+          <AddQuestion addQuestionToList={this.addQuestion} />
         </LowerButtons>
 
       </Container>

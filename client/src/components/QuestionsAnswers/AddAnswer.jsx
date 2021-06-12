@@ -2,16 +2,32 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 
-
+const StyledAnswerButton = styled.button`
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
+background: white;
+border: none;
+font-size: 11px;
+font-weight: 100;
+&:hover ${StyledButton} {
+  text-decoration: underline;
+  color: #C50000;
+}
+`
 
 const StyledButton = styled.button`
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 font-weight: bold;
 width: 200px;
-height: 50px;
+height: 55px;
 background-color: white;
 border-width: thin;
 cursor: pointer;
+transition: 0.3s;
+&:hover ${StyledButton} {
+  background: #C50000;
+  color: white;
+  border: none;
+}
 `;
 
 const StyledH2 = styled.h2`
@@ -41,7 +57,7 @@ width: 800px;
 height: 40px;
 `;
 
-const AddAnswer = (props) => {
+const AddAnswer = ({ addAnswerToList }) => {
   const [answerIsOpen, setAnswerIsOpen] = useState(false);
   const [answer, addAnAnswer] = useState('');
   const [name, addName] = useState('');
@@ -49,9 +65,9 @@ const AddAnswer = (props) => {
 
     return (
       <div>
-        <button type="submit" onClick={() => setAnswerIsOpen(true)}>
+        <StyledAnswerButton type="submit" onClick={() => setAnswerIsOpen(true)}>
           Add an answer
-        </button>
+        </StyledAnswerButton>
         <Modal isOpen={answerIsOpen}
                ariaHideApp={false}
                onRequestClose={() => setAnswerIsOpen(false)}
@@ -62,6 +78,20 @@ const AddAnswer = (props) => {
             value="Submit"
             onSubmit={(event) => {
               event.preventDefault();
+              const newAnswer = {
+                body: answer,
+                answerer_name: name,
+                answerer_email: email,
+                date: Date.now(),
+                helpfulness: 0,
+                photos: []
+              };
+
+              addAnswerToList(newAnswer);
+              addAnAnswer('');
+              addName('');
+              addEmail('');
+              setAnswerIsOpen(false);
 
             }}
           >
