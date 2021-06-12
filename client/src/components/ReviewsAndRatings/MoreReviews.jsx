@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Button = styled.button`
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 font-size: 1.5vw;
 font-weight: bold;
 width: 25%;

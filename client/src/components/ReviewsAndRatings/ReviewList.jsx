@@ -1,5 +1,12 @@
 import React from 'react';
 import Review from './Review.jsx';
+import styled from 'styled-components';
+
+const ScrollabeList = styled.div`
+max-height:75vw;
+overflow-x:hidden;
+overflow-y:scroll;
+`;
 
 function ReviewList( {reviewList} ) {
   const reviews = reviewList;
@@ -10,9 +17,9 @@ function ReviewList( {reviewList} ) {
     />
   ));
   return (
-    <div>
+    <ScrollabeList>
       {reviewsList}
-    </div>
+    </ScrollabeList>
   );
 }
 

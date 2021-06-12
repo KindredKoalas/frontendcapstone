@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Text = styled.div`
 display: flex;
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 font-size: 2vw;
 font-weight: bold;
 padding-bottom: 2vw;
@@ -13,7 +14,7 @@ background: transparent;
 line-height: 1;
 font-size: 2vw;
 font-weight: bold;
-font-family: "Times New Roman", Times, serif;
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 border: 0;
 padding: 0;
 border-radius: 0;

@@ -33,17 +33,20 @@ const Slider = styled.input`
 
 const Title = styled.div`
 display: flex;
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 font-size: 1.75vw;
 `;
 
 const Text = styled.div`
 display: flex;
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 justify-content: space-between;
 font-size: 10px;
 `;
 
 const Labels = styled.label`
 display: flex;
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 font-size: 1.25vw;
 `;
 
