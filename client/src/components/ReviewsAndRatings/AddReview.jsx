@@ -45,7 +45,13 @@ width: 70vw;
 height: 5vw;
 `;
 
-const AddReview = ({ characteristics }) => {
+const StyledSpan = styled.span`
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
+font-size: 1vw;
+font-weight: lighter;
+`;
+
+const AddReview = ({ characteristics, slicedReviews, setSlicedReviews}) => {
   const [questionIsOpen, setReviewIsOpen] = useState(false);
   const [reviewSummary, addReviewSumary] = useState('');
   const [reviewBody, setReviewBody] = useState('');
@@ -54,6 +60,9 @@ const AddReview = ({ characteristics }) => {
   const [reviewRating, setReviewRating] = useState(0);
   const [reviewRatingText, setReviewRatingText] = useState('');
   const [recommendProduct, setRecommendProduct] = useState('');
+  const [textCounterReviewBody, setTextCounterReviewBody] = useState('Minimum required characters left: 50');
+  const [reviewResponse, setReviewResponse] = useState(null);
+  const [reviewPhoto, setReviewPhoto] = useState([]);
 
   function changeRating(newRating) {
     setReviewRating(newRating);
@@ -75,6 +84,14 @@ const AddReview = ({ characteristics }) => {
       setRecommendProduct(true);
     } else {
       setRecommendProduct(false);
+    }
+  }
+
+  function textCounter(text) {
+    if (text.length < 50) {
+      setTextCounterReviewBody(`Minimum required characters left: ${50 - text.length}`);
+    } else {
+      setTextCounterReviewBody('Minimum reached');
     }
   }
 
@@ -102,14 +119,17 @@ const AddReview = ({ characteristics }) => {
               summary: reviewSummary,
               reviewer_email: email,
               recommend: recommendProduct,
+              photos: reviewPhoto,
+              response: reviewResponse,
             };
-            console.log(newReview);
-           // props.addReview(newReview);
+            let newReviewsArray = [newReview].concat(slicedReviews);
+            setSlicedReviews(newReviewsArray);
             addReviewSumary('');
             setReviewBody('');
             addName('');
             addEmail('');
-            setRecommendProduct(true);
+            setRecommendProduct('');
+            setReviewRating(0);
             setReviewIsOpen(false);
           }}
         >
@@ -160,6 +180,7 @@ const AddReview = ({ characteristics }) => {
             <StyledDiv>Review Summary:</StyledDiv>
             <StyledInput
               type="text"
+              maxLength="60"
               placeholder="Example: Best purchase ever!"
               value={reviewSummary}
               onChange={(event) => {
@@ -173,19 +194,26 @@ const AddReview = ({ characteristics }) => {
             <StyledDiv>Review Body:</StyledDiv>
             <StyledInput
               type="text"
+              minLength="50"
+              maxLength="1000"
               placeholder="Why did you like the product or not?"
               value={reviewBody}
               onChange={(event) => {
                 setReviewBody(event.target.value);
+                textCounter(event.target.value);
               }}
               required
             />
           </label>
+          <StyledSpan>
+            {textCounterReviewBody}
+          </StyledSpan>
           <p> </p>
           <label>
             <StyledDiv>What is your nickname?:</StyledDiv>
             <StyledInput
               type="text"
+              maxLength="60"
               placeholder="Example: jackson11!"
               value={name}
               onChange={(event) => {
@@ -194,14 +222,15 @@ const AddReview = ({ characteristics }) => {
               required
             />
           </label>
-          <label>
+          <StyledSpan>
             For privacy reasons, do not use your full name or email address
-          </label>
+          </StyledSpan>
           <p> </p>
           <label>
             <StyledDiv>Your Email:</StyledDiv>
             <StyledInput
               type="email"
+              maxLength="60"
               placeholder="Example: john123@gmail.com?"
               value={email}
               onChange={(event) => {
@@ -210,7 +239,7 @@ const AddReview = ({ characteristics }) => {
               required
             />
           </label>
-          <span>For authentication reasons, you will not be emailed</span>
+          <StyledSpan>For authentication reasons, you will not be emailed</StyledSpan>
           <p> </p>
           <StyledButton type="submit">SUBMIT</StyledButton>
         </FormDiv>

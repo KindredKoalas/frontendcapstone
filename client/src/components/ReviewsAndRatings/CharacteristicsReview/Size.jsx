@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 function Size({ characteristics, styles }) {
   const [recommendProduct, setRecommendProduct] = useState('');
   const value = { Size: recommendProduct };
-  console.log(value);
 
   function changeRecommendedProduct(event) {
     if (event.target.value === '1') {

@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 function Width({ characteristics, styles }) {
   const [recommendProduct, setRecommendProduct] = useState('');
   const value = { Width: recommendProduct };
-  console.log(value);
 
   function changeRecommendedProduct(event) {
     if (event.target.value === '1') {

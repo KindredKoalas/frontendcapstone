@@ -63,7 +63,7 @@ function ReviewsAndRatings() {
     axios.get('/reviews/meta/25269')
       .then((response) => {
         let data = response.data;
-        console.log(data);
+        // console.log(data);
         let totalNumberReviews = 0;
         let totalRatingValues = 0;
 
@@ -84,8 +84,8 @@ function ReviewsAndRatings() {
   useEffect(() => {
     axios.get(`/reviews/25269/${totalNumReviews}/${sort}`)
       .then((response) => {
-        console.log(response.data);
-        console.log(response.data.results);
+        // console.log(response.data);
+        // console.log(response.data.results);
         setTotalReviews(response.data.results);
         if (slicedReviews.length === 0 || sortstatechanged === true) {
           const slicedarray = response.data.results.slice(0, 2);
@@ -125,7 +125,11 @@ function ReviewsAndRatings() {
               resetCountState={resetcount}
               resetCount={setResetCount}
             />
-            <AddReview characteristics={characteristics} />
+            <AddReview
+              characteristics={characteristics}
+              slicedReviews={slicedReviews}
+              setSlicedReviews={setSlicedReviews}
+            />
           </Buttons>
         </Reviews>
       </GridLayout>
