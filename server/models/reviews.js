@@ -48,5 +48,29 @@ let getReviewMetadata = (callback, productId) => {
   });
 }
 
+let createReview = (reviewBody, callback) => {
+  let options = {
+    method: 'POST',
+    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/',
+    headers: {
+      'User-Agent': 'request',
+      'Authorization': config.TOKEN
+    },
+    data: reviewBody,
+  };
+
+  axios(options)
+  .then(function (response) {
+    // handle success
+    callback(null, JSON.stringify(response.data));
+  })
+  .catch(function (error) {
+    // handle error
+    callback(error);
+  });
+
+};
+
 module.exports.getAllReviews = getAllReviews;
 module.exports.getReviewMetadata = getReviewMetadata;
+module.exports.createReview = createReview;

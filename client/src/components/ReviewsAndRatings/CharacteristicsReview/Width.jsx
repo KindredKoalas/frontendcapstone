@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 
-function Width({ characteristics, styles }) {
+function Width({ characteristics, styles, setCharacteristicsObj, characteristicsObj }) {
   const [recommendProduct, setRecommendProduct] = useState('');
-  const value = { Width: recommendProduct };
+
+  if (characteristics.Width !== undefined) {
+    let widthObj = {};
+    widthObj[JSON.stringify(characteristics.Width.id)] = recommendProduct;
+    setCharacteristicsObj(Object.assign(characteristicsObj, widthObj));
+  }
 
   function changeRecommendedProduct(event) {
     if (event.target.value === '1') {

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 import CharacteristicsReview from './CharacteristicsReview.jsx';
+import axios from 'axios';
 
 const StyledButton = styled.button`
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
@@ -51,7 +52,7 @@ font-size: 1vw;
 font-weight: lighter;
 `;
 
-const AddReview = ({ characteristics, slicedReviews, setSlicedReviews}) => {
+const AddReview = ({ characteristics, slicedReviews, productId, addReview}) => {
   const [questionIsOpen, setReviewIsOpen] = useState(false);
   const [reviewSummary, addReviewSumary] = useState('');
   const [reviewBody, setReviewBody] = useState('');
@@ -61,8 +62,8 @@ const AddReview = ({ characteristics, slicedReviews, setSlicedReviews}) => {
   const [reviewRatingText, setReviewRatingText] = useState('');
   const [recommendProduct, setRecommendProduct] = useState('');
   const [textCounterReviewBody, setTextCounterReviewBody] = useState('Minimum required characters left: 50');
-  const [reviewResponse, setReviewResponse] = useState(null);
   const [reviewPhoto, setReviewPhoto] = useState([]);
+  const [characteristicsObj, setCharacteristicsObj] = useState({});
 
   function changeRating(newRating) {
     setReviewRating(newRating);
@@ -112,18 +113,20 @@ const AddReview = ({ characteristics, slicedReviews, setSlicedReviews}) => {
           onSubmit={(event) => {
             event.preventDefault();
             const newReview = {
+              product_id: productId,
               body: reviewBody,
-              date: Date.now(),
               rating: reviewRating,
-              reviewer_name: name,
+              name: name,
               summary: reviewSummary,
-              reviewer_email: email,
+              email: email,
               recommend: recommendProduct,
               photos: reviewPhoto,
-              response: reviewResponse,
+              characteristics: characteristicsObj,
             };
             let newReviewsArray = [newReview].concat(slicedReviews);
-            setSlicedReviews(newReviewsArray);
+            //console.log(newReview);
+            addReview(newReview);
+            // setSlicedReviews(newReviewsArray);
             addReviewSumary('');
             setReviewBody('');
             addName('');
@@ -173,7 +176,11 @@ const AddReview = ({ characteristics, slicedReviews, setSlicedReviews}) => {
           <p> </p>
           <label>
             <StyledDiv>Characteristics:</StyledDiv>
-            <CharacteristicsReview characteristics={characteristics} />
+            <CharacteristicsReview
+              characteristics={characteristics}
+              setCharacteristicsObj={setCharacteristicsObj}
+              characteristicsObj={characteristicsObj}
+            />
           </label>
           <p> </p>
           <label>

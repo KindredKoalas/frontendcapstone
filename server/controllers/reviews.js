@@ -24,5 +24,16 @@ module.exports = {
         }
       }
     , req.params);
+  },
+
+  post: function (req, res) {
+    models.createReview(req.body, (err, data) => {
+      if(err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).send(JSON.stringify(data));
+      }
+    })
   }
+
 }
