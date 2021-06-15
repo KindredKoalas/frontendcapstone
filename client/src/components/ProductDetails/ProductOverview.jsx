@@ -42,6 +42,7 @@ const AdditionalProductDetails = styled.div`
   font-weight: light;
   border-radius: 0px;
   background: none;
+  padding: 1%;
 `;
 
 class ProductOverview extends React.Component {
@@ -117,6 +118,7 @@ class ProductOverview extends React.Component {
         console.log('response.data.results', results)
         const originalPrice = results[0].original_price;
         const salePrice = results[0].sale_price;
+        const name = results[0].name;
         const style_id = results[0].style_id;
         const styleImages = [];
         for (var i = 0; i < results.length; i++) {
@@ -130,6 +132,7 @@ class ProductOverview extends React.Component {
         self.setState({
           styles: response.data,
           images: styleImages,
+          name: name,
           originalPrice: originalPrice,
           salePrice: salePrice,
           selectedStyleId: style_id
@@ -148,10 +151,16 @@ class ProductOverview extends React.Component {
     const skusPerStyle = helpers.getAllSkusPerStyle(styleId, this.state.styles.results);
     console.log('skusPerStyle', skusPerStyle);
 
+    const pricesNamePerStyle = helpers.getPricesNamePerStyle(styleId, this.state.styles.results);
+    console.log('pricesNamePerStyle', pricesNamePerStyle);
+
     this.setState({
       selectedStyleId: styleId,
       selectedImages: imagesAllStyles,
-      skus: skusPerStyle
+      skus: skusPerStyle,
+      name: pricesNamePerStyle.name,
+      originalPrice: pricesNamePerStyle.originalPrice,
+      salePrice: pricesNamePerStyle.salePrice
     })
   }
 
@@ -174,7 +183,7 @@ class ProductOverview extends React.Component {
               originalPrice={this.state.originalPrice}
               salePrice={this.state.salePrice}
             />
-            <div>STYLE > SELECTED STYLE</div>
+            <div>STYLE > {this.state.name}</div>
             <StyleSelectorGrid>
               <Styles
                 images={this.state.images}
