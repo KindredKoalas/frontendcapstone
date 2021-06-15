@@ -166,14 +166,28 @@ function ImageSlider(props) {
     }
   });
 
+  console.log('currentImage', currentImage);
+  let leftSliderArrow;
+  if (currentImage > 0) {
+    leftSliderArrow = <ImageSliderLeft onClick={() => {
+      currentImage > 0 && setCurrentImage(currentImage - 1);
+      }}>
+      <ArrowBackIcon />
+    </ImageSliderLeft>
+  };
+
+  let rightSliderArrow;
+  if (currentImage < imagesPerStyle.length - 1) {
+    rightSliderArrow = <ImageSliderRight onClick={() => {
+      currentImage < imagesPerStyle.length - 1 && setCurrentImage(currentImage + 1);
+      }}>
+      <ArrowForwardIcon />
+    </ImageSliderRight>
+  };
+
   return (
     <ImageSliderInner style={{backgroundImage: `url(${imagesPerStyle[currentImage].url})`}}>
-      <ImageSliderLeft onClick={() => {
-        currentImage > 0 && setCurrentImage(currentImage - 1);
-        }}
-      >
-        <ArrowBackIcon />
-      </ImageSliderLeft>
+      {leftSliderArrow}
 
       <ThumbnailWrapper>
         <ArrowDropUpIcon />
@@ -209,11 +223,7 @@ function ImageSlider(props) {
           </Modal>
 
       </ImageSliderCenter>
-      <ImageSliderRight onClick={() => {
-        currentImage < imagesPerStyle.length - 1 && setCurrentImage(currentImage + 1);
-        }}>
-        <ArrowForwardIcon />
-      </ImageSliderRight>
+      {rightSliderArrow}
     </ImageSliderInner>
   );
 }
