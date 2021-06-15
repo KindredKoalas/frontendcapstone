@@ -8,11 +8,10 @@ const StyleCircle = styled.div`
   background-position: center;
   padding: 5%;
   margin: 10%;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border: 1px;
   border-radius: 50px;
-  z-index: 1;
   position: relative;
 `;
 
@@ -21,7 +20,7 @@ const CheckmarkCircle = styled.div`
   background-color: white;
   border: 2px;
   border-radius: 50px;
-  position: absolute;
+  position: relative;
   bottom: 0;
   right: 0;
 `;

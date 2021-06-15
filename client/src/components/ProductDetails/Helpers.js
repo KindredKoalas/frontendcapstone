@@ -16,6 +16,19 @@ let getAllSkusPerStyle = (styleId, messyResults) => {
   return quantitiesAndSizes;
 };
 
+let getPricesNamePerStyle = (styleId, messyResults) => {
+  let pricesNamePerStyle = {};
+  for (let i = 0; i < messyResults.length; i++) {
+    let resultsPerStyle = messyResults[i];
+    if (styleId === resultsPerStyle.style_id) {
+      pricesNamePerStyle.originalPrice = resultsPerStyle.original_price;
+      pricesNamePerStyle.salePrice = resultsPerStyle.sale_price;
+      pricesNamePerStyle.name = resultsPerStyle.name;
+    }
+  }
+  return pricesNamePerStyle;
+}
+
 let getAllImagesForAllStyles = (styleId, messyResults) => {
   let allImagesPerStyle = [];
   for (let i = 0; i < messyResults.length; i++) {
@@ -29,3 +42,4 @@ let getAllImagesForAllStyles = (styleId, messyResults) => {
 
 module.exports.getAllSkusPerStyle = getAllSkusPerStyle;
 module.exports.getAllImagesForAllStyles = getAllImagesForAllStyles;
+module.exports.getPricesNamePerStyle = getPricesNamePerStyle;
