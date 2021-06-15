@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 
-function Comfort({ characteristics, styles }) {
+function Comfort({ characteristics, styles, setCharacteristicsObj, characteristicsObj }) {
   const [recommendProduct, setRecommendProduct] = useState('');
-  const value = { Comfort: recommendProduct };
+
+  if (characteristics.Comfort !== undefined) {
+    let comfortObj = {};
+    comfortObj[JSON.stringify(characteristics.Comfort.id)] = recommendProduct;
+    setCharacteristicsObj(Object.assign(characteristicsObj, comfortObj));
+  }
 
   function changeRecommendedProduct(event) {
     if (event.target.value === '1') {

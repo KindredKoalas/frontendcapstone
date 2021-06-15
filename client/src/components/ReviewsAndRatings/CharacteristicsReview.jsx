@@ -31,15 +31,45 @@ const styles = {
   header: Header,
 };
 
-function CharacteristicsReview( {characteristics} ) {
+function CharacteristicsReview({characteristics, setCharacteristicsObj, characteristicsObj} ) {
   return (
     <>
-      <Size characteristics={characteristics} styles={styles} />
-      <Width characteristics={characteristics} styles={styles} />
-      <Comfort characteristics={characteristics} styles={styles} />
-      <Quality characteristics={characteristics} styles={styles} />
-      <Length characteristics={characteristics} styles={styles} />
-      <Fit characteristics={characteristics} styles={styles} />
+      <Size
+        characteristics={characteristics}
+        styles={styles}
+        setCharacteristicsObj={setCharacteristicsObj}
+        characteristicsObj={characteristicsObj}
+      />
+      <Width
+        characteristics={characteristics}
+        styles={styles}
+        setCharacteristicsObj={setCharacteristicsObj}
+        characteristicsObj={characteristicsObj}
+      />
+      <Comfort
+        characteristics={characteristics}
+        styles={styles}
+        setCharacteristicsObj={setCharacteristicsObj}
+        characteristicsObj={characteristicsObj}
+      />
+      <Quality
+        characteristics={characteristics}
+        styles={styles}
+        setCharacteristicsObj={setCharacteristicsObj}
+        characteristicsObj={characteristicsObj}
+      />
+      <Length
+        characteristics={characteristics}
+        styles={styles}
+        setCharacteristicsObj={setCharacteristicsObj}
+        characteristicsObj={characteristicsObj}
+      />
+      <Fit
+        characteristics={characteristics}
+        styles={styles}
+        setCharacteristicsObj={setCharacteristicsObj}
+        characteristicsObj={characteristicsObj}
+      />
     </>
   );
 }
