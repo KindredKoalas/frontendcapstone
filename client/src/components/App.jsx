@@ -2,6 +2,7 @@ import React from 'react';
 import ReviewsAndRatings from './ReviewsAndRatings/ReviewsAndRatings.jsx';
 import QA from './QuestionsAnswers/QA.jsx';
 import ProductOverview from './ProductDetails/ProductOverview.jsx';
+const helpers = require('./ProductDetails/Helpers.js');
 
 class App extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.setState({
-      product_id: 25180,
+      product_id: 25170,
     });
   }
 
@@ -26,7 +27,9 @@ class App extends React.Component {
     } else {
       return (
         <>
-          <ProductOverview />
+          <ProductOverview
+            product_id={this.state.product_id}
+          />
           <QA />
           <ReviewsAndRatings
             product_id={this.state.product_id}

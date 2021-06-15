@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import StarRatings from 'react-star-ratings';
 import PictureList from './PictureList.jsx';
+import StarRating from '../ProductDetails/StarRating.jsx';
 
 const Reviews = styled.div`
 display: flex;
@@ -71,6 +72,7 @@ function Review({ reviewObject }) {
           numberOfStars={5}
           name="rating"
         />
+        <StarRating reviews={reviewObject} />
         {reviewObject.reviewer_name}
         ,&nbsp;{month}
         {date.toString().slice(7, 15)}

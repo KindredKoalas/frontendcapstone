@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductOverview from '../client/src/components/ProductDetails/ProductOverview.jsx';
 import ImageSlider from '../client/src/components/ProductDetails/ImageSlider.jsx';
+import ProductCategory from '../client/src/components/ProductDetails/ProductCategory.jsx'
 import { mount, shallow } from "enzyme";
 import { configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
@@ -23,10 +24,17 @@ const selectedImages = [
   {thumbnail_url: "https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80", url: "https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80"}
 ];
 
+const category = "Slacker's Slacks";
+
 describe("Passing props", () => {
   const imageSliderWrapper = mount(<ImageSlider selectedImages={selectedImages} />);
   it('ImageSlider accepts selected images props from ProductOverview', () => {
     expect(imageSliderWrapper.props().selectedImages).toEqual(selectedImages);
+  });
+
+  const productCategoryWrapper = mount(<ProductCategory currentCategory={category} />);
+  it('ProductCategory accepts category props from ProductOverview', () => {
+    expect(productCategoryWrapper.props().currentCategory).toEqual(category);
   });
 })
 

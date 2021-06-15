@@ -6,6 +6,8 @@ import ProductCategory from './ProductCategory.jsx';
 import Styles from './Styles.jsx';
 import Size from './Size.jsx';
 import Price from './Price.jsx';
+import StarRatings from 'react-star-ratings';
+import StarRating from './StarRating.jsx';
 const helpers = require('./Helpers.js');
 
 const Container = styled.div`
@@ -68,8 +70,7 @@ class ProductOverview extends React.Component {
         {quantity: 16, size: "S"},
         {quantity: 17, size: "M"},
         {quantity: 10, size: "L"},
-        {quantity: 15, size: "XL"},
-        {quantity: 4, size: "XL"}
+        {quantity: 15, size: "XL"}
       ],
       selectedStyleId: 0,
       selectedStyleName: '',
@@ -91,14 +92,15 @@ class ProductOverview extends React.Component {
   getAllProducts() {
     // this function sets the first product ID of the product array as state
     const self = this;
-    axios.get('/api/products')
+    const productId = self.props.product_id;
+    axios.get(`/api/products/${productId}`)
       .then(function (response) {
         // handle success
         self.setState({
-          product: response.data[0].id,
-          category: response.data[0].name,
-          description: response.data[0].description,
-          slogan: response.data[0].slogan
+          product: response.data.id,
+          category: response.data.name,
+          description: response.data.description,
+          slogan: response.data.slogan
         })
         self.getAllStyles();
       })
@@ -110,12 +112,11 @@ class ProductOverview extends React.Component {
 
   getAllStyles() {
     const self = this;
-    const productId = self.state.product.toString();
+    const productId = self.props.product_id.toString();
     axios.get(`/api/products/${productId}/styles`)
       .then(function (response) {
         // handle success
         const results = response.data.results;
-        console.log('response.data.results', results)
         const originalPrice = results[0].original_price;
         const salePrice = results[0].sale_price;
         const name = results[0].name;
@@ -128,6 +129,9 @@ class ProductOverview extends React.Component {
           currentStyleInfo.photos = currentStyle.photos[0];
           styleImages.push(currentStyleInfo);
         }
+        const renderSelectedImages = helpers.getAllImagesForAllStyles(style_id, response.data.results);
+
+        const renderSkus = helpers.getAllSkusPerStyle(style_id, response.data.results);
 
         self.setState({
           styles: response.data,
@@ -135,8 +139,10 @@ class ProductOverview extends React.Component {
           name: name,
           originalPrice: originalPrice,
           salePrice: salePrice,
-          selectedStyleId: style_id
-        })
+          selectedStyleId: style_id,
+          selectedImages: renderSelectedImages,
+          skus: renderSkus
+        });
       })
       .catch(function (error) {
         // handle error
@@ -145,14 +151,11 @@ class ProductOverview extends React.Component {
   }
 
   handleStylesSelectorClick(styleId) {
-    console.log('Styles thumbnail event!', this.state.selectedStyleId);
     const imagesAllStyles = helpers.getAllImagesForAllStyles(styleId, this.state.styles.results);
 
     const skusPerStyle = helpers.getAllSkusPerStyle(styleId, this.state.styles.results);
-    console.log('skusPerStyle', skusPerStyle);
 
     const pricesNamePerStyle = helpers.getPricesNamePerStyle(styleId, this.state.styles.results);
-    console.log('pricesNamePerStyle', pricesNamePerStyle);
 
     this.setState({
       selectedStyleId: styleId,
@@ -165,8 +168,7 @@ class ProductOverview extends React.Component {
   }
 
   render() {
-    console.log('selectedStyleId', this.state.selectedStyleId);
-    console.log('selectedImages', this.state.selectedImages);
+    console.log('reviews from Review.jsx', this.props.reviews)
     return (
       <div>
         <Container>
@@ -176,6 +178,7 @@ class ProductOverview extends React.Component {
             />
           </ImageGallery>
           <ProductInformation>
+            <StarRating />
             <ProductCategory
               currentCategory={this.state.category}
             />

@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">22.31% </span>
+                <span class="strong">22.09% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>56/251</span>
+                <span class='fraction'>57/258</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">22.31% </span>
+                <span class="strong">22.09% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>56/251</span>
+                <span class='fraction'>57/258</span>
             </div>
         
             
@@ -308,7 +308,14 @@
 <a name='L249'></a><a href='#L249'>249</a>
 <a name='L250'></a><a href='#L250'>250</a>
 <a name='L251'></a><a href='#L251'>251</a>
-<a name='L252'></a><a href='#L252'>252</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L252'></a><a href='#L252'>252</a>
+<a name='L253'></a><a href='#L253'>253</a>
+<a name='L254'></a><a href='#L254'>254</a>
+<a name='L255'></a><a href='#L255'>255</a>
+<a name='L256'></a><a href='#L256'>256</a>
+<a name='L257'></a><a href='#L257'>257</a>
+<a name='L258'></a><a href='#L258'>258</a>
+<a name='L259'></a><a href='#L259'>259</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -362,6 +369,13 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -564,6 +578,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 import CharacteristicsReview from './CharacteristicsReview.jsx';
+import axios from 'axios';
 &nbsp;
 const StyledButton = styled.button`
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
@@ -612,7 +627,7 @@ font-size: 1vw;
 font-weight: lighter;
 `;
 &nbsp;
-const AddReview = <span class="fstat-no" title="function not covered" >({ characteristics, slicedReviews, setSlicedReviews}) =&gt; {</span>
+const AddReview = <span class="fstat-no" title="function not covered" >({ characteristics, slicedReviews, productId, addReview}) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  const [questionIsOpen, setReviewIsOpen] = useState(false);</span>
 <span class="cstat-no" title="statement not covered" >  const [reviewSummary, addReviewSumary] = useState('');</span>
 <span class="cstat-no" title="statement not covered" >  const [reviewBody, setReviewBody] = useState('');</span>
@@ -622,8 +637,8 @@ const AddReview = <span class="fstat-no" title="function not covered" >({ charac
 <span class="cstat-no" title="statement not covered" >  const [reviewRatingText, setReviewRatingText] = useState('');</span>
 <span class="cstat-no" title="statement not covered" >  const [recommendProduct, setRecommendProduct] = useState('');</span>
 <span class="cstat-no" title="statement not covered" >  const [textCounterReviewBody, setTextCounterReviewBody] = useState('Minimum required characters left: 50');</span>
-<span class="cstat-no" title="statement not covered" >  const [reviewResponse, setReviewResponse] = useState(null);</span>
 <span class="cstat-no" title="statement not covered" >  const [reviewPhoto, setReviewPhoto] = useState([]);</span>
+<span class="cstat-no" title="statement not covered" >  const [characteristicsObj, setCharacteristicsObj] = useState({});</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  function changeRating(newRating) {</span>
 <span class="cstat-no" title="statement not covered" >    setReviewRating(newRating);</span>
@@ -673,18 +688,20 @@ const AddReview = <span class="fstat-no" title="function not covered" >({ charac
 <span class="cstat-no" title="statement not covered" >          onSubmit={(event) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >            event.preventDefault();</span>
 <span class="cstat-no" title="statement not covered" >            const newReview = {</span>
+<span class="cstat-no" title="statement not covered" >              product_id: productId,</span>
 <span class="cstat-no" title="statement not covered" >              body: reviewBody,</span>
-<span class="cstat-no" title="statement not covered" >              date: Date.now(),</span>
 <span class="cstat-no" title="statement not covered" >              rating: reviewRating,</span>
-<span class="cstat-no" title="statement not covered" >              reviewer_name: name,</span>
+<span class="cstat-no" title="statement not covered" >              name: name,</span>
 <span class="cstat-no" title="statement not covered" >              summary: reviewSummary,</span>
-<span class="cstat-no" title="statement not covered" >              reviewer_email: email,</span>
+<span class="cstat-no" title="statement not covered" >              email: email,</span>
 <span class="cstat-no" title="statement not covered" >              recommend: recommendProduct,</span>
 <span class="cstat-no" title="statement not covered" >              photos: reviewPhoto,</span>
-<span class="cstat-no" title="statement not covered" >              response: reviewResponse,</span>
+<span class="cstat-no" title="statement not covered" >              characteristics: characteristicsObj,</span>
 <span class="cstat-no" title="statement not covered" >            };</span>
 <span class="cstat-no" title="statement not covered" >            let newReviewsArray = [newReview].concat(slicedReviews);</span>
-<span class="cstat-no" title="statement not covered" >            setSlicedReviews(newReviewsArray);</span>
+<span class="cstat-no" title="statement not covered" >            //console.log(newReview);</span>
+<span class="cstat-no" title="statement not covered" >            addReview(newReview);</span>
+<span class="cstat-no" title="statement not covered" >            // setSlicedReviews(newReviewsArray);</span>
 <span class="cstat-no" title="statement not covered" >            addReviewSumary('');</span>
 <span class="cstat-no" title="statement not covered" >            setReviewBody('');</span>
 <span class="cstat-no" title="statement not covered" >            addName('');</span>
@@ -734,7 +751,11 @@ const AddReview = <span class="fstat-no" title="function not covered" >({ charac
 <span class="cstat-no" title="statement not covered" >          &lt;p&gt; &lt;/p&gt;</span>
 <span class="cstat-no" title="statement not covered" >          &lt;label&gt;</span>
 <span class="cstat-no" title="statement not covered" >            &lt;StyledDiv&gt;Characteristics:&lt;/StyledDiv&gt;</span>
-<span class="cstat-no" title="statement not covered" >            &lt;CharacteristicsReview characteristics={characteristics} /&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;CharacteristicsReview</span>
+<span class="cstat-no" title="statement not covered" >              characteristics={characteristics}</span>
+<span class="cstat-no" title="statement not covered" >              setCharacteristicsObj={setCharacteristicsObj}</span>
+<span class="cstat-no" title="statement not covered" >              characteristicsObj={characteristicsObj}</span>
+<span class="cstat-no" title="statement not covered" >            /&gt;</span>
 <span class="cstat-no" title="statement not covered" >          &lt;/label&gt;</span>
 <span class="cstat-no" title="statement not covered" >          &lt;p&gt; &lt;/p&gt;</span>
 <span class="cstat-no" title="statement not covered" >          &lt;label&gt;</span>
@@ -817,7 +838,7 @@ export default AddReview;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Mon Jun 14 2021 17:05:06 GMT-0700 (Pacific Daylight Time)
+                at Tue Jun 15 2021 15:27:09 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

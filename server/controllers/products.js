@@ -23,5 +23,16 @@ module.exports = {
         }
       }
     , req.params);
+  },
+  getInfoPerProductId: function (req, res) {
+    models.getInfoPerProductId(
+      (err, data) => {
+        if (err) {
+          res.status(500).send(err)
+        } else {
+          res.status(200).send(data)
+        }
+      }
+    , req.params);
   }
-}
+};
