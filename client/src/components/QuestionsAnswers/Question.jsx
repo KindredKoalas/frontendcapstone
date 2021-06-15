@@ -22,18 +22,43 @@ font-weight: bold;
 font-size: 18px;
 `;
 
+const StyledLoadMoreButton = styled.button`
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
+background: white;
+border: none;
+font-size: 11px;
+font-weight: 700;
+&:hover ${StyledLoadMoreButton} {
+  text-decoration: underline;
+  color: #C50000;
+}
+`
+
 const Question = ({ item, help, addAnswerToList, answer }) => {
+  // console.log('question ', item)
   const answers = item.answers;
+  // console.log('id ', item.question_id);
   let answerList = [];
 
   for (var key in answers) {
     answerList.push(answers[key]);
   }
-  // answerList = answerList.slice(0, 2);
+  answerList = answerList.slice(0, 4);
   // console.log('LIST ',answerList)
   // console.log('ANSWER ',answer)
 
-  const [allAnswers, setAnswerList] = useState(answerList);
+  if (item.question_id === answer.question_id) {
+    answerList.push(answer);
+    // console.log(answerList);
+  }
+
+  // if (answer.length > 0) {
+  //   answerList.push(answer);
+  // }
+
+  // const [allAnswers, setAnswerList] = useState(answerList);
+
+  // console.log('answer list ', allAnswers)
 
   return (
     <div>
@@ -45,16 +70,20 @@ const Question = ({ item, help, addAnswerToList, answer }) => {
         &nbsp;
         <ButtonStyle>
           <Helpful help={help} />
-          <AddAnswer addAnswerToList={addAnswerToList} />
+          <AddAnswer addAnswerToList={addAnswerToList} question_id={item.question_id} />
         </ButtonStyle>
 
       </QuestionContainer>
       <p>
 
       </p>
-      {allAnswers.concat(answer).map((answer, index) =>
-        <Answer answer={answer} key={index}  />
+      {answerList.map((answer, index) =>
+        <Answer answer={answer} key={index} question_id={item.question_id}  />
       )}
+      <p>
+
+      </p>
+      {answerList.length > 2 ? <StyledLoadMoreButton>LOAD MORE ANSWERS</StyledLoadMoreButton> : <div></div>}
       <p>
 
       </p>
