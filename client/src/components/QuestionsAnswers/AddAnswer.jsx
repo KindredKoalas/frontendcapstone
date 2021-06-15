@@ -57,11 +57,12 @@ width: 800px;
 height: 40px;
 `;
 
-const AddAnswer = ({ addAnswerToList }) => {
+const AddAnswer = ({ addAnswerToList, question_id }) => {
   const [answerIsOpen, setAnswerIsOpen] = useState(false);
   const [answer, addAnAnswer] = useState('');
   const [name, addName] = useState('');
   const [email, addEmail] = useState('');
+  const [questionId, setId] = useState(question_id);
 
     return (
       <div>
@@ -84,7 +85,8 @@ const AddAnswer = ({ addAnswerToList }) => {
                 answerer_email: email,
                 date: Date.now(),
                 helpfulness: 0,
-                photos: []
+                photos: [],
+                question_id: questionId
               };
 
               addAnswerToList(newAnswer);

@@ -11,6 +11,8 @@ let getAllQuestionsAnswers = (callback, productId) => {
     }
   };
 
+  //25168
+  //25167
 
 
   // `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions?product_id=${id}`

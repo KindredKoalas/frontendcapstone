@@ -7,7 +7,6 @@ import AddQuestion from './AddQuestion.jsx';
 import MoreAqs from './MoreAqs.jsx';
 
 const Container = styled.div`
-border: solid black 1px;
 font-family: Helvetica;
 font-weight: light;
 padding-left: 10px;
@@ -38,6 +37,10 @@ font-weight: bold;
 font-size: 25px;
 `;
 
+const StyledHeader = styled.div`
+color: black;
+`;
+
 class QA extends React.Component {
   constructor() {
     super();
@@ -59,19 +62,23 @@ class QA extends React.Component {
   componentDidMount() {
     axios.get('/qa/questions')
       .then((response) => {
+        // console.log('TESTING QA GET ', response.data.results);
         this.generateQuestions(response.data.results);
       });
   }
 
   searchQuestions(searchTerm) {
-    var questionList = this.state.questions.slice();
+    var questionList = this.state.questionsCopy.slice();
+    console.log('QuestionLIST ', questionList);
     var noMatches = null;
     var matches = [];
-    // console.log(searchTerm);
+    // console.log('Search Term ', searchTerm);
 
-    if (searchTerm.length >= 3) {
+    if (searchTerm.length > 2) {
       for (let question of questionList) {
+
         if (question.question_body.toLowerCase().includes(searchTerm.toLowerCase())) {
+          // console.log('QUESTION', searchTerm)
           matches.push(question);
           this.setState({
             questions: matches,
@@ -127,9 +134,9 @@ class QA extends React.Component {
   render() {
     return (
       <Container>
-        <div onClick={this.home}>
+        <StyledHeader onClick={this.home}>
           QUESTIONS & ANSWERS
-        </div>
+        </StyledHeader>
         <p>
 
         </p>

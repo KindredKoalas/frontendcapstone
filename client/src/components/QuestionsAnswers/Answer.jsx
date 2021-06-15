@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import HelpfulAnswer from './HelpfulAnswer.jsx';
 import Report from './Report.jsx';
+import Photo from './Photo.jsx';
 
 const A = styled.div`
 font-weight: bold;
@@ -33,8 +34,16 @@ color: grey;
 padding-left: 25px;
 `;
 
+const PhotoContainer = styled.div`
+display: flex;
+padding-left: 10px;
+`;
+
 const Answer = ({ answer }) => {
   const help = answer.helpfulness;
+  const photos = answer.photos;
+  console.log('photos ' ,photos);
+
   return (
     <div>
       <AnswerContainer>
@@ -48,6 +57,9 @@ const Answer = ({ answer }) => {
 
         </p>
       </AnswerContainer>
+        <PhotoContainer>
+          {photos.length > 0 ? <div>{photos.map((photo, index) => <Photo photo={photo} key={index}/>)}</div> : <div></div>}
+        </PhotoContainer>
       <AnswerInfo>
         <p>
 
