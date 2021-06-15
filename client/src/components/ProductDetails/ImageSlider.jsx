@@ -166,7 +166,6 @@ function ImageSlider(props) {
     }
   });
 
-  console.log('currentImage', currentImage);
   let leftSliderArrow;
   if (currentImage > 0) {
     leftSliderArrow = <ImageSliderLeft onClick={() => {
