@@ -8,8 +8,8 @@ function Price(props) {
   if (props.salePrice !== null) {
     return (
       <>
-      <span style={{textDecorationLine: 'line-through'}}>{'$' + original}</span>
-      <span style={{color: 'red'}}>{' $' + sale}</span>
+      <span className="originalPrice" style={{textDecorationLine: 'line-through'}}>{'$' + original}</span>
+      <span className="salePrice" style={{color: 'red'}}>{' $' + sale}</span>
       </>
     );
   } else {
