@@ -13,6 +13,7 @@ const reviews = require('./controllers/reviews.js');
 app.get('/api/products', products.get);
 app.get('/qa/questions', questionsAndAnswers.get);
 app.get('/api/products/:product_id/styles', products.getStyles);
+app.get('/api/products/:product_id', (products.getInfoPerProductId));
 app.get('/qa/questions/:product_id', questionsAndAnswers.get);
 app.post('/qa/questions', questionsAndAnswers.post);
 //Reviews
