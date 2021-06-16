@@ -30,7 +30,10 @@ class App extends React.Component {
           <ProductOverview
             product_id={this.state.product_id}
           />
-          <QA />
+          <QA
+            product_id={this.state.product_id}
+          />
+
           <ReviewsAndRatings
             product_id={this.state.product_id}
           />

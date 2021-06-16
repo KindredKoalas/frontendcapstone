@@ -35,30 +35,19 @@ font-weight: 700;
 `
 
 const Question = ({ item, help, addAnswerToList, answer }) => {
-  // console.log('question ', item)
   const answers = item.answers;
-  // console.log('id ', item.question_id);
   let answerList = [];
 
   for (var key in answers) {
     answerList.push(answers[key]);
   }
-  answerList = answerList.slice(0, 4);
-  // console.log('LIST ',answerList)
-  // console.log('ANSWER ',answer)
+  answerList = answerList.slice(0, 2);
 
   if (item.question_id === answer.question_id) {
     answerList.push(answer);
-    // console.log(answerList);
   }
 
-  // if (answer.length > 0) {
-  //   answerList.push(answer);
-  // }
-
   // const [allAnswers, setAnswerList] = useState(answerList);
-
-  // console.log('answer list ', allAnswers)
 
   return (
     <div>
