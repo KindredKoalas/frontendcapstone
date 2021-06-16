@@ -3,7 +3,7 @@ import React from 'react';
 function Size(props) {
   if (props.characteristics.Size !== undefined) {
     return (
-      <div>
+      <props.styles.lineSpacing>
         <props.styles.title>Size</props.styles.title>
         <props.styles.slider
           type="range"
@@ -18,7 +18,7 @@ function Size(props) {
           <props.styles.labels>Perfect</props.styles.labels>
           <props.styles.labels>Too large</props.styles.labels>
         </props.styles.text>
-      </div>
+      </props.styles.lineSpacing>
     );
     // eslint-disable-next-line no-else-return
   } else {

@@ -9,13 +9,22 @@ import ReviewList from './ReviewList.jsx';
 import MoreReviews from './MoreReviews.jsx';
 import AddReview from './AddReview.jsx'
 
+const Title = styled.div`
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
+font-size: 18px;
+font-weight: 100;
+padding-top: 15px;
+padding-bottom: 10px;
+`;
+
 const Component = styled.div`
-border: solid blue 1px;
+padding: 0 50px 0 50px;
+//border: solid blue 1px;
 `;
 
 const GridLayout = styled.div`
   display: grid;
-  grid-template-columns: 0.5fr 1fr;
+  grid-template-columns: 0.1fr 1.25fr;
   grid-template-rows: 1fr;
   gap: 45px 45px;
   grid-template-areas:
@@ -25,13 +34,13 @@ const GridLayout = styled.div`
 const Ratings = styled.div`
 display: flex;
 flex-direction: column;
-border: solid red 1px;
+//border: solid red 1px;
 `;
 
 const Reviews = styled.div`
 display: flex;
 flex-direction: column;
-border: solid purple 1px;
+//border: solid purple 1px;
 `;
 
 const Buttons = styled.div`
@@ -78,7 +87,7 @@ function ReviewsAndRatings({ product_id }) {
         setAverageRating((Math.round((totalRatingValues / Number(totalNumberReviews)) * 4) / 4));
         setCharacteristics(data.characteristics);
       });
-  }, [ratings['1'], totalRecommendedReviews, totalNumReviews, averageRating, characteristics.Size]);
+  }, [totalRecommendedReviews, totalNumReviews, averageRating]);
 
   //Get all reviews
   useEffect(() => {
@@ -105,7 +114,7 @@ function ReviewsAndRatings({ product_id }) {
 
   return (
     <Component>
-      <h5>RATINGS AND REVIEWS</h5>
+      <Title>RATINGS & REVIEWS</Title>
       <GridLayout>
         <Ratings>
           <Rating

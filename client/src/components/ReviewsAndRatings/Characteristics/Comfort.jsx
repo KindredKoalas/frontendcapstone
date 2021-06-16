@@ -4,7 +4,7 @@ import React from 'react';
 function Comfort(props) {
   if (props.characteristics.Comfort !== undefined) {
     return (
-      <div>
+      <props.styles.lineSpacing>
         <props.styles.title>Comfort</props.styles.title>
         <props.styles.slider
           type="range"
@@ -18,7 +18,7 @@ function Comfort(props) {
           <props.styles.labels>Poor</props.styles.labels>
           <props.styles.labels>Perfect</props.styles.labels>
         </props.styles.text>
-      </div>
+      </props.styles.lineSpacing>
     );
   } else {
     return null;

@@ -11,8 +11,9 @@ const Label = styled.label`
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 display: flex;
 flex-direction: column;
-font-size: 1vw;
 padding: 0 2vw 0 0;
+font-size: 12px;
+font-weight: lighter;
 `;
 
 const Row = styled.div`
@@ -22,7 +23,10 @@ justify-content: space-between;
 `;
 
 const Header = styled.span`
-font-size: 1.25vw;
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
+display: flex;
+flex-direction: column;
+margin-top: 2%;
 `;
 
 const styles = {

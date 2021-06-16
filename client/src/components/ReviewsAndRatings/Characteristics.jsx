@@ -9,9 +9,10 @@ import Fit from './Characteristics/Fit.jsx';
 
 const Slider = styled.input`
   -webkit-appearance: none;
+  column-count: 3;
   appearance: none;
   width: 100%;
-  height: 1vw;
+  height: 4px;
   background: #eee;
   outline: none;
   opacity: 0.7;
@@ -23,9 +24,9 @@ const Slider = styled.input`
   appearance: none;
   width: 0;
   height: 0;
-  border-left: 1vw solid transparent;
-  border-right: 1vw solid transparent;
-  border-top: 1.5vw solid black;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 10px solid black;
   background: none;
   cursor: pointer;
 }
@@ -34,20 +35,27 @@ const Slider = styled.input`
 const Title = styled.div`
 display: flex;
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
-font-size: 1.75vw;
+font-size: 14px;
+font-weight: 100;
 `;
 
 const Text = styled.div`
 display: flex;
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 justify-content: space-between;
-font-size: 10px;
+font-size: 11px;
+font-weight: 100;
 `;
 
 const Labels = styled.label`
 display: flex;
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
-font-size: 1.25vw;
+font-size: 11px;
+font-weight: 100;
+`;
+
+const LineSpacing = styled.div`
+padding-bottom: 12px;
 `;
 
 const styles = {
@@ -55,6 +63,7 @@ const styles = {
   text: Text,
   slider: Slider,
   labels: Labels,
+  lineSpacing: LineSpacing,
 };
 
 function Characteristics( {characteristics} ) {

@@ -3,7 +3,7 @@ import React from 'react';
 function Width(props) {
   if (props.characteristics.Width !== undefined) {
     return (
-      <div>
+      <props.styles.lineSpacing>
         <props.styles.title>Width</props.styles.title>
         <props.styles.slider
           type="range"
@@ -18,7 +18,7 @@ function Width(props) {
           <props.styles.labels>Perfect</props.styles.labels>
           <props.styles.labels>Too wide</props.styles.labels>
         </props.styles.text>
-      </div>
+      </props.styles.lineSpacing>
     );
     // eslint-disable-next-line no-else-return
   } else {

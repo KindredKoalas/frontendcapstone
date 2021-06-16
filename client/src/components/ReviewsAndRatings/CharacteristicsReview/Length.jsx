@@ -26,7 +26,7 @@ function Length({ characteristics, styles, setCharacteristicsObj, characteristic
   if (characteristics.Length !== undefined) {
     return (
       <>
-        <styles.header>Length</styles.header>
+        <styles.header>LENGTH</styles.header>
         <styles.row>
           <styles.label>
             <input
@@ -37,7 +37,6 @@ function Length({ characteristics, styles, setCharacteristicsObj, characteristic
               onClick={changeRecommendedProduct}
               required
             />
-            Runs Short
           </styles.label>
           <styles.label>
             <input
@@ -48,7 +47,6 @@ function Length({ characteristics, styles, setCharacteristicsObj, characteristic
               onClick={changeRecommendedProduct}
               required
             />
-            Runs slightly short
           </styles.label>
           <styles.label>
             <input
@@ -59,7 +57,6 @@ function Length({ characteristics, styles, setCharacteristicsObj, characteristic
               onClick={changeRecommendedProduct}
               required
             />
-            Perfect
           </styles.label>
           <styles.label>
             <input
@@ -70,7 +67,6 @@ function Length({ characteristics, styles, setCharacteristicsObj, characteristic
               onClick={changeRecommendedProduct}
               required
             />
-            Runs slightly long
           </styles.label>
           <styles.label>
             <input
@@ -81,8 +77,12 @@ function Length({ characteristics, styles, setCharacteristicsObj, characteristic
               onClick={changeRecommendedProduct}
               required
             />
-            Runs long
           </styles.label>
+        </styles.row>
+        <styles.row>
+          <styles.label>Runs short</styles.label>
+          <styles.label>Perfect</styles.label>
+          <styles.label>Runs long</styles.label>
         </styles.row>
       </>
     );
