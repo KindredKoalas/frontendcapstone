@@ -27,7 +27,9 @@ class App extends React.Component {
       return (
         <>
           <ProductOverview />
-          <QA />
+          <QA
+            product_id={this.state.product_id}
+          />
           <ReviewsAndRatings
             product_id={this.state.product_id}
           />

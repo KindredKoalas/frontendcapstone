@@ -14,6 +14,7 @@ app.get('/api/products', products.get);
 app.get('/qa/questions', questionsAndAnswers.get);
 app.get('/api/products/:product_id/styles', products.getStyles);
 app.get('/qa/questions/:product_id', questionsAndAnswers.get);
+app.post('/qa/questions', questionsAndAnswers.post);
 //Reviews
 app.get('/reviews/meta/:product_id', reviews.getMeta);
 app.get('/reviews/:product_id/:count/:sort', reviews.get);

@@ -42,13 +42,14 @@ color: black;
 `;
 
 class QA extends React.Component {
-  constructor() {
+  constructor({ product_id }) {
     super();
 
     this.state = {
       questions: [],
       questionsCopy: [],
-      answer: []
+      answer: [],
+      product_id: product_id
     };
 
     this.generateQuestions = this.generateQuestions.bind(this);
@@ -60,9 +61,9 @@ class QA extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/qa/questions')
+    axios.get(`/qa/questions/${this.state.product_id}`)
       .then((response) => {
-        // console.log('TESTING QA GET ', response.data.results);
+        console.log(response.data.results)
         this.generateQuestions(response.data.results);
       });
   }
@@ -72,13 +73,11 @@ class QA extends React.Component {
     console.log('QuestionLIST ', questionList);
     var noMatches = null;
     var matches = [];
-    // console.log('Search Term ', searchTerm);
 
     if (searchTerm.length > 2) {
       for (let question of questionList) {
 
         if (question.question_body.toLowerCase().includes(searchTerm.toLowerCase())) {
-          // console.log('QUESTION', searchTerm)
           matches.push(question);
           this.setState({
             questions: matches,
@@ -113,6 +112,19 @@ class QA extends React.Component {
   addQuestion(question) {
     var questions = this.state.questions.slice();
     questions.push(question);
+
+    const new_Question = {
+      body: question.question_body,
+      name: question.asker_name,
+      email: question.asker_email,
+      product_id: question.question_id,
+    }
+
+    axios.post('/qa/questions', new_Question)
+      .then((response) => {
+        console.log('ADD QUESTION ', response)
+      });
+
     this.setState({
       questions: questions,
     })

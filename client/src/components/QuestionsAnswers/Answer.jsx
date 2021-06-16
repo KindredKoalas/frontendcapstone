@@ -19,6 +19,8 @@ font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans',
 display: flex;
 font-size: 11px;
 font-weight: 100;
+padding-top: 4px;
+margin-bottom: 15px;
 `;
 
 const AnswerBody = styled.div`
@@ -26,7 +28,7 @@ font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans',
 display: flex;
 font-size: 14px;
 font-weight: 100;
-padding-top: 1px;
+padding-top: 4px;
 `;
 
 const NameAndDate = styled.div`
@@ -36,19 +38,20 @@ padding-left: 25px;
 
 const PhotoContainer = styled.div`
 display: flex;
-padding-left: 10px;
+align-content: space-between;
+padding-left: 25px;
 `;
 
 const Answer = ({ answer }) => {
   const help = answer.helpfulness;
   const photos = answer.photos;
-  console.log('photos ' ,photos);
+  // console.log('photos ' ,photos);
 
   return (
     <div>
       <AnswerContainer>
         <A>
-          A:&nbsp;
+          {Object.keys(answer).length > 0 ? <span>A:&nbsp;</span> : null}
         </A>
         <AnswerBody>
           {answer.body}
@@ -58,12 +61,10 @@ const Answer = ({ answer }) => {
         </p>
       </AnswerContainer>
         <PhotoContainer>
-          {photos.length > 0 ? <div>{photos.map((photo, index) => <Photo photo={photo} key={index}/>)}</div> : <div></div>}
+          {photos && photos.length > 0 ? <div>{photos.map((photo, index) => <Photo photo={photo} key={index}/>)}</div> : null}
         </PhotoContainer>
       <AnswerInfo>
-        <p>
 
-        </p>
         <NameAndDate>
           by {answer.answerer_name},&nbsp;
           {new Date(answer.date).toDateString()}
@@ -71,9 +72,7 @@ const Answer = ({ answer }) => {
         &nbsp;&nbsp; | &nbsp;&nbsp;
         <HelpfulAnswer help={help}/>
         <Report />
-        <p>
 
-        </p>
       </AnswerInfo>
     </div>
   )
