@@ -4,13 +4,19 @@ import styled from 'styled-components';
 
 const Button = styled.button`
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
-font-size: 1.5vw;
 font-weight: bold;
-width: 25%;
-height: 6vw;
+width: 150px;
+height: 55px;
 background-color: white;
 border-width: thin;
-margin-right: 5vw;
+margin-right: 10px;
+cursor: pointer;
+transition: 0.3s;
+&:hover ${Button} {
+  background: #C50000;
+  color: white;
+  border: none;
+}
 `;
 
 function MoreReviews({

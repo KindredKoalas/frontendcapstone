@@ -3,7 +3,7 @@ import React from 'react';
 function Quality(props) {
   if (props.characteristics.Quality !== undefined) {
     return (
-      <div>
+      <props.styles.lineSpacing>
         <props.styles.title>Quality</props.styles.title>
         <props.styles.slider
           type="range"
@@ -17,7 +17,7 @@ function Quality(props) {
           <props.styles.labels>Poor</props.styles.labels>
           <props.styles.labels>Perfect</props.styles.labels>
         </props.styles.text>
-      </div>
+      </props.styles.lineSpacing>
     );
     // eslint-disable-next-line no-else-return
   } else {

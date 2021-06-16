@@ -26,7 +26,7 @@ function Size({ characteristics, styles, setCharacteristicsObj, characteristicsO
   if (characteristics.Size !== undefined) {
     return (
       <>
-        <styles.header>Size</styles.header>
+        <styles.header>SIZE</styles.header>
         <styles.row>
           <styles.label>
             <input
@@ -37,7 +37,6 @@ function Size({ characteristics, styles, setCharacteristicsObj, characteristicsO
               onClick={changeRecommendedProduct}
               required
             />
-            A size too small
           </styles.label>
           <styles.label>
             <input
@@ -48,7 +47,6 @@ function Size({ characteristics, styles, setCharacteristicsObj, characteristicsO
               onClick={changeRecommendedProduct}
               required
             />
-            1/2 a size to small
           </styles.label>
           <styles.label>
             <input
@@ -59,7 +57,6 @@ function Size({ characteristics, styles, setCharacteristicsObj, characteristicsO
               onClick={changeRecommendedProduct}
               required
             />
-            Perfect
           </styles.label>
           <styles.label>
             <input
@@ -70,7 +67,6 @@ function Size({ characteristics, styles, setCharacteristicsObj, characteristicsO
               onClick={changeRecommendedProduct}
               required
             />
-            1/2 a size too big
           </styles.label>
           <styles.label>
             <input
@@ -81,8 +77,12 @@ function Size({ characteristics, styles, setCharacteristicsObj, characteristicsO
               onClick={changeRecommendedProduct}
               required
             />
-            A size too wide
           </styles.label>
+        </styles.row>
+        <styles.row>
+          <styles.label>A size too small</styles.label>
+          <styles.label>Perfect</styles.label>
+          <styles.label>A size too wide</styles.label>
         </styles.row>
       </>
     );

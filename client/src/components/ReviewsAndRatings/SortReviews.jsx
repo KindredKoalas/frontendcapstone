@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Text = styled.div`
 display: flex;
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
-font-size: 2vw;
+font-size: 18px;
 font-weight: bold;
 padding-bottom: 2vw;
 `;
@@ -12,13 +12,13 @@ padding-bottom: 2vw;
 const Dropdown = styled.select`
 background: transparent;
 line-height: 1;
-font-size: 2vw;
+font-size: 18px;
 font-weight: bold;
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 border: 0;
 padding: 0;
 border-radius: 0;
-width: 20%;
+width: 40%;
 position: relative;
 `;
 

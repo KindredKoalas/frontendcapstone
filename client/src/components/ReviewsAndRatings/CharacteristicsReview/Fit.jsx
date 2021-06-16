@@ -26,7 +26,7 @@ function Fit({ characteristics, styles, setCharacteristicsObj, characteristicsOb
   if (characteristics.Fit !== undefined) {
     return (
       <>
-        <styles.header>Fit</styles.header>
+        <styles.header>FIT</styles.header>
         <styles.row>
           <styles.label>
             <input
@@ -37,7 +37,6 @@ function Fit({ characteristics, styles, setCharacteristicsObj, characteristicsOb
               onClick={changeRecommendedProduct}
               required
             />
-            Runs tight
           </styles.label>
           <styles.label>
             <input
@@ -48,7 +47,6 @@ function Fit({ characteristics, styles, setCharacteristicsObj, characteristicsOb
               onClick={changeRecommendedProduct}
               required
             />
-            Runs slightly tight
           </styles.label>
           <styles.label>
             <input
@@ -59,7 +57,6 @@ function Fit({ characteristics, styles, setCharacteristicsObj, characteristicsOb
               onClick={changeRecommendedProduct}
               required
             />
-            Perfect
           </styles.label>
           <styles.label>
             <input
@@ -70,7 +67,6 @@ function Fit({ characteristics, styles, setCharacteristicsObj, characteristicsOb
               onClick={changeRecommendedProduct}
               required
             />
-            Runs slightly long
           </styles.label>
           <styles.label>
             <input
@@ -81,8 +77,12 @@ function Fit({ characteristics, styles, setCharacteristicsObj, characteristicsOb
               onClick={changeRecommendedProduct}
               required
             />
-            Runs long
           </styles.label>
+        </styles.row>
+        <styles.row>
+          <styles.label>Runs tight</styles.label>
+          <styles.label>Perfect</styles.label>
+          <styles.label>Runs long</styles.label>
         </styles.row>
       </>
     );

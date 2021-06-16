@@ -26,7 +26,7 @@ function Quality({ characteristics, styles, setCharacteristicsObj, characteristi
   if (characteristics.Quality !== undefined) {
     return (
       <>
-        <styles.header>Quality</styles.header>
+        <styles.header>QUALITY</styles.header>
         <styles.row>
           <styles.label>
             <input
@@ -37,7 +37,6 @@ function Quality({ characteristics, styles, setCharacteristicsObj, characteristi
               onClick={changeRecommendedProduct}
               required
             />
-            Poor
           </styles.label>
           <styles.label>
             <input
@@ -48,7 +47,6 @@ function Quality({ characteristics, styles, setCharacteristicsObj, characteristi
               onClick={changeRecommendedProduct}
               required
             />
-            Below average
           </styles.label>
           <styles.label>
             <input
@@ -59,7 +57,6 @@ function Quality({ characteristics, styles, setCharacteristicsObj, characteristi
               onClick={changeRecommendedProduct}
               required
             />
-            What I expected
           </styles.label>
           <styles.label>
             <input
@@ -70,7 +67,6 @@ function Quality({ characteristics, styles, setCharacteristicsObj, characteristi
               onClick={changeRecommendedProduct}
               required
             />
-            Pretty great
           </styles.label>
           <styles.label>
             <input
@@ -81,8 +77,11 @@ function Quality({ characteristics, styles, setCharacteristicsObj, characteristi
               onClick={changeRecommendedProduct}
               required
             />
-            Perfect
           </styles.label>
+        </styles.row>
+        <styles.row>
+          <styles.label>Poor</styles.label>
+          <styles.label>Perfect</styles.label>
         </styles.row>
       </>
     );

@@ -26,7 +26,7 @@ function Comfort({ characteristics, styles, setCharacteristicsObj, characteristi
   if (characteristics.Comfort !== undefined) {
     return (
       <>
-        <styles.header>Comfort</styles.header>
+        <styles.header>COMFORT</styles.header>
         <styles.row>
           <styles.label>
             <input
@@ -37,7 +37,6 @@ function Comfort({ characteristics, styles, setCharacteristicsObj, characteristi
               onClick={changeRecommendedProduct}
               required
             />
-            Uncomfortable
           </styles.label>
           <styles.label>
             <input
@@ -48,7 +47,6 @@ function Comfort({ characteristics, styles, setCharacteristicsObj, characteristi
               onClick={changeRecommendedProduct}
               required
             />
-            Slightly uncomfortable
           </styles.label>
           <styles.label>
             <input
@@ -59,7 +57,6 @@ function Comfort({ characteristics, styles, setCharacteristicsObj, characteristi
               onClick={changeRecommendedProduct}
               required
             />
-            Ok
           </styles.label>
           <styles.label>
             <input
@@ -70,7 +67,6 @@ function Comfort({ characteristics, styles, setCharacteristicsObj, characteristi
               onClick={changeRecommendedProduct}
               required
             />
-            Comfortable
           </styles.label>
           <styles.label>
             <input
@@ -81,8 +77,11 @@ function Comfort({ characteristics, styles, setCharacteristicsObj, characteristi
               onClick={changeRecommendedProduct}
               required
             />
-            Perfect
           </styles.label>
+        </styles.row>
+        <styles.row>
+          <styles.label>Uncomfortable</styles.label>
+          <styles.label>Perfect</styles.label>
         </styles.row>
       </>
     );

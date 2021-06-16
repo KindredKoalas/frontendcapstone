@@ -3,7 +3,7 @@ import React from 'react';
 function Length(props) {
   if (props.characteristics.Length !== undefined) {
     return (
-      <div>
+      <props.styles.lineSpacing>
         <props.styles.title>Length</props.styles.title>
         <props.styles.slider
           type="range"
@@ -18,7 +18,7 @@ function Length(props) {
           <props.styles.labels>Perfect</props.styles.labels>
           <props.styles.labels>Runs long</props.styles.labels>
         </props.styles.text>
-      </div>
+      </props.styles.lineSpacing>
     );
     // eslint-disable-next-line no-else-return
   } else {

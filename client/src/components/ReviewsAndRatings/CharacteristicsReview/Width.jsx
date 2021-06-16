@@ -26,7 +26,7 @@ function Width({ characteristics, styles, setCharacteristicsObj, characteristics
   if (characteristics.Width !== undefined) {
     return (
       <>
-        <styles.header>Width</styles.header>
+        <styles.header>WIDTH</styles.header>
         <styles.row>
           <styles.label>
             <input
@@ -37,7 +37,6 @@ function Width({ characteristics, styles, setCharacteristicsObj, characteristics
               onClick={changeRecommendedProduct}
               required
             />
-            Too narrow
           </styles.label>
           <styles.label>
             <input
@@ -48,7 +47,6 @@ function Width({ characteristics, styles, setCharacteristicsObj, characteristics
               onClick={changeRecommendedProduct}
               required
             />
-            Slightly narrow
           </styles.label>
           <styles.label>
             <input
@@ -59,7 +57,6 @@ function Width({ characteristics, styles, setCharacteristicsObj, characteristics
               onClick={changeRecommendedProduct}
               required
             />
-            Perfect
           </styles.label>
           <styles.label>
             <input
@@ -70,7 +67,6 @@ function Width({ characteristics, styles, setCharacteristicsObj, characteristics
               onClick={changeRecommendedProduct}
               required
             />
-            Slightly wide
           </styles.label>
           <styles.label>
             <input
@@ -81,8 +77,12 @@ function Width({ characteristics, styles, setCharacteristicsObj, characteristics
               onClick={changeRecommendedProduct}
               required
             />
-            Too wide
           </styles.label>
+        </styles.row>
+        <styles.row>
+          <styles.label>Too narrow</styles.label>
+          <styles.label>Perfect</styles.label>
+          <styles.label>Too wide</styles.label>
         </styles.row>
       </>
     );

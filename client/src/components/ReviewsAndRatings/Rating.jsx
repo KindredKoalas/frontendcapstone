@@ -5,6 +5,7 @@ import StarRatings from 'react-star-ratings';
 const Reviews = styled.div`
 display: flex;
 flex-direction: column;
+flex-shrink: 1;
 `;
 
 const Row = styled.div`
@@ -14,24 +15,28 @@ flex-direction: row;
 
 const AverageRating = styled.span`
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
-font-size: 5vw;
+font-size: 50px;
 font-weight: bold;
 `;
 
 const TextStyle = styled.span`
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
-font-size: 1.75vw;
+font-size: 14px;
+font-weight: 100;
 display: flex;
 flex-direction: row;
 `;
 
 const TextStyle2 = styled.span`
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
-font-size: 1.75vw;
+font-size: 14px;
+font-weight: 100;
+padding-top: 8px;
+padding-bottom: 8px;
 `;
 
 const StarRating = styled.span`
-margin: 0.75vw 0 0.75vw 0;
+padding-bottom: 8px;
 `;
 
 const StarRow = styled.span`
@@ -46,9 +51,9 @@ line-height: 1.6;
 
 const Progress = styled.progress`
 -webkit-appearance: none;
-width: 26.5vw;
-height: 1vw;
-margin: 1vw 0 0 0.5vw;
+width: 15vw;
+height: 8px;
+margin: 8px 0 0 5px;
 &::-webkit-progress-bar {
   background-color: #eee;
   border-radius: 2px;
@@ -64,7 +69,7 @@ function Rating( {totalNumReviews, recommended, ratings,averageRating} ) {
           <AverageRating>{averageRating}</AverageRating>
           <StarRatings
             rating={averageRating}
-            starDimension="1.5vw"
+            starDimension="15px"
             starSpacing="0px"
             starRatedColor="black"
             numberOfStars={5}

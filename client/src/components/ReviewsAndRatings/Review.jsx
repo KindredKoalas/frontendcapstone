@@ -7,8 +7,7 @@ const Reviews = styled.div`
 display: flex;
 flex-direction: column;
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
-font-size: 1.75vw;
-line-height: 2;
+flex-shrink: 1;
 `;
 
 const RowDisplay = styled.div`
@@ -16,44 +15,54 @@ display: flex;
 flex-direction: row;
 justify-content: space-between;
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
-font-size: 1.25vw;
+font-size: 11px;
+font-weight: 100;
+padding-top: 8px;
+`;
+
+const NameAndDate = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
+font-size: 11px;
+color: grey;
 font-weight: lighter;
 `;
 
 const Summary = styled.div`
-display: flex;
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
-font-size: 2vw;
+font-size: 18px;
 font-weight: bold;
+padding-top: 8px;
 `;
 
 const Body = styled.div`
-display: flex;
-flex-direction: column;
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
-font-size: 1.75vw;
-line-height: 2;
+font-size: 14px;
+font-weight: 100;
+padding-top: 8px;
 `;
 
 const Response = styled.div`
 display: flex;
 flex-direction: column;
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
-font-size: 1.75vw;
+font-size: 14px;
 background: #E8E8E8;
 `;
 
 const BoldText = styled.div`
 display: flex;
 font-weight: bold;
-line-height: 3.5vw;
-margin-inline: 1vw;
+line-height: 30px;
+margin-inline: 10px;
 `;
 
 const Text = styled.div`
 display: flex;
-margin-inline: 1vw;
-line-height: 3.5vw;
+margin-inline: 10px;
+line-height: 30px;
 `;
 
 function Review({ reviewObject }) {
@@ -62,10 +71,10 @@ function Review({ reviewObject }) {
 
   return (
     <Reviews>
-      <RowDisplay>
+      <NameAndDate>
         <StarRatings
           rating={(Math.round((reviewObject.rating)) * 4) / 4}
-          starDimension="1.5vw"
+          starDimension="15px"
           starSpacing="0px"
           starRatedColor="black"
           numberOfStars={5}
@@ -74,17 +83,20 @@ function Review({ reviewObject }) {
         {reviewObject.reviewer_name}
         ,&nbsp;{month}
         {date.toString().slice(7, 15)}
-      </RowDisplay>
+      </NameAndDate>
       <Summary>
         {reviewObject.summary}
       </Summary>
       <Body>
         {reviewObject.body.length < 250 ? reviewObject.body : null}
       </Body>
-      <PictureList pictureList={reviewObject.photos} />
+      <Body>
+        <PictureList pictureList={reviewObject.photos} />
+      </Body>
       <Body>
         {reviewObject.recommend === true ? '✓ I recommend this product' : null}
       </Body>
+      <Body></Body>
       <Response>
         <BoldText>
           {(reviewObject.response !== ''
