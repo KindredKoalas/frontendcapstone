@@ -7,12 +7,10 @@ import Styles from './Styles.jsx';
 import Size from './Size.jsx';
 import Price from './Price.jsx';
 import StarRatings from 'react-star-ratings';
-import StarRating from './StarRating.jsx';
 const helpers = require('./Helpers.js');
 
 const Container = styled.div`
   display: flex;
-  border: solid black 1px;
   font-family: Helvetica;
   font-weight: light;
   justify-content: flex-start;
@@ -39,7 +37,6 @@ const StyleSelectorGrid = styled.div`
 `;
 
 const AdditionalProductDetails = styled.div`
-  border: solid black 1px;
   font-family: Helvetica;
   font-weight: light;
   border-radius: 0px;
@@ -168,7 +165,6 @@ class ProductOverview extends React.Component {
   }
 
   render() {
-    console.log('reviews from Review.jsx', this.props.reviews)
     return (
       <div>
         <Container>
@@ -178,7 +174,6 @@ class ProductOverview extends React.Component {
             />
           </ImageGallery>
           <ProductInformation>
-            <StarRating />
             <ProductCategory
               currentCategory={this.state.category}
             />
@@ -186,7 +181,7 @@ class ProductOverview extends React.Component {
               originalPrice={this.state.originalPrice}
               salePrice={this.state.salePrice}
             />
-            <div>STYLE > {this.state.name}</div>
+            <div><strong>STYLE ></strong> {this.state.name}</div>
             <StyleSelectorGrid>
               <Styles
                 images={this.state.images}
