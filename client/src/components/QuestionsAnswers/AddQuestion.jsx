@@ -50,6 +50,7 @@ const AddQuestion = ({ addQuestionToList }) => {
   const [question, addQuestion] = useState('');
   const [name, addName] = useState('');
   const [email, addEmail] = useState('');
+  const [id, addCount] = useState(0);
 
     return (
       <div>
@@ -73,8 +74,10 @@ const AddQuestion = ({ addQuestionToList }) => {
                 question_date: Date.now(),
                 reported: false,
                 answers: {},
+                question_id: id,
               };
 
+              addCount(id + 1);
               addQuestionToList(newQuestion);
               addQuestion('');
               addName('');

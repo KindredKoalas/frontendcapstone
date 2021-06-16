@@ -1,9 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const PhotoStyle = styled.span`
+padding-right: 1vw;
+`;
 
 const Photo = ({ photo }) => (
-  <div>
+  <PhotoStyle>
     <img src={photo} alt="thumbnails" width="100" height="75"></img>
-  </div>
+  </PhotoStyle>
 )
 
 export default Photo;
