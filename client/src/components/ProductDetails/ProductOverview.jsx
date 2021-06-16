@@ -6,28 +6,34 @@ import ProductCategory from './ProductCategory.jsx';
 import Styles from './Styles.jsx';
 import Size from './Size.jsx';
 import Price from './Price.jsx';
+import StarRating from './StarRating.jsx';
 import StarRatings from 'react-star-ratings';
 const helpers = require('./Helpers.js');
 
 const Container = styled.div`
   display: flex;
-  font-family: Helvetica;
+  font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
   font-weight: light;
+  font-size: 18px
   justify-content: flex-start;
   flex-flow: row wrap;
+  padding-top: 10px;
+  padding-bottom: 5px;
 `;
 
 const ImageGallery = styled.div`
   border-radius: 0px;
-  width: 50%;
+  width: 45%;
   padding: 2%;
 `;
 
 const ProductInformation = styled.div`
-  border-radius: 0px;
+  font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 100;
+  padding-top: 8px;
   width: 40%;
   padding: 2%;
-  background: none;
 `;
 
 const StyleSelectorGrid = styled.div`
@@ -37,11 +43,12 @@ const StyleSelectorGrid = styled.div`
 `;
 
 const AdditionalProductDetails = styled.div`
-  font-family: Helvetica;
-  font-weight: light;
-  border-radius: 0px;
+  display: flex;
+  font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 100;
   background: none;
-  padding: 1%;
+  padding-top: 1%;
 `;
 
 class ProductOverview extends React.Component {
@@ -53,8 +60,10 @@ class ProductOverview extends React.Component {
       category: '',
       description: '',
       slogan: '',
+      features: '',
       originalPrice: 0,
       salePrice: 0,
+      rating: 5,
       images: [{
         style_id: 142825,
         photos: {
@@ -80,10 +89,12 @@ class ProductOverview extends React.Component {
     this.getAllProducts = this.getAllProducts.bind(this);
     this.getAllStyles = this.getAllStyles.bind(this);
     this.handleStylesSelectorClick = this.handleStylesSelectorClick.bind(this);
+    this.getReviews = this.getReviews.bind(this);
   }
 
   componentDidMount() {
     this.getAllProducts();
+    this.getReviews();
   }
 
   getAllProducts() {
@@ -97,7 +108,8 @@ class ProductOverview extends React.Component {
           product: response.data.id,
           category: response.data.name,
           description: response.data.description,
-          slogan: response.data.slogan
+          slogan: response.data.slogan,
+          features: response.data.features
         })
         self.getAllStyles();
       })
@@ -105,6 +117,28 @@ class ProductOverview extends React.Component {
         // handle error
         console.log(error);
       });
+  }
+
+  getReviews() {
+    const self = this;
+    const productId = self.props.product_id;
+    axios.get(`/reviews/meta/${productId}`)
+      .then((response) => {
+        let data = response.data;
+        console.log(data);
+        let totalNumberReviews = 0;
+        let totalRatingValues = 0;
+
+        for (const [key, value] of Object.entries(data.ratings)) {
+          totalRatingValues = totalRatingValues +key*value;
+          totalNumberReviews = totalNumberReviews + Number(value);
+        }
+        const averageRating = ((Math.round((totalRatingValues / Number(totalNumberReviews)) * 4) / 4));
+        console.log(averageRating);
+        self.setState({
+          rating: averageRating
+        })
+    });
   }
 
   getAllStyles() {
@@ -174,6 +208,7 @@ class ProductOverview extends React.Component {
             />
           </ImageGallery>
           <ProductInformation>
+            <StarRating averageRating={this.state.rating}/>
             <ProductCategory
               currentCategory={this.state.category}
             />

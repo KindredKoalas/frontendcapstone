@@ -121,31 +121,6 @@ function ImageSlider(props) {
   let [currentImage, setCurrentImage] = useState(0);
   let [modalIsOpen, setModalIsOpen] = useState(false);
 
-  // let thumbnails = imagesPerStyle.map((image, index) =>
-  //   <ThumbnailSquare src={image.thumbnail_url} onClick={() => {
-  //     setCurrentImage(index)
-  //   }}/>
-  // );
-
-  // let thumbnails = [];
-  // for (var i = 0; i < imagesPerStyle.length; i++) {
-  //   let image = imagesPerStyle[i];
-  //   if (currentImage === i) {
-  //     thumbnails.push(
-  //       <ThumbnailHighlight src={image.thumbnail_url} />
-  //     )
-  //   } else {
-  //     thumbnails.push(
-  //       <ThumbnailSquare src={image.thumbnail_url} onClick={() => {
-  //         console.log('i', i);
-  //         const j = i;
-  //         console.log('j', j);
-  //         setCurrentImage(i)
-  //       }}/>
-  //     )
-  //   }
-  // }
-
   let thumbnails = imagesPerStyle.map((image, index) => {
     if (currentImage === index) {
       return <ThumbnailHighlight src={image.thumbnail_url}></ThumbnailHighlight>
