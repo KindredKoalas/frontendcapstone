@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
-function Quality({ characteristics, styles, setCharacteristicsObj, characteristicsObj }) {
+function Quality(
+  {
+    characteristics, styles, setCharacteristicsObj, characteristicsObj,
+  },
+) {
   const [recommendProduct, setRecommendProduct] = useState('');
 
   if (characteristics.Quality !== undefined) {

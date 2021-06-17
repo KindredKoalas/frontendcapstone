@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
-function Width({ characteristics, styles, setCharacteristicsObj, characteristicsObj }) {
+function Width(
+  {
+    characteristics, styles, setCharacteristicsObj, characteristicsObj,
+  },
+) {
   const [recommendProduct, setRecommendProduct] = useState('');
 
   if (characteristics.Width !== undefined) {

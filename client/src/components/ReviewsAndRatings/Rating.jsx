@@ -61,7 +61,11 @@ margin: 8px 0 0 5px;
 }
 `;
 
-function Rating( {totalNumReviews, recommended, ratings,averageRating} ) {
+function Rating(
+  {
+    totalNumReviews, recommended, ratings,averageRating
+  },
+) {
   return (
     <>
       <Reviews>

@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
-function Size({ characteristics, styles, setCharacteristicsObj, characteristicsObj }) {
+function Size(
+  {
+    characteristics, styles, setCharacteristicsObj, characteristicsObj,
+  },
+) {
   const [recommendProduct, setRecommendProduct] = useState('');
 
   if (characteristics.Size !== undefined) {

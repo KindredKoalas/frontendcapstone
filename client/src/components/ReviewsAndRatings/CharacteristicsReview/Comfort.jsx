@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
-function Comfort({ characteristics, styles, setCharacteristicsObj, characteristicsObj }) {
+function Comfort(
+  {
+    characteristics, styles, setCharacteristicsObj, characteristicsObj,
+  },
+) {
   const [recommendProduct, setRecommendProduct] = useState('');
 
   if (characteristics.Comfort !== undefined) {
