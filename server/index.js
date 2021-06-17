@@ -6,6 +6,7 @@ app.use(express.json());
 const axios = require('axios');
 
 app.use(express.static('client/dist'));
+app.use(express.urlencoded({extended: true}));
 const products = require('./controllers/products.js');
 const questionsAndAnswers = require('./controllers/questionsandanswers.js');
 const reviews = require('./controllers/reviews.js');
