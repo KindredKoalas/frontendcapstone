@@ -114,7 +114,7 @@ function ReviewsAndRatings({ product_id }) {
 
   return (
     <Component>
-      <Title id="ratingsSection">RATINGS & REVIEWS</Title>
+      <Title>RATINGS & REVIEWS</Title>
       <GridLayout>
         <Ratings>
           <Rating
