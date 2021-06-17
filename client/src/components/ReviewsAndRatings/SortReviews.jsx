@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import React from 'react';
 
 const Text = styled.div`
 display: flex;
@@ -22,7 +22,11 @@ width: 40%;
 position: relative;
 `;
 
-function SortReviews({totalNumReviews, sort, sortStateChanged, resetCount}) {
+function SortReviews(
+  {
+    totalNumReviews, sort, sortStateChanged, resetCount
+  },
+) {
   function getSelectValue() {
     let selectedValue = document.getElementById('list').value;
     sort(selectedValue);

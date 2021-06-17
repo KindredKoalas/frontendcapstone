@@ -10,7 +10,7 @@ function Width(props) {
           min="1"
           max="5"
           value={props.characteristics.Width.value}
-          readonly="readonly"
+          readOnly
           step="0.01"
         />
         <props.styles.text>

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.56% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>61/73</span>
+                <span class='fraction'>82/82</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.56% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>61/73</span>
+                <span class='fraction'>82/82</span>
             </div>
         
             
@@ -130,7 +130,16 @@
 <a name='L71'></a><a href='#L71'>71</a>
 <a name='L72'></a><a href='#L72'>72</a>
 <a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -189,18 +198,27 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
@@ -214,9 +232,10 @@ import Fit from './Characteristics/Fit.jsx';
 &nbsp;
 const Slider = styled.input`
   -webkit-appearance: none;
+  column-count: 3;
   appearance: none;
   width: 100%;
-  height: 1vw;
+  height: 4px;
   background: #eee;
   outline: none;
   opacity: 0.7;
@@ -228,9 +247,9 @@ const Slider = styled.input`
   appearance: none;
   width: 0;
   height: 0;
-  border-left: 1vw solid transparent;
-  border-right: 1vw solid transparent;
-  border-top: 1.5vw solid black;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 10px solid black;
   background: none;
   cursor: pointer;
 }
@@ -239,20 +258,27 @@ const Slider = styled.input`
 const Title = styled.div`
 display: flex;
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
-font-size: 1.75vw;
+font-size: 14px;
+font-weight: 100;
 `;
 &nbsp;
 const Text = styled.div`
 display: flex;
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
 justify-content: space-between;
-font-size: 10px;
+font-size: 11px;
+font-weight: 100;
 `;
 &nbsp;
 const Labels = styled.label`
 display: flex;
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
-font-size: 1.25vw;
+font-size: 11px;
+font-weight: 100;
+`;
+&nbsp;
+const LineSpacing = styled.div`
+padding-bottom: 12px;
 `;
 &nbsp;
 const styles = {
@@ -260,20 +286,21 @@ const styles = {
   text: Text,
   slider: Slider,
   labels: Labels,
+  lineSpacing: LineSpacing,
 };
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function Characteristics( {characteristics} ) {</span></span>
-<span class="cstat-no" title="statement not covered" >  return (</span>
-<span class="cstat-no" title="statement not covered" >    &lt;&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;Size characteristics={characteristics} styles={styles} /&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;Width characteristics={characteristics} styles={styles} /&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;Comfort characteristics={characteristics} styles={styles} /&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;Quality characteristics={characteristics} styles={styles} /&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;Length characteristics={characteristics} styles={styles} /&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;Fit characteristics={characteristics} styles={styles} /&gt;</span>
-<span class="cstat-no" title="statement not covered" >    &lt;/&gt;</span>
-<span class="cstat-no" title="statement not covered" >  );</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+function Characteristics( {characteristics} ) {
+  return (
+    &lt;&gt;
+      &lt;Size characteristics={characteristics} styles={styles} /&gt;
+      &lt;Width characteristics={characteristics} styles={styles} /&gt;
+      &lt;Comfort characteristics={characteristics} styles={styles} /&gt;
+      &lt;Quality characteristics={characteristics} styles={styles} /&gt;
+      &lt;Length characteristics={characteristics} styles={styles} /&gt;
+      &lt;Fit characteristics={characteristics} styles={styles} /&gt;
+    &lt;/&gt;
+  );
+}
 &nbsp;
 export default Characteristics;
 &nbsp;</pre></td></tr></table></pre>
@@ -283,7 +310,7 @@ export default Characteristics;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Jun 15 2021 15:27:09 GMT-0700 (Pacific Daylight Time)
+                at Wed Jun 16 2021 11:04:45 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

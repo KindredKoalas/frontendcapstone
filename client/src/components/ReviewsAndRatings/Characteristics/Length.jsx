@@ -10,7 +10,7 @@ function Length(props) {
           min="1"
           max="5"
           value={props.characteristics.Length.value}
-          readonly="readonly"
+          readOnly
           step="0.01"
         />
         <props.styles.text>

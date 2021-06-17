@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
-function Fit({ characteristics, styles, setCharacteristicsObj, characteristicsObj }) {
+function Fit(
+  {
+    characteristics, styles, setCharacteristicsObj, characteristicsObj,
+  },
+) {
   const [recommendProduct, setRecommendProduct] = useState('');
 
   if (characteristics.Fit !== undefined) {

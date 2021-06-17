@@ -1,4 +1,4 @@
-//import React from 'react';
+// import React from 'react';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
@@ -7,7 +7,7 @@ import Characteristics from './Characteristics.jsx';
 import SortReviews from './SortReviews.jsx';
 import ReviewList from './ReviewList.jsx';
 import MoreReviews from './MoreReviews.jsx';
-import AddReview from './AddReview.jsx'
+import AddReview from './AddReview.jsx';
 
 const Title = styled.div`
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
@@ -67,12 +67,12 @@ function ReviewsAndRatings({ product_id }) {
   const [sortstatechanged, setSortStateChanged] = useState(false);
   const [resetcount, setResetCount] = useState(false);
 
-  //Get all meta data
+  // Get all meta data
   useEffect(() => {
     axios.get(`/reviews/meta/${product_id}`)
       .then((response) => {
         let data = response.data;
-        console.log(data);
+        // console.log(data);
         let totalNumberReviews = 0;
         let totalRatingValues = 0;
 
@@ -89,11 +89,11 @@ function ReviewsAndRatings({ product_id }) {
       });
   }, [totalRecommendedReviews, totalNumReviews, averageRating]);
 
-  //Get all reviews
+  // Get all reviews
   useEffect(() => {
     axios.get(`/reviews/${product_id}/${totalNumReviews}/${sort}`)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         // console.log(response.data.results);
         setTotalReviews(response.data.results);
         if (slicedReviews.length === 0 || sortstatechanged === true) {
@@ -102,13 +102,16 @@ function ReviewsAndRatings({ product_id }) {
           setSortStateChanged(false);
         }
       });
+
+      console.log(totalReviews);
+
   }, [totalReviews.length, averageRating, sort, slicedReviews.length]);
 
   const addReview = (NewReview) => {
     axios.post('/reviews', NewReview)
       .then((response) => {
-        //console.log(response);
-        //setSlicedReviews(NewReview);
+        // console.log(response);
+        // setSlicedReviews(NewReview);
       });
   };
 
@@ -123,7 +126,7 @@ function ReviewsAndRatings({ product_id }) {
             ratings={ratings}
             averageRating={averageRating}
           />
-          <br></br>
+          <br />
           <Characteristics characteristics={characteristics} />
         </Ratings>
         <Reviews>

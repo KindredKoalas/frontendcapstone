@@ -11,7 +11,7 @@ function Fit(props) {
           min="1"
           max="5"
           value={props.characteristics.Fit.value}
-          readonly="readonly"
+          readOnly
           step="0.01"
         />
         <props.styles.text>

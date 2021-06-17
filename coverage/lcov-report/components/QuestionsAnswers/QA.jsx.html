@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.87% </span>
+                <span class="strong">62.92% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>111/166</span>
+                <span class='fraction'>112/178</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.87% </span>
+                <span class="strong">62.92% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>111/166</span>
+                <span class='fraction'>112/178</span>
             </div>
         
             
@@ -223,7 +223,20 @@
 <a name='L164'></a><a href='#L164'>164</a>
 <a name='L165'></a><a href='#L165'>165</a>
 <a name='L166'></a><a href='#L166'>166</a>
-<a name='L167'></a><a href='#L167'>167</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -315,8 +328,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -336,6 +347,19 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -433,13 +457,14 @@ color: black;
 `;
 &nbsp;
 class QA extends React.Component {
-  constructor() {
+  constructor({ product_id }) {
     super();
 &nbsp;
     this.state = {
       questions: [],
       questionsCopy: [],
-      answer: []
+      answer: [],
+      product_id: product_id
     };
 &nbsp;
     this.generateQuestions = this.generateQuestions.bind(this);
@@ -451,9 +476,9 @@ class QA extends React.Component {
   }
 &nbsp;
   componentDidMount() {
-    axios.get('/qa/questions')
+    axios.get(`/qa/questions/${this.state.product_id}`)
       .then((response) =&gt; {
-<span class="cstat-no" title="statement not covered" >        // console.log('TESTING QA GET ', response.data.results);</span>
+<span class="cstat-no" title="statement not covered" >        console.log(response.data.results)</span>
 <span class="cstat-no" title="statement not covered" >        this.generateQuestions(response.data.results);</span>
 <span class="cstat-no" title="statement not covered" >      });</span>
   }
@@ -463,13 +488,11 @@ class QA extends React.Component {
 <span class="cstat-no" title="statement not covered" >    console.log('QuestionLIST ', questionList);</span>
 <span class="cstat-no" title="statement not covered" >    var noMatches = null;</span>
 <span class="cstat-no" title="statement not covered" >    var matches = [];</span>
-<span class="cstat-no" title="statement not covered" >    // console.log('Search Term ', searchTerm);</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >    if (searchTerm.length &gt; 2) {</span>
 <span class="cstat-no" title="statement not covered" >      for (let question of questionList) {</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >        if (question.question_body.toLowerCase().includes(searchTerm.toLowerCase())) {</span>
-<span class="cstat-no" title="statement not covered" >          // console.log('QUESTION', searchTerm)</span>
 <span class="cstat-no" title="statement not covered" >          matches.push(question);</span>
 <span class="cstat-no" title="statement not covered" >          this.setState({</span>
 <span class="cstat-no" title="statement not covered" >            questions: matches,</span>
@@ -504,6 +527,19 @@ class QA extends React.Component {
 <span class="fstat-no" title="function not covered" >  addQuestion(question) {</span>
 <span class="cstat-no" title="statement not covered" >    var questions = this.state.questions.slice();</span>
 <span class="cstat-no" title="statement not covered" >    questions.push(question);</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    const new_Question = {</span>
+<span class="cstat-no" title="statement not covered" >      body: question.question_body,</span>
+<span class="cstat-no" title="statement not covered" >      name: question.asker_name,</span>
+<span class="cstat-no" title="statement not covered" >      email: question.asker_email,</span>
+<span class="cstat-no" title="statement not covered" >      product_id: question.question_id,</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    axios.post('/qa/questions', new_Question)</span>
+<span class="cstat-no" title="statement not covered" >      .then((response) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        console.log('ADD QUESTION ', response)</span>
+<span class="cstat-no" title="statement not covered" >      });</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >    this.setState({</span>
 <span class="cstat-no" title="statement not covered" >      questions: questions,</span>
 <span class="cstat-no" title="statement not covered" >    })</span>
@@ -562,7 +598,7 @@ export default QA;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Jun 15 2021 15:27:09 GMT-0700 (Pacific Daylight Time)
+                at Wed Jun 16 2021 11:04:45 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

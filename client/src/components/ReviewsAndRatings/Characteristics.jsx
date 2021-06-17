@@ -66,7 +66,7 @@ const styles = {
   lineSpacing: LineSpacing,
 };
 
-function Characteristics( {characteristics} ) {
+function Characteristics({ characteristics }) {
   return (
     <>
       <Size characteristics={characteristics} styles={styles} />
