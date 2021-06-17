@@ -112,6 +112,12 @@ const ModalSliderInner = styled.figure`
   transition: transform 0.25s ease;
 `;
 
+const DotsExpandedView = styled.div`
+  display: flex;
+  justifyContent: center;
+  alignItems: center;
+`;
+
 const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
   display: none;
 `;
@@ -191,9 +197,9 @@ function ImageSlider(props) {
               <ArrowForwardIcon />
               </ImageSliderRight>
               </ModalSliderInner>
-            <div>
+            <DotsExpandedView>
               {scrollDots}
-            </div>
+              </DotsExpandedView>
           </Modal>
 
       </ImageSliderCenter>

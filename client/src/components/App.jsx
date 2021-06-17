@@ -2,6 +2,7 @@ import React from 'react';
 import ReviewsAndRatings from './ReviewsAndRatings/ReviewsAndRatings.jsx';
 import QA from './QuestionsAnswers/QA.jsx';
 import ProductOverview from './ProductDetails/ProductOverview.jsx';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 const helpers = require('./ProductDetails/Helpers.js');
 
 class App extends React.Component {

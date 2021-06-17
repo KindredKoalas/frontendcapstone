@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import StarRatings from 'react-star-ratings';
+import StarRatings from 'react-star-ratings'
 
 const Row = styled.div`
 display: flex;

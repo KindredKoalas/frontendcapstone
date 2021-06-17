@@ -6,7 +6,7 @@ function ProductCategory(props) {
   return (
     <>
     <div>CATEGORY</div>
-    <h2>{props.currentCategory}</h2>
+    <h1>{props.currentCategory}</h1>
     </>
   );
 }
