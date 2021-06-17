@@ -112,6 +112,12 @@ const ModalSliderInner = styled.figure`
   transition: transform 0.25s ease;
 `;
 
+const DotsExpandedView = styled.div`
+  display: flex;
+  justifyContent: center;
+  alignItems: center;
+`;
+
 const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
   display: none;
 `;
@@ -120,31 +126,6 @@ function ImageSlider(props) {
   let imagesPerStyle = props.selectedImages;
   let [currentImage, setCurrentImage] = useState(0);
   let [modalIsOpen, setModalIsOpen] = useState(false);
-
-  // let thumbnails = imagesPerStyle.map((image, index) =>
-  //   <ThumbnailSquare src={image.thumbnail_url} onClick={() => {
-  //     setCurrentImage(index)
-  //   }}/>
-  // );
-
-  // let thumbnails = [];
-  // for (var i = 0; i < imagesPerStyle.length; i++) {
-  //   let image = imagesPerStyle[i];
-  //   if (currentImage === i) {
-  //     thumbnails.push(
-  //       <ThumbnailHighlight src={image.thumbnail_url} />
-  //     )
-  //   } else {
-  //     thumbnails.push(
-  //       <ThumbnailSquare src={image.thumbnail_url} onClick={() => {
-  //         console.log('i', i);
-  //         const j = i;
-  //         console.log('j', j);
-  //         setCurrentImage(i)
-  //       }}/>
-  //     )
-  //   }
-  // }
 
   let thumbnails = imagesPerStyle.map((image, index) => {
     if (currentImage === index) {
@@ -216,9 +197,9 @@ function ImageSlider(props) {
               <ArrowForwardIcon />
               </ImageSliderRight>
               </ModalSliderInner>
-            <div>
+            <DotsExpandedView>
               {scrollDots}
-            </div>
+              </DotsExpandedView>
           </Modal>
 
       </ImageSliderCenter>

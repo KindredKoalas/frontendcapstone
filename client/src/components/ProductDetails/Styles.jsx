@@ -15,16 +15,6 @@ const StyleCircle = styled.div`
   position: relative;
 `;
 
-const CheckmarkCircle = styled.div`
-  color: rgb(76 76 76);
-  background-color: white;
-  border: 2px;
-  border-radius: 50px;
-  position: relative;
-  bottom: 0;
-  right: 0;
-`;
-
 function Styles(props) {
   let [currentThumbnail, setCurrentThumbnail] = useState(0);
 
@@ -43,6 +33,7 @@ function Styles(props) {
   }
 
   function handleClick(e) {
+    console.log('StyleCircle was clicked');
     e.persist();
     props.handleStylesSelectorClick(Number(e.target.attributes.value.value));
     const clickedStyleId = Number(e.target.attributes.value.value);
@@ -57,7 +48,7 @@ function Styles(props) {
     if (currentThumbnail === i) {
       renderedThumbnails.push(
       <div className="container">
-        <StyleCircle src={currentStyle.photos.thumbnail_url} value={currentStyle.style_id} onClick={handleClick}>
+        <StyleCircle className="StyleCircle" src={currentStyle.photos.thumbnail_url} value={currentStyle.style_id} onClick={handleClick}>
           <CheckCircleIcon style={{
             'color': 'rgb(76 76 76)',
             'background-color': 'white',

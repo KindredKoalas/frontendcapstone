@@ -19,7 +19,18 @@ const StyledButton = styled.input`
   height: 50px;
   background-color: white;
   border-width: thin;
+  padding: 3%;
 `;
+
+const RowDisplay = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 100;
+  padding-top: 8px;
+  `;
 
 class Size extends React.Component {
   constructor(props) {
@@ -91,13 +102,15 @@ class Size extends React.Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-          <StyledSelect onChange={this.handleSizeChange}>
-            <option value="" disabled selected>SELECT SIZE</option>
-            {allSizes}
-          </StyledSelect>
-          <StyledSelect onChange={this.handleQuantityChange}>
-            {quantity}
-          </StyledSelect>
+         <RowDisplay>
+            <StyledSelect onChange={this.handleSizeChange}>
+              <option value="" disabled selected>SELECT SIZE</option>
+              {allSizes}
+            </StyledSelect>
+            <StyledSelect onChange={this.handleQuantityChange}>
+              {quantity}
+            </StyledSelect>
+          </RowDisplay>
           <p><StyledButton type="submit" value="ADD TO BAG           +"></StyledButton></p>
       </form>
     );

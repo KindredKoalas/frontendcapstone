@@ -16,6 +16,7 @@ module.exports = {
   },
 
   post: function (req, res) {
+    console.log('REQ BODY ', req.body);
     models.postQuestion(req.body, (err, data) => {
       if (err) {
         res.status(500).send(err);
