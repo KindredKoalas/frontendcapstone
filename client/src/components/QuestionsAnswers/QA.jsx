@@ -58,14 +58,19 @@ class QA extends React.Component {
     this.addQuestion = this.addQuestion.bind(this);
     this.moreAqs = this.moreAqs.bind(this);
     this.addAnswerToList = this.addAnswerToList.bind(this);
+    this.getData = this.getData.bind(this);
   }
 
   componentDidMount() {
+    this.getData();
+  }
+
+  getData() {
     axios.get(`/qa/questions/${this.state.product_id}`)
-      .then((response) => {
-        console.log(response.data.results)
-        this.generateQuestions(response.data.results);
-      });
+    .then((response) => {
+      // console.log('FULL LIST QUESTIONS FROM API ', response.data.results)
+      this.generateQuestions(response.data.results);
+    });
   }
 
   searchQuestions(searchTerm) {
@@ -93,6 +98,7 @@ class QA extends React.Component {
   }
 
   generateQuestions(data) {
+
     var defaultList = data.slice(0, 2);
     var fullList = data;
     this.setState({
@@ -102,7 +108,7 @@ class QA extends React.Component {
   }
 
   home() {
-    var questions = this.state.questionsCopy.slice(0, 2);
+    var questions = this.state.questionsCopy.slice(0, 20);
     this.setState({
       questions: questions,
 
@@ -117,24 +123,36 @@ class QA extends React.Component {
       body: question.question_body,
       name: question.asker_name,
       email: question.asker_email,
-      product_id: question.question_id,
+      product_id: Number(this.state.product_id),
     }
+
+    console.log(new_Question.product_id);
 
     axios.post('/qa/questions', new_Question)
       .then((response) => {
-        console.log('ADD QUESTION ', response)
+        console.log('ADD QUESTION ', response);
+        this.getData();
       });
 
-    this.setState({
-      questions: questions,
-    })
+    // this.setState({
+    //   questions: questions,
+    // })
   }
 
   moreAqs(count) {
-    var fullList = this.state.questionsCopy.slice(0, count);
-    this.setState({
-      questions: fullList
-    })
+    console.log(count);
+    if (count === 2) {
+      var fullList = this.state.questionsCopy.slice(0, 2);
+      this.setState({
+        questions: fullList
+      });
+    } else {
+      var fullList = this.state.questionsCopy.slice();
+      this.setState({
+        questions: fullList
+      });
+    }
+
   }
 
   addAnswerToList(answer) {

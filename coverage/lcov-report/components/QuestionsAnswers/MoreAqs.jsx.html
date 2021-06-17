@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">54.76% </span>
+                <span class="strong">78.57% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>23/42</span>
+                <span class='fraction'>33/42</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">54.76% </span>
+                <span class="strong">78.57% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>23/42</span>
+                <span class='fraction'>33/42</span>
             </div>
         
             
@@ -119,6 +119,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -128,16 +133,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from 'react';
 import styled from 'styled-components';
@@ -159,12 +159,12 @@ transition: 0.3s;
 }
 `;
 &nbsp;
-const MoreAqs = <span class="fstat-no" title="function not covered" >(props) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  const [moreAqsIsOpen, setMoreAqsIsOpenOpen] = useState(false);</span>
-<span class="cstat-no" title="statement not covered" >  const [count, incrementCount] = useState(2);</span>
-<span class="cstat-no" title="statement not covered" >  return (</span>
-<span class="cstat-no" title="statement not covered" >    &lt;div&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;StyledButton onClick={() =&gt; {</span>
+const MoreAqs = (props) =&gt; {
+  const [moreAqsIsOpen, setMoreAqsIsOpenOpen] = useState(false);
+  const [count, incrementCount] = useState(2);
+  return (
+    &lt;div&gt;
+      &lt;StyledButton onClick={<span class="fstat-no" title="function not covered" >() =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        setMoreAqsIsOpenOpen(!moreAqsIsOpen)</span>
 <span class="cstat-no" title="statement not covered" >        if (!moreAqsIsOpen) {</span>
 <span class="cstat-no" title="statement not covered" >          incrementCount(count + 2);</span>
@@ -174,11 +174,11 @@ const MoreAqs = <span class="fstat-no" title="function not covered" >(props) =&g
 <span class="cstat-no" title="statement not covered" >          props.moreAqs(count - 2);</span>
 <span class="cstat-no" title="statement not covered" >        }</span>
 <span class="cstat-no" title="statement not covered" >      }}&gt;</span>
-<span class="cstat-no" title="statement not covered" >        {!moreAqsIsOpen ? &lt;span&gt;MORE ANSWERED QUESTIONS&lt;/span&gt; : &lt;span&gt;COLLAPSE&lt;/span&gt;}</span>
-<span class="cstat-no" title="statement not covered" >      &lt;/StyledButton&gt;</span>
-<span class="cstat-no" title="statement not covered" >    &lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >  )</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+        {<span class="branch-0 cbranch-no" title="branch not covered" >!moreAqsIsOpen ? &lt;span&gt;MORE ANSWERED QUESTIONS&lt;/span&gt; : &lt;span&gt;COLLAPSE&lt;/span&gt;}</span>
+      &lt;/StyledButton&gt;
+    &lt;/div&gt;
+  )
+}
 &nbsp;
 export default MoreAqs;</pre></td></tr></table></pre>
 
@@ -187,7 +187,7 @@ export default MoreAqs;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Jun 15 2021 15:27:09 GMT-0700 (Pacific Daylight Time)
+                at Wed Jun 16 2021 15:24:02 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

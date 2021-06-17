@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">53.66% </span>
+                <span class="strong">58.02% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>44/82</span>
+                <span class='fraction'>47/81</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">53.66% </span>
+                <span class="strong">58.02% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>44/82</span>
+                <span class='fraction'>47/81</span>
             </div>
         
             
@@ -137,8 +137,7 @@
 <a name='L78'></a><a href='#L78'>78</a>
 <a name='L79'></a><a href='#L79'>79</a>
 <a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L81'></a><a href='#L81'>81</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -180,10 +179,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -240,6 +238,8 @@ font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans',
 display: flex;
 font-size: 11px;
 font-weight: 100;
+padding-top: 4px;
+margin-bottom: 15px;
 `;
 &nbsp;
 const AnswerBody = styled.div`
@@ -247,7 +247,7 @@ font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans',
 display: flex;
 font-size: 14px;
 font-weight: 100;
-padding-top: 1px;
+padding-top: 4px;
 `;
 &nbsp;
 const NameAndDate = styled.div`
@@ -257,19 +257,20 @@ padding-left: 25px;
 &nbsp;
 const PhotoContainer = styled.div`
 display: flex;
-padding-left: 10px;
+align-content: space-between;
+padding-left: 25px;
 `;
 &nbsp;
 const Answer = <span class="fstat-no" title="function not covered" >({ answer }) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  const help = answer.helpfulness;</span>
 <span class="cstat-no" title="statement not covered" >  const photos = answer.photos;</span>
-<span class="cstat-no" title="statement not covered" >  console.log('photos ' ,photos);</span>
+<span class="cstat-no" title="statement not covered" >  // console.log('photos ' ,photos);</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  return (</span>
 <span class="cstat-no" title="statement not covered" >    &lt;div&gt;</span>
 <span class="cstat-no" title="statement not covered" >      &lt;AnswerContainer&gt;</span>
 <span class="cstat-no" title="statement not covered" >        &lt;A&gt;</span>
-<span class="cstat-no" title="statement not covered" >          A:&amp;nbsp;</span>
+<span class="cstat-no" title="statement not covered" >          {Object.keys(answer).length &gt; 0 ? &lt;span&gt;A:&amp;nbsp;&lt;/span&gt; : null}</span>
 <span class="cstat-no" title="statement not covered" >        &lt;/A&gt;</span>
 <span class="cstat-no" title="statement not covered" >        &lt;AnswerBody&gt;</span>
 <span class="cstat-no" title="statement not covered" >          {answer.body}</span>
@@ -279,12 +280,10 @@ const Answer = <span class="fstat-no" title="function not covered" >({ answer })
 <span class="cstat-no" title="statement not covered" >        &lt;/p&gt;</span>
 <span class="cstat-no" title="statement not covered" >      &lt;/AnswerContainer&gt;</span>
 <span class="cstat-no" title="statement not covered" >        &lt;PhotoContainer&gt;</span>
-<span class="cstat-no" title="statement not covered" >          {photos.length &gt; 0 ? &lt;div&gt;{photos.map((photo, index) =&gt; &lt;Photo photo={photo} key={index}/&gt;)}&lt;/div&gt; : &lt;div&gt;&lt;/div&gt;}</span>
+<span class="cstat-no" title="statement not covered" >          {photos &amp;&amp; photos.length &gt; 0 ? &lt;div&gt;{photos.map((photo, index) =&gt; &lt;Photo photo={photo} key={index}/&gt;)}&lt;/div&gt; : null}</span>
 <span class="cstat-no" title="statement not covered" >        &lt;/PhotoContainer&gt;</span>
 <span class="cstat-no" title="statement not covered" >      &lt;AnswerInfo&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;p&gt;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >        &lt;/p&gt;</span>
 <span class="cstat-no" title="statement not covered" >        &lt;NameAndDate&gt;</span>
 <span class="cstat-no" title="statement not covered" >          by {answer.answerer_name},&amp;nbsp;</span>
 <span class="cstat-no" title="statement not covered" >          {new Date(answer.date).toDateString()}</span>
@@ -292,9 +291,7 @@ const Answer = <span class="fstat-no" title="function not covered" >({ answer })
 <span class="cstat-no" title="statement not covered" >        &amp;nbsp;&amp;nbsp; | &amp;nbsp;&amp;nbsp;</span>
 <span class="cstat-no" title="statement not covered" >        &lt;HelpfulAnswer help={help}/&gt;</span>
 <span class="cstat-no" title="statement not covered" >        &lt;Report /&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;p&gt;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >        &lt;/p&gt;</span>
 <span class="cstat-no" title="statement not covered" >      &lt;/AnswerInfo&gt;</span>
 <span class="cstat-no" title="statement not covered" >    &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >  )</span>
@@ -307,7 +304,7 @@ export default Answer;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Jun 15 2021 15:27:09 GMT-0700 (Pacific Daylight Time)
+                at Wed Jun 16 2021 15:24:02 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
