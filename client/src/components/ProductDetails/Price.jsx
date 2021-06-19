@@ -1,6 +1,4 @@
 import React from 'react';
-import axios from 'axios';
-import styled from 'styled-components';
 
 function Price(props) {
   let original = Math.round(Number(props.originalPrice));

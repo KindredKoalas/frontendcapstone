@@ -1,5 +1,3 @@
-// this helper function will take in response.data.results and create an object with the style_id and skus
-
 let getAllSkusPerStyle = (styleId, messyResults) => {
   let allSkusPerStyle = {};
   for (let i = 0; i < messyResults.length; i++) {

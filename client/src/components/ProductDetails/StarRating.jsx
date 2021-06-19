@@ -21,7 +21,9 @@ function StarRating({ averageRating }) {
             numberOfStars={5}
             name="rating"
       />
-      <div>&nbsp; Read All Reviews</div>
+      <div onClick={() => window.location.replace("/#ratings")}>
+        <span>&nbsp; Read All Reviews</span>
+      </div>
     </Row>
   );
 };

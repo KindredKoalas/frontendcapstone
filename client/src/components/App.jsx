@@ -1,9 +1,9 @@
-import React from 'react';
-import ReviewsAndRatings from './ReviewsAndRatings/ReviewsAndRatings.jsx';
-import QA from './QuestionsAnswers/QA.jsx';
+import React, { Suspense } from 'react';
 import ProductOverview from './ProductDetails/ProductOverview.jsx';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-const helpers = require('./ProductDetails/Helpers.js');
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+const QA = React.lazy(() => import('./QuestionsAnswers/QA.jsx'));
+const ReviewsAndRatings = React.lazy(() => import('./ReviewsAndRatings/ReviewsAndRatings.jsx'));
 
 class App extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.setState({
-      product_id: 25169,
+      product_id: 25167,
     });
   }
 
@@ -28,16 +28,14 @@ class App extends React.Component {
     } else {
       return (
         <>
-          <ProductOverview
-            product_id={this.state.product_id}
-          />
-          <QA
-            product_id={this.state.product_id}
-          />
+          <ProductOverview product_id={this.state.product_id} />
+          <Suspense fallback={<CircularProgress />}>
+            <QA product_id={this.state.product_id} />
+            <Suspense fallback={<CircularProgress />}>
+              <ReviewsAndRatings product_id={this.state.product_id} />
+            </Suspense>
+          </Suspense>
 
-          <ReviewsAndRatings
-            product_id={this.state.product_id}
-          />
         </>
       );
     }

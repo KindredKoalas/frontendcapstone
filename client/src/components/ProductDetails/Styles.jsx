@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
@@ -29,7 +29,6 @@ function Styles(props) {
       }
     }
     return clickedIndex;
-    // still need to setCurrentThumbnail hook
   }
 
   function handleClick(e) {
