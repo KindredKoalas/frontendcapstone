@@ -24,7 +24,7 @@ const MoreAqs = (props) => {
   return (
     <div>
       <StyledButton onClick={() => {
-        setMoreAqsIsOpenOpen(!moreAqsIsOpen)
+        setMoreAqsIsOpenOpen(!moreAqsIsOpen);
         if (!moreAqsIsOpen) {
           incrementCount(count + 2);
           props.moreAqs(count + 2);
@@ -32,11 +32,12 @@ const MoreAqs = (props) => {
           incrementCount(count - 2);
           props.moreAqs(count - 2);
         }
-      }}>
+      }}
+      >
         {!moreAqsIsOpen ? <span>MORE ANSWERED QUESTIONS</span> : <span>COLLAPSE</span>}
       </StyledButton>
     </div>
-  )
-}
+  );
+};
 
 export default MoreAqs;

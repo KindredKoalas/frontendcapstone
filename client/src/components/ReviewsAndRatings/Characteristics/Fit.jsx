@@ -5,15 +5,17 @@ function Fit(props) {
   if (props.characteristics.Fit !== undefined) {
     return (
       <props.styles.lineSpacing>
-        <props.styles.title>Fit</props.styles.title>
-        <props.styles.slider
-          type="range"
-          min="1"
-          max="5"
-          value={props.characteristics.Fit.value}
-          readonly="readonly"
-          step="0.01"
-        />
+        <label>
+          <props.styles.title>Fit</props.styles.title>
+          <props.styles.slider
+            type="range"
+            min="1"
+            max="5"
+            value={props.characteristics.Fit.value}
+            readOnly
+            step="0.01"
+          />
+        </label>
         <props.styles.text>
           <props.styles.labels>Runs tight</props.styles.labels>
           <props.styles.labels>Perfect</props.styles.labels>

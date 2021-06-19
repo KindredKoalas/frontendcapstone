@@ -12,7 +12,7 @@ font-weight: 100;
   text-decoration: underline;
   color: #C50000;
 }
-`
+`;
 
 const StyledButton = styled.button`
 font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
@@ -64,68 +64,83 @@ const AddAnswer = ({ addAnswerToList, question_id }) => {
   const [email, addEmail] = useState('');
   const [questionId, setId] = useState(question_id);
 
-    return (
-      <div>
-        <StyledAnswerButton type="submit" onClick={() => setAnswerIsOpen(true)}>
-          Add an answer
-        </StyledAnswerButton>
-        <Modal isOpen={answerIsOpen}
-               ariaHideApp={false}
-               onRequestClose={() => setAnswerIsOpen(false)}
+  return (
+    <div>
+      <StyledAnswerButton type="submit" onClick={() => setAnswerIsOpen(true)}>
+        Add an answer
+      </StyledAnswerButton>
+      <Modal
+        isOpen={answerIsOpen}
+        ariaHideApp={false}
+        onRequestClose={() => setAnswerIsOpen(false)}
+      >
+        <StyledH2>Ask your Answer about [Product Name Here]</StyledH2>
+        <FormDiv
+          type="submit"
+          value="Submit"
+          onSubmit={(event) => {
+            event.preventDefault();
+            const newAnswer = {
+              body: answer,
+              answerer_name: name,
+              answerer_email: email,
+              date: Date.now(),
+              helpfulness: 0,
+              photos: [],
+              question_id: questionId,
+            };
+
+            addAnswerToList(newAnswer);
+            addAnAnswer('');
+            addName('');
+            addEmail('');
+            setAnswerIsOpen(false);
+          }}
         >
-          <StyledH2>Ask your Answer about [Product Name Here]</StyledH2>
-          <FormDiv
-            type="submit"
-            value="Submit"
-            onSubmit={(event) => {
-              event.preventDefault();
-              const newAnswer = {
-                body: answer,
-                answerer_name: name,
-                answerer_email: email,
-                date: Date.now(),
-                helpfulness: 0,
-                photos: [],
-                question_id: questionId
-              };
-
-              addAnswerToList(newAnswer);
-              addAnAnswer('');
-              addName('');
-              addEmail('');
-              setAnswerIsOpen(false);
-
-            }}
-          >
-            <label>
-              <StyledDiv>Your Answer:</StyledDiv>
-              <StyledInput type="text" placeholder="Why did you like the product or not?" value={answer} onChange={(event) => {
-                addAnAnswer(event.target.value)}}
-                required
-              />
-            </label>
-            <p> </p>
-            <label>
+          <label>
+            <StyledDiv>Your Answer:</StyledDiv>
+            <StyledInput
+              type="text"
+              placeholder="Why did you like the product or not?"
+              value={answer}
+              onChange={(event) => {
+                addAnAnswer(event.target.value);
+              }}
+              required
+            />
+          </label>
+          <p> </p>
+          <label>
             <StyledDiv>What is your nickname?:</StyledDiv>
-              <StyledInput type="text" placeholder="John Smith" value={name} onChange={(event) => {
-                addName(event.target.value)}}
-                required
-              />
-            </label>
-            <p> </p>
-            <label>
+            <StyledInput
+              type="text"
+              placeholder="John Smith"
+              value={name}
+              onChange={(event) => {
+                addName(event.target.value);
+              }}
+              required
+            />
+          </label>
+          <p> </p>
+          <label>
             <StyledDiv>Your Email:</StyledDiv>
-              <StyledInput type="text" placeholder="Example: john123@gmail.com?" value={email} onChange={(event) => {
-                addEmail(event.target.value)}}
-                required
-              />
-            </label>
-            <p> </p>
-            <StyledButton type="submit">SUBMIT</StyledButton>
-          </FormDiv>
-        </Modal>
-      </div>
-    )
-}
+            <StyledInput
+              type="text"
+              placeholder="Example: john123@gmail.com?"
+              value={email}
+              onChange={(event) => {
+                addEmail(event.target.value);
+              }}
+              required
+            />
+          </label>
+          <p> </p>
+          <StyledButton type="submit">SUBMIT</StyledButton>
+        </FormDiv>
+      </Modal>
+    </div>
+  );
+};
 
 export default AddAnswer;

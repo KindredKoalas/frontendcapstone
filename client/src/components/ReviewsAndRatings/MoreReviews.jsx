@@ -1,4 +1,3 @@
-/* eslint-disable no-else-return */
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
@@ -26,7 +25,10 @@ function MoreReviews({
 
   function showMoreReviews() {
     if (resetCountState === true) {
-      setCount(4);
+      setCount(6);
+      let count = 4;
+      const slicedarray = reviewList.slice(0, count);
+      slicedReviewsFunction(slicedarray);
       resetCount(false);
     } else {
       setCount(count + 2);

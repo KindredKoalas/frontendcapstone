@@ -69,7 +69,11 @@ display: flex;
 flex-direction: column;
 `;
 
-const AddReview = ({ characteristics, slicedReviews, productId, addReview}) => {
+const AddReview = (
+  {
+    characteristics, productId, addReview
+  },
+) => {
   const [questionIsOpen, setReviewIsOpen] = useState(false);
   const [reviewSummary, addReviewSumary] = useState('');
   const [reviewBody, setReviewBody] = useState('');
@@ -79,7 +83,7 @@ const AddReview = ({ characteristics, slicedReviews, productId, addReview}) => {
   const [reviewRatingText, setReviewRatingText] = useState('');
   const [recommendProduct, setRecommendProduct] = useState('');
   const [textCounterReviewBody, setTextCounterReviewBody] = useState('Minimum required characters left: 50');
-  const [reviewPhoto, setReviewPhoto] = useState([]);
+  const reviewPhoto = useState([]);
   const [characteristicsObj, setCharacteristicsObj] = useState({});
 
   function changeRating(newRating) {
@@ -154,45 +158,44 @@ const AddReview = ({ characteristics, slicedReviews, productId, addReview}) => {
           }}
         >
           <Row>
-          <div>
-            <StyledDiv>YOUR OVERALL RATING</StyledDiv>
-            <StarRatings
-              rating={reviewRating}
-              starDimension="3vw"
-              starSpacing="0.5vw"
-              starRatedColor="black"
-              changeRating={changeRating}
-              numberOfStars={5}
-              name="rating"
-            />
-            &nbsp;
-            <span>
-              {reviewRatingText}
-            </span>
-          </div>
-          <div>
-            <StyledDiv>WOULD YOU RECOMMEND THIS PRODUCT?</StyledDiv>
-            <input
-              type="radio"
-              id="Recommended"
-              name="RecommendedProduct"
-              value="true"
-              onClick={changeRecommendedProduct}
-              required
-            />
-            <StyledSpan htmlFor="Recommended">Yes</StyledSpan>
-            <input
-              type="radio"
-              id="notRecommended"
-              name="RecommendedProduct"
-              value="false"
-              onClick={changeRecommendedProduct}
-            />
-            <StyledSpan htmlFor="notRecommended">No</StyledSpan>
-          </div>
+            <div>
+              <StyledDiv>YOUR OVERALL RATING</StyledDiv>
+              <StarRatings
+                rating={reviewRating}
+                starDimension="3vw"
+                starSpacing="0.5vw"
+                starRatedColor="black"
+                changeRating={changeRating}
+                numberOfStars={5}
+                name="rating"
+              />
+              &nbsp;
+              <span>
+                {reviewRatingText}
+              </span>
+            </div>
+            <div>
+              <StyledDiv>WOULD YOU RECOMMEND THIS PRODUCT?</StyledDiv>
+              <input
+                type="radio"
+                id="Recommended"
+                name="RecommendedProduct"
+                value="true"
+                onClick={changeRecommendedProduct}
+                required
+              />
+              <StyledSpan htmlFor="Recommended">Yes</StyledSpan>
+              <input
+                type="radio"
+                id="notRecommended"
+                name="RecommendedProduct"
+                value="false"
+                onClick={changeRecommendedProduct}
+              />
+              <StyledSpan htmlFor="notRecommended">No</StyledSpan>
+            </div>
           </Row>
           <label>
-            {/* <StyledDiv>Characteristics:</StyledDiv> */}
             <CharacteristicsReview
               characteristics={characteristics}
               setCharacteristicsObj={setCharacteristicsObj}
@@ -216,65 +219,65 @@ const AddReview = ({ characteristics, slicedReviews, productId, addReview}) => {
               required
             />
           </label>
-          <Column>
-          <label>
-            <StyledDiv>YOUR REVIEW</StyledDiv>
-            <StyledInput
-              type="text"
-              minLength="50"
-              maxLength="1000"
-              placeholder="Why did you like the product or not?"
-              value={reviewBody}
-              onChange={(event) => {
-                setReviewBody(event.target.value);
-                textCounter(event.target.value);
-              }}
-              required
-            />
-          </label>
-          <StyledSpan>
-            {textCounterReviewBody}
-          </StyledSpan>
-          </Column>
+            <Column>
+              <label>
+                <StyledDiv>YOUR REVIEW</StyledDiv>
+                <StyledInput
+                  type="text"
+                  minLength="50"
+                  maxLength="1000"
+                  placeholder="Why did you like the product or not?"
+                  value={reviewBody}
+                  onChange={(event) => {
+                    setReviewBody(event.target.value);
+                    textCounter(event.target.value);
+                  }}
+                  required
+                />
+              </label>
+              <StyledSpan>
+                {textCounterReviewBody}
+              </StyledSpan>
+            </Column>
           </Row>
-          <p></p>
+          <p />
           <hr size="1" width="100%" color="#DCDCDC" />
           <h3>PERSONAL INFORMATION</h3>
           <Row>
-          <Column>
-          <label>
-            <StyledDiv>NICKNAME</StyledDiv>
-            <StyledInput2
-              type="text"
-              maxLength="60"
-              placeholder="Example: jackson11!"
-              value={name}
-              onChange={(event) => {
-                addName(event.target.value);
-              }}
-              required
-            />
-          </label>
-          <StyledSpan>
-            For privacy reasons, do not use your full name or email address
-          </StyledSpan>
-          </Column>
-          <Column>
-          <label>
-            <StyledDiv>EMAIL</StyledDiv>
-            <StyledInput
-              type="email"
-              maxLength="60"
-              placeholder="Example: john123@gmail.com?"
-              value={email}
-              onChange={(event) => {
-                addEmail(event.target.value);
-              }}
-              required
-            />
-          </label>
-          <StyledSpan>For authentication reasons, you will not be emailed</StyledSpan>
-          </Column>
+            <Column>
+              <label>
+                <StyledDiv>NICKNAME</StyledDiv>
+                <StyledInput2
+                  type="text"
+                  maxLength="60"
+                  placeholder="Example: jackson11!"
+                  value={name}
+                  onChange={(event) => {
+                    addName(event.target.value);
+                  }}
+                  required
+                />
+              </label>
+              <StyledSpan>
+                For privacy reasons, do not use your full name or email address
+              </StyledSpan>
+            </Column>
+            <Column>
+              <label>
+                <StyledDiv>EMAIL</StyledDiv>
+                <StyledInput
+                  type="email"
+                  maxLength="60"
+                  placeholder="Example: john123@gmail.com?"
+                  value={email}
+                  onChange={(event) => {
+                    addEmail(event.target.value);
+                  }}
+                  required
+                />
+              </label>
+              <StyledSpan>For authentication reasons, you will not be emailed</StyledSpan>
+            </Column>
           </Row>
           <p> </p>
           <StyledButton type="submit">SUBMIT</StyledButton>

@@ -35,7 +35,7 @@ const styles = {
   header: Header,
 };
 
-function CharacteristicsReview({characteristics, setCharacteristicsObj, characteristicsObj} ) {
+function CharacteristicsReview({ characteristics, setCharacteristicsObj, characteristicsObj }) {
   return (
     <>
       <Size

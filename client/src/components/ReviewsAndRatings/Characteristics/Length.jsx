@@ -4,15 +4,17 @@ function Length(props) {
   if (props.characteristics.Length !== undefined) {
     return (
       <props.styles.lineSpacing>
-        <props.styles.title>Length</props.styles.title>
-        <props.styles.slider
-          type="range"
-          min="1"
-          max="5"
-          value={props.characteristics.Length.value}
-          readonly="readonly"
-          step="0.01"
-        />
+        <label>
+          <props.styles.title>Length</props.styles.title>
+          <props.styles.slider
+            type="range"
+            min="1"
+            max="5"
+            value={props.characteristics.Length.value}
+            readOnly
+            step="0.01"
+          />
+        </label>
         <props.styles.text>
           <props.styles.labels>Runs short</props.styles.labels>
           <props.styles.labels>Perfect</props.styles.labels>

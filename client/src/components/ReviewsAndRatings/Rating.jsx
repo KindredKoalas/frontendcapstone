@@ -61,7 +61,11 @@ margin: 8px 0 0 5px;
 }
 `;
 
-function Rating( {totalNumReviews, recommended, ratings,averageRating} ) {
+function Rating(
+  {
+    totalNumReviews, recommended, ratings,averageRating
+  },
+) {
   return (
     <>
       <Reviews>
@@ -69,9 +73,9 @@ function Rating( {totalNumReviews, recommended, ratings,averageRating} ) {
           <AverageRating>{averageRating}</AverageRating>
           <StarRatings
             rating={averageRating}
+            starRatedColor="black"
             starDimension="15px"
             starSpacing="0px"
-            starRatedColor="black"
             numberOfStars={5}
             name="rating"
           />

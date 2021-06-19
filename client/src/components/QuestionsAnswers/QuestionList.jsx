@@ -1,9 +1,9 @@
 import React from 'react';
-import Question from './Question.jsx';
 import styled from 'styled-components';
+import Question from './Question.jsx';
 
 const Scroll = styled.div`
-max-height: 40vw;
+max-height: 45vw;
 overflow-x: hidden;
 overflow-y: scroll;
 `;

@@ -1,41 +1,40 @@
 const axios = require('axios');
 const config = require('../../config.js');
 
-let getAllQuestionsAnswers = (callback, productId) => {
+const getAllQuestionsAnswers = (callback, productId) => {
   const id = productId.product_id;
-  let options = {
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions?product_id=${id}`,
+  const options = {
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions?product_id=${id}&count=100`,
     headers: {
       'User-Agent': 'request',
-      'Authorization': config.TOKEN
-    }
+      Authorization: config.TOKEN,
+    },
   };
 
-  //25168
-  //25167
+  // 25168
+  // 25167
 
   // `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions?product_id=${id}`
 
   axios.get(options.url, options)
-  .then(function (response) {
+    .then((response) => {
     // handle success
-    callback(null, response.data);
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-    callback(error);
-  });
-}
+      callback(null, response.data);
+    })
+    .catch((error) => {
+      callback(error);
+    });
+};
 
-let postQuestion = (question, callback) => {
+const postQuestion = (question, callback) => {
   // callback(null, question);
-  let options = {
+
+  const options = {
     method: 'POST',
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/`,
+    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/',
     headers: {
       'User-Agent': 'request',
-      'Authorization': config.TOKEN
+      Authorization: config.TOKEN,
     },
     data: question,
   };
@@ -46,7 +45,7 @@ let postQuestion = (question, callback) => {
     })
     .catch((error) => {
       callback(error);
-    })
-}
+    });
+};
 
-module.exports = {getAllQuestionsAnswers, postQuestion};
+module.exports = { getAllQuestionsAnswers, postQuestion };
