@@ -71,7 +71,7 @@ flex-direction: column;
 
 const AddReview = (
   {
-    characteristics, slicedReviews, productId, addReview
+    characteristics, productId, addReview
   },
 ) => {
   const [questionIsOpen, setReviewIsOpen] = useState(false);
@@ -83,7 +83,7 @@ const AddReview = (
   const [reviewRatingText, setReviewRatingText] = useState('');
   const [recommendProduct, setRecommendProduct] = useState('');
   const [textCounterReviewBody, setTextCounterReviewBody] = useState('Minimum required characters left: 50');
-  const [reviewPhoto, setReviewPhoto] = useState([]);
+  const reviewPhoto = useState([]);
   const [characteristicsObj, setCharacteristicsObj] = useState({});
 
   function changeRating(newRating) {
@@ -196,7 +196,6 @@ const AddReview = (
             </div>
           </Row>
           <label>
-            {/* <StyledDiv>Characteristics:</StyledDiv> */}
             <CharacteristicsReview
               characteristics={characteristics}
               setCharacteristicsObj={setCharacteristicsObj}

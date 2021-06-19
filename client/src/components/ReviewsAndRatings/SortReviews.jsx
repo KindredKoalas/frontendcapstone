@@ -38,7 +38,7 @@ function SortReviews(
     <Text>
       {totalNumReviews}
       &nbsp;reviews, sorted by&nbsp;
-      <Dropdown id='list' onChange={getSelectValue}>
+      <Dropdown id="list" onChange={getSelectValue}>
         <option value="relevant">relevance</option>
         <option value="newest">newest</option>
         <option value="helpful">helpfulness</option>
