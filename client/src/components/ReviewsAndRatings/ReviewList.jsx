@@ -1,6 +1,6 @@
 import React from 'react';
-import Review from './Review.jsx';
 import styled from 'styled-components';
+import Review from './Review.jsx';
 
 const ScrollabeList = styled.div`
 max-height: 50vw;
@@ -8,7 +8,7 @@ overflow-x:hidden;
 overflow-y:scroll;
 `;
 
-function ReviewList( {reviewList} ) {
+function ReviewList({ reviewList }) {
   const reviews = reviewList;
   const reviewsList = reviews.map((review) => (
     <Review

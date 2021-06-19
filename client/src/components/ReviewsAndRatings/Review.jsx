@@ -96,12 +96,12 @@ function Review({ reviewObject }) {
       <Body>
         {reviewObject.recommend === true ? '✓ I recommend this product' : null}
       </Body>
-      <Body></Body>
+      <Body />
       <Response>
         <BoldText>
           {(reviewObject.response !== ''
             && reviewObject.response !== null)
-            ? "Response:" : null}
+            ? 'Response:' : null}
         </BoldText>
         <Text>
           {(reviewObject.response !== ''
