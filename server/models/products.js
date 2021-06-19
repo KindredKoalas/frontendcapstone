@@ -1,15 +1,15 @@
 const axios = require('axios');
 const config = require('../../config.js');
 
-let getAllProducts = (callback) => {
+let options = {
+  url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products`,
+  headers: {
+    'User-Agent': 'request',
+    'Authorization': config.TOKEN
+  }
+};
 
-  let options = {
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products`,
-    headers: {
-      'User-Agent': 'request',
-      'Authorization': config.TOKEN
-    }
-  };
+let getAllProducts = (callback) => {
 
   axios.get(options.url, options)
   .then(function (response) {
@@ -24,15 +24,9 @@ let getAllProducts = (callback) => {
 
 let getStylesPerProduct = (callback, product_id) => {
   const id = product_id.product_id;
-  let options = {
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${id}/styles`,
-    headers: {
-      'User-Agent': 'request',
-      'Authorization': config.TOKEN
-    }
-  };
+  let url = `${options.url}/${id}/styles`;
 
-  axios.get(options.url, options)
+  axios.get(url, options)
   .then(function (response) {
     // handle success
     callback(null, response.data);
@@ -45,15 +39,9 @@ let getStylesPerProduct = (callback, product_id) => {
 
 let getInfoPerProductId = (callback, product_id) => {
   const id = product_id.product_id;
-  let options = {
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${id}/`,
-    headers: {
-      'User-Agent': 'request',
-      'Authorization': config.TOKEN
-    }
-  };
+  let url = `${options.url}/${id}`;
 
-  axios.get(options.url, options)
+  axios.get(url, options)
   .then(function (response) {
     // handle success
     callback(null, response.data);

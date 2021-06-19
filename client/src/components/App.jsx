@@ -15,7 +15,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.setState({
-      product_id: 25167,
+      product_id: 25169,
     });
   }
 
