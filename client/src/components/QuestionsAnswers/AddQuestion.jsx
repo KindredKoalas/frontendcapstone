@@ -52,68 +52,84 @@ const AddQuestion = ({ addQuestionToList }) => {
   const [email, addEmail] = useState('');
   const [id, addCount] = useState(0);
 
-    return (
-      <div>
-        <StyledButton type="submit" onClick={() => setQuestionIsOpen(true)}>
-          ADD QUESTION +
-        </StyledButton>
-        <Modal isOpen={questionIsOpen}
-               ariaHideApp={false}
-               onRequestClose={() => setQuestionIsOpen(false)}
-        >
-          <StyledH2>Ask your Question about [Product Name Here]</StyledH2>
-          <FormDiv
-            type="submit"
-            value="Submit"
-            onSubmit={(event) => {
-              event.preventDefault();
-              const newQuestion = {
-                question_body: question,
-                asker_name: name,
-                asker_email: email,
-                question_date: Date.now(),
-                reported: false,
-                answers: {},
-                question_id: id,
-              };
+  return (
+    <div>
+      <StyledButton type="submit" onClick={() => setQuestionIsOpen(true)}>
+        ADD QUESTION +
+      </StyledButton>
+      <Modal
+        isOpen={questionIsOpen}
+        ariaHideApp={false}
+        onRequestClose={() => setQuestionIsOpen(false)}
+      >
+        <StyledH2>Ask your Question about [Product Name Here]</StyledH2>
+        <FormDiv
+          type="submit"
+          value="Submit"
+          onSubmit={(event) => {
+            event.preventDefault();
+            const newQuestion = {
+              question_body: question,
+              asker_name: name,
+              asker_email: email,
+              question_date: Date.now(),
+              reported: false,
+              answers: {},
+              question_id: id,
+            };
 
-              addCount(id + 1);
-              addQuestionToList(newQuestion);
-              addQuestion('');
-              addName('');
-              addEmail('');
-              setQuestionIsOpen(false);
-            }}
-          >
-            <label>
-              <StyledDiv>Your Question:</StyledDiv>
-              <StyledInput type="text" placeholder="Why did you like the product or not?" value={question} onChange={(event) => {
-                addQuestion(event.target.value)}}
-                required
-              />
-            </label>
-            <p> </p>
-            <label>
+            addCount(id + 1);
+            addQuestionToList(newQuestion);
+            addQuestion('');
+            addName('');
+            addEmail('');
+            setQuestionIsOpen(false);
+          }}
+        >
+          <label>
+            <StyledDiv>Your Question:</StyledDiv>
+            <StyledInput
+              type="text"
+              placeholder="Why did you like the product or not?"
+              value={question}
+              onChange={(event) => {
+                addQuestion(event.target.value);
+              }}
+              required
+            />
+          </label>
+          <p> </p>
+          <label>
             <StyledDiv>What is your nickname?:</StyledDiv>
-              <StyledInput type="text" placeholder="John Smith" value={name} onChange={(event) => {
-                addName(event.target.value)}}
-                required
-              />
-            </label>
-            <p> </p>
-            <label>
+            <StyledInput
+              type="text"
+              placeholder="John Smith"
+              value={name}
+              onChange={(event) => {
+                addName(event.target.value);
+              }}
+              required
+            />
+          </label>
+          <p> </p>
+          <label>
             <StyledDiv>Your Email:</StyledDiv>
-              <StyledInput type="text" placeholder="Example: john123@gmail.com?" value={email} onChange={(event) => {
-                addEmail(event.target.value)}}
-                required
-              />
-            </label>
-            <p> </p>
-            <StyledButton type="submit">SUBMIT</StyledButton>
-          </FormDiv>
-        </Modal>
-      </div>
-    )
-}
+            <StyledInput
+              type="text"
+              placeholder="Example: john123@gmail.com?"
+              value={email}
+              onChange={(event) => {
+                addEmail(event.target.value);
+              }}
+              required
+            />
+          </label>
+          <p> </p>
+          <StyledButton type="submit">SUBMIT</StyledButton>
+        </FormDiv>
+      </Modal>
+    </div>
+  );
+};
 
 export default AddQuestion;

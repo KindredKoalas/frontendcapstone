@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import QuestionList from './QuestionList.jsx';
@@ -42,14 +42,15 @@ color: black;
 `;
 
 class QA extends React.Component {
-  constructor({ product_id }) {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       questions: [],
       questionsCopy: [],
       answer: [],
-      product_id: product_id
+      product_id: props.product_id,
+      searchTerm: '',
     };
 
     this.generateQuestions = this.generateQuestions.bind(this);
@@ -67,40 +68,38 @@ class QA extends React.Component {
 
   getData() {
     axios.get(`/qa/questions/${this.state.product_id}`)
-    .then((response) => {
-      // console.log('FULL LIST QUESTIONS FROM API ', response.data.results)
-      this.generateQuestions(response.data.results);
-    });
+      .then((response) => {
+        this.generateQuestions(response.data.results);
+      });
   }
 
   searchQuestions(searchTerm) {
-    var questionList = this.state.questionsCopy.slice();
-    console.log('QuestionLIST ', questionList);
-    var noMatches = null;
-    var matches = [];
+    this.setState({
+      searchTerm,
+    })
+    const questionList = this.state.questionsCopy.slice();
+    const noMatches = null;
+    const matches = [];
 
-    if (searchTerm.length > 2) {
-      for (let question of questionList) {
-
-        if (question.question_body.toLowerCase().includes(searchTerm.toLowerCase())) {
-          matches.push(question);
-          this.setState({
-            questions: matches,
-          });
-        } else {
-          this.setState({
-            searchTerm: searchTerm,
-            questions: noMatches,
-          })
-        }
+    for (var i = 0; i < questionList.length; i++) {
+      if (questionList[i].question_body.includes(searchTerm)) {
+        matches.push(questionList[i]);
       }
+    }
+
+    if (matches.length > 1) {
+      this.setState({
+        questions: matches,
+      })
+    } else {
+      this.setState({
+        questions: noMatches,
+      })
     }
   }
 
   generateQuestions(data) {
-
-    var defaultList = data.slice(0, 2);
-    var fullList = data;
+    const defaultList = data.slice(0, 2);
     this.setState({
       questions: defaultList,
       questionsCopy: data,
@@ -108,15 +107,14 @@ class QA extends React.Component {
   }
 
   home() {
-    var questions = this.state.questionsCopy.slice(0, 20);
+    const questions = this.state.questionsCopy.slice(0, 20);
     this.setState({
-      questions: questions,
-
+      questions,
     });
   }
 
   addQuestion(question) {
-    var questions = this.state.questions.slice();
+    const questions = this.state.questions.slice();
     questions.push(question);
 
     const new_Question = {
@@ -124,41 +122,32 @@ class QA extends React.Component {
       name: question.asker_name,
       email: question.asker_email,
       product_id: Number(this.state.product_id),
-    }
-
-    console.log(new_Question.product_id);
+    };
 
     axios.post('/qa/questions', new_Question)
-      .then((response) => {
-        console.log('ADD QUESTION ', response);
+      .then(() => {
         this.getData();
       });
-
-    // this.setState({
-    //   questions: questions,
-    // })
   }
 
   moreAqs(count) {
-    console.log(count);
     if (count === 2) {
       var fullList = this.state.questionsCopy.slice(0, 2);
       this.setState({
-        questions: fullList
+        questions: fullList,
       });
     } else {
       var fullList = this.state.questionsCopy.slice();
       this.setState({
-        questions: fullList
+        questions: fullList,
       });
     }
-
   }
 
   addAnswerToList(answer) {
     this.setState({
-      answer: answer
-    })
+      answer,
+    });
   }
 
   render() {
@@ -167,21 +156,21 @@ class QA extends React.Component {
         <StyledHeader onClick={this.home}>
           QUESTIONS & ANSWERS
         </StyledHeader>
-        <p>
-
-        </p>
+        <p />
         <StyledSearch>
           <Search searchQuestions={this.searchQuestions} />
         </StyledSearch>
 
-        <p>
+        <p />
+        {this.state.questions === null ? (
+          <StyledSpan onClick={this.home}>
+            NO RESULTS FOR "
+            {this.state.searchTerm.toUpperCase()}
+            "
+          </StyledSpan>
+        ) : <QuestionList onClick={this.home} list={this.state.questions} addAnswerToList={this.addAnswerToList} answer={this.state.answer} /> }
 
-        </p>
-        {this.state.questions === null ? <StyledSpan onClick={this.home}>NO RESULTS FOR "{this.state.searchTerm.toUpperCase()}"</StyledSpan> : <QuestionList onClick={this.home} list={this.state.questions} addAnswerToList={this.addAnswerToList} answer={this.state.answer} /> }
-
-        <p>
-
-        </p>
+        <p />
         <LowerButtons>
           <MoreAqs moreAqs={this.moreAqs} />
           <AddQuestion addQuestionToList={this.addQuestion} />

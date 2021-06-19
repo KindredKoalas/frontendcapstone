@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Helpful from './Helpful.jsx';
 import AddAnswer from './AddAnswer.jsx';
@@ -35,7 +35,7 @@ font-weight: 700;
 `
 
 const Question = ({ item, help, addAnswerToList, answer }) => {
-  const answers = item.answers;
+  const { answers } = item;
   let answerList = [];
 
   for (var key in answers) {
@@ -66,18 +66,18 @@ const Question = ({ item, help, addAnswerToList, answer }) => {
       <p>
 
       </p>
-      {answerList.map((answer, index) =>
-        <Answer answer={answer} key={index} question_id={item.question_id}  />
-      )}
+      {answerList.map((answerItem, index) =>
+        <Answer answer={answerItem} key={index} question_id={item.question_id} />)}
       <p>
 
       </p>
-      {answerList.length > 2 ? <StyledLoadMoreButton>LOAD MORE ANSWERS</StyledLoadMoreButton> : <div></div>}
+      {answerList.length > 2
+        ? <StyledLoadMoreButton>LOAD MORE ANSWERS</StyledLoadMoreButton> : <div></div>}
       <p>
 
       </p>
     </div>
-  )
+  );
 };
 
 export default Question;

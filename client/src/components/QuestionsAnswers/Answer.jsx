@@ -32,8 +32,8 @@ padding-top: 4px;
 `;
 
 const NameAndDate = styled.div`
-color: grey;
 padding-left: 25px;
+color: #696969
 `;
 
 const PhotoContainer = styled.div`
@@ -44,8 +44,7 @@ padding-left: 25px;
 
 const Answer = ({ answer }) => {
   const help = answer.helpfulness;
-  const photos = answer.photos;
-  // console.log('photos ' ,photos);
+  const { photos } = answer;
 
   return (
     <div>
@@ -56,26 +55,27 @@ const Answer = ({ answer }) => {
         <AnswerBody>
           {answer.body}
         </AnswerBody>
-        <p>
-
-        </p>
+        <p />
       </AnswerContainer>
-        <PhotoContainer>
-          {photos && photos.length > 0 ? <div>{photos.map((photo, index) => <Photo photo={photo} key={index}/>)}</div> : null}
-        </PhotoContainer>
+      <PhotoContainer>
+        {photos && photos.length > 0
+          ? <div>{photos.map((photo, index) => <Photo photo={photo} key={index} />)}</div> : null}
+      </PhotoContainer>
       <AnswerInfo>
 
         <NameAndDate>
-          by {answer.answerer_name},&nbsp;
+          by&nbsp;
+          {answer.answerer_name}
+          ,&nbsp;
           {new Date(answer.date).toDateString()}
         </NameAndDate>
         &nbsp;&nbsp; | &nbsp;&nbsp;
-        <HelpfulAnswer help={help}/>
+        <HelpfulAnswer help={help} />
         <Report />
 
       </AnswerInfo>
     </div>
-  )
-}
+  );
+};
 
 export default Answer;
