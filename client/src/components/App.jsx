@@ -15,7 +15,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.setState({
-      product_id: 25167,
+      product_id: 25170,
     });
   }
 
@@ -34,7 +34,6 @@ class App extends React.Component {
           <QA
             product_id={this.state.product_id}
           />
-
           <ReviewsAndRatings
             product_id={this.state.product_id}
           />

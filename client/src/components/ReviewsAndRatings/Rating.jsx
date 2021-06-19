@@ -73,9 +73,9 @@ function Rating(
           <AverageRating>{averageRating}</AverageRating>
           <StarRatings
             rating={averageRating}
+            starRatedColor="black"
             starDimension="15px"
             starSpacing="0px"
-            starRatedColor="black"
             numberOfStars={5}
             name="rating"
           />
