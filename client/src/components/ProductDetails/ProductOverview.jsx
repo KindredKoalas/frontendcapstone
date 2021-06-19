@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import ImageSlider from './ImageSlider.jsx';
 import ProductCategory from './ProductCategory.jsx';
 import Styles from './Styles.jsx';
@@ -65,8 +66,8 @@ class ProductOverview extends React.Component {
       images: [{
         style_id: 142825,
         photos: {
-          thumbnail_url: "https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
-          url: "https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+          thumbnail_url: <CircularProgress />,
+          url: <CircularProgress />
         }
       }],
       skus: [
@@ -97,19 +98,18 @@ class ProductOverview extends React.Component {
 
   getAllProducts() {
     // this function sets the first product ID of the product array as state
-    const self = this;
-    const productId = self.props.product_id;
-    axios.get(`/api/products/${productId}`)
-      .then(function (response) {
+    const { product_id } = this.props;
+    axios.get(`/api/products/${product_id}`)
+      .then((response) => {
         // handle success
-        self.setState({
+        this.setState({
           product: response.data.id,
           category: response.data.name,
           description: response.data.description,
           slogan: response.data.slogan,
           features: response.data.features
         })
-        self.getAllStyles();
+        this.getAllStyles();
       })
       .catch(function (error) {
         // handle error
@@ -118,12 +118,10 @@ class ProductOverview extends React.Component {
   }
 
   getReviews() {
-    const self = this;
-    const productId = self.props.product_id;
-    axios.get(`/reviews/meta/${productId}`)
+    const { product_id } = this.props;
+    axios.get(`/reviews/meta/${product_id}`)
       .then((response) => {
         let data = response.data;
-        console.log(data);
         let totalNumberReviews = 0;
         let totalRatingValues = 0;
 
@@ -132,17 +130,16 @@ class ProductOverview extends React.Component {
           totalNumberReviews = totalNumberReviews + Number(value);
         }
         const averageRating = ((Math.round((totalRatingValues / Number(totalNumberReviews)) * 4) / 4));
-        self.setState({
+        this.setState({
           rating: averageRating
         })
     });
   }
 
   getAllStyles() {
-    const self = this;
-    const productId = self.props.product_id.toString();
-    axios.get(`/api/products/${productId}/styles`)
-      .then(function (response) {
+    const { product_id } = this.props;
+    axios.get(`/api/products/${product_id}/styles`)
+      .then((response) => {
         // handle success
         const results = response.data.results;
         const originalPrice = results[0].original_price;
@@ -161,7 +158,7 @@ class ProductOverview extends React.Component {
 
         const renderSkus = helpers.getAllSkusPerStyle(style_id, response.data.results);
 
-        self.setState({
+        this.setState({
           styles: response.data,
           images: styleImages,
           name: name,

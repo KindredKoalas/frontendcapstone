@@ -114,8 +114,9 @@ function ReviewsAndRatings({ product_id }) {
 
   return (
     <Component>
-      <Title>RATINGS & REVIEWS</Title>
+      <Title id="ratings">RATINGS & REVIEWS</Title>
       <Suspense fallback={<div>Loading...</div>}>
+
       <GridLayout>
         <Ratings>
           <Rating

@@ -72,7 +72,7 @@ describe('Test thumbnail click handler in Styles component', () => {
     });
     const component = mount(<Styles images={imagesForAllStyles} handleStylesSelectorClick={mockCallback} />);
     //console.log('component', component);
-    //console.log(`component debug ${component.debug()}`);
+    console.log(`component debug ${component.debug()}`);
     component.find('.StyleCircle').first().simulate('click');
     //console.log('component.find(StyleCircle)', component.find('.StyleCircle').debug());
     //console.log('mockCallback.mock', mockCallback.mock);
