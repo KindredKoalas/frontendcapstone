@@ -40,22 +40,23 @@ class Search extends React.Component {
   handleChange(event) {
     event.preventDefault();
     this.setState({ value: event.target.value });
+    this.props.searchQuestions(this.state.value);
   }
 
   handleSubmit(event) {
     event.preventDefault();
     this.props.searchQuestions(this.state.value);
     this.setState({
-      value: ''
-    })
+      value: '',
+    });
   }
 
   render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-        <StyledInput type="text" name="name" value={this.state.value} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." onChange={this.handleChange} />
-        <StyledButton type="submit">Go</StyledButton>
+          <StyledInput type="text" name="name" value={this.state.value} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." onChange={this.handleChange} />
+          <StyledButton type="submit">Go</StyledButton>
         </form>
       </div>
 
