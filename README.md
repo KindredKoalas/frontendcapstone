@@ -46,6 +46,6 @@ Product Overview allows Customers to discover different styles of a product and 
 
 ### Acknowledgements <a name="acknowledgements"></a>
  
-Jenn Ngai - Software Engineer
-Phil Latoza - Software Engineer
-Sergio Herrera - Software Engineer
+- Jenn Ngai - Software Engineer
+- Phil Latoza - Software Engineer
+- Sergio Herrera - Software Engineer
