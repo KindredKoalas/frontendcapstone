@@ -15,6 +15,9 @@
 
 Product Overview is an ecommerce, retail-centric website application. It is a retail portal with a modernized, React-based client running on an Express server. The application organizes and serves information regarding product details, product question and answers, and product reviews.
 
+Product Overview
+![Product Overview](https://media.giphy.com/media/VlAlpXi50uIXF0qvA2/giphy.gif)
+
 
 ### Module Summary <a name="module-summary"></a>
 
